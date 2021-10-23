@@ -11,9 +11,9 @@ logger = logging.getLogger(__name__)
 import os
 import pyrogram
 from translation import Translation
+from script import script
 from config import Config
 logging.getLogger('pyrogram').setLevel(logging.WARNING)
-
 
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["help"]))
@@ -35,7 +35,7 @@ async def start(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.START_TEXT,
-        reply_markup=Script.START_BUTTONS
+        reply_markup=Script.START_BUTTONS,
         
         reply_to_message_id=update.message_id
     )
