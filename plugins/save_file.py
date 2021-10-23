@@ -157,7 +157,7 @@ async def save_video(client, message):
             )
 
 
-@Client.on_message(filters.text & filters.regex('^http') & check_user)
+@Client.on_message(filters.text & filters.regex('^http'))
 async def save_url(client, message):
 
     chat_id = message.from_user.id
