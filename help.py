@@ -1,8 +1,21 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-class Help(object):
 
-HELP_TEXT = """<b>Welcome to the Help Menu</b>
+class Chat:
+
+    START_TEXT = """<b>Hey,</b>
+<b>This is a Telegram Bot to Mux subtitle into a video</b>
+
+<b>Send me a Telegram file to begin</b>
+
+/help for more details..
+
+Credits :- @SultanMehmed_TG
+    """
+
+    HELP_USER = "??"
+
+    HELP_TEXT ="""<b>Welcome to the Help Menu</b>
 
 1.) Send a Video file or url.
 2.) Send a subtitle file (ass or srt)
@@ -11,12 +24,13 @@ HELP_TEXT = """<b>Welcome to the Help Menu</b>
 To give custom name to file send it with url seperated with |
 <i>url|custom_name.mp4</i>
 
-<b>Note : </b><b>Please note that only english type fonts are supported in hardmux other scripts will be shown as empty blocks on the video!</b>
+<b>Note : </b><i>Please note that only english type fonts are supported in hardmux other scripts will be shown as empty blocks on the video!</i>
 
-<a href="https://github.com/sahaynitin/video-sub-merger">Repo URL</a>"""
+<a href="https://t.me/nokkiyirunnoippokottum/4">Repo URL</a>"""
 
 
-HELP_BUTTONS = InlineKeyboardMarkup(
+
+    HELP_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('🤖 About', callback_data='about'),
         InlineKeyboardButton('Close 🔐', callback_data='close')
