@@ -55,3 +55,4 @@ SOFTWARE.
 Dan For His Pyrogram Library
 # Credit
 <a href="https://github.com/SpEcHiDe/AnyDLBot">
+Shrimadhav Uk For His Some Anydlbot Code[Just Scrapped Some Code From it]
