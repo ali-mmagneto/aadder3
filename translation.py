@@ -10,8 +10,6 @@ Use help Command for more details..
 
     """
 
-    HELP_USER = "??"
-
     HELP_TEXT ="""<b>Welcome to the Help Menu</b>
 
 1.) Send a Video file or url.
