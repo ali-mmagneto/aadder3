@@ -12,9 +12,9 @@ import os
 import pyrogram
 from translation import Translation
 from script import Script
+from about import About
 from config import Config
 logging.getLogger('pyrogram').setLevel(logging.WARNING)
-
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["help"]))
 async def help_user(bot, update):
