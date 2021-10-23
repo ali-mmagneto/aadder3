@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 import os
 import pyrogram
 from translation import Translation
-from script import script
+from script import Script
 from config import Config
 logging.getLogger('pyrogram').setLevel(logging.WARNING)
 
