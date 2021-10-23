@@ -1,17 +1,7 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-class Chat:
-
-    START_TEXT = """<b>Hey,</b>
-<b>This is a Telegram Bot to Mux subtitle into a video</b>
-
-<b>Send me a Telegram file to begin</b>
-
-/help for more details..
-
-Credits :- @SultanMehmed_TG
-    """
+class Help:
 
     HELP_USER = "??"
 
