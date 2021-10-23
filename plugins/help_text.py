@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 import os
 import pyrogram
-from translation import Translation
+from help import Help
 from script import Script
 from about import About
 from config import Config
@@ -22,8 +22,8 @@ async def help_user(bot, update):
     (update.from_user.id, update.text, "/help")
     await bot.send_message(
         chat_id=update.chat.id,
-        text=Translation.HELP_TEXT,
-        reply_markup=Script.HELP_BUTTONS,
+        text=Help.HELP_TEXT,
+        reply_markup=Help.HELP_BUTTONS,
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
@@ -34,7 +34,7 @@ async def start(bot, update):
     (update.from_user.id, update.text, "/start")
     await bot.send_message(
         chat_id=update.chat.id,
-        text=Translation.START_TEXT,
+        text=Script.START_TEXT,
         reply_markup=Script.START_BUTTONS,
         
         reply_to_message_id=update.message_id
