@@ -1,6 +1,6 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-class Script(object):
+class About(object):
 
     ABOUT_TEXT = """
 **Bot :** `Video Subtitle Merger`
