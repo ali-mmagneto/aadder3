@@ -34,7 +34,7 @@ async def start(bot, update):
     (update.from_user.id, update.text, "/start")
     await bot.send_message(
         chat_id=update.chat.id,
-        text=Script.START_TEXT,
+        text=Script.START_TEXT.format(user_mention=message.from_user.mention, bot_owner=owner.mention(style="md")),
         reply_markup=Script.START_BUTTONS,
         
         reply_to_message_id=update.message_id
