@@ -53,4 +53,5 @@ SOFTWARE.
 
 # Credit : <a href="https://github.com/pyrogram/pyrogram">
 Dan For His Pyrogram Library
-# Shrimadhav uk For His Anydl Bot [Just Scrapped Some Code From it]
+# Credit
+<a href="https://github.com/SpEcHiDe/AnyDLBot">
