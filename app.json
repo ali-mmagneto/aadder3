@@ -1,5 +1,5 @@
 {
-	"name": "Sub-Muxer",
+	"name": "Video-subtitle-merger",
 	"description": "Telegram bot to mux subtitles with the video",
 	"keywords": [
 		"telegram-bot",
