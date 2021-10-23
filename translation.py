@@ -1,12 +1,12 @@
 
 class Translation (object):
 
-    START_TEXT = """<b>Hey,</b>
-<b>This is a Telegram Bot to Mux subtitle into a video</b>
+    START_TEXT = """<b>Hey,</b>\n
+<b>This is a Telegram Bot to Merge into a video</b>
 
-<b>Send me a Telegram file to begin</b>
+<b>Send me a Telegram file to Get started</b>
 
-/help for more details..
+Use help Command for more details..
 
     """
 
@@ -23,9 +23,9 @@ To give custom name to file send it with url seperated with |
 
 <b>Note : </b><i>Please note that only english type fonts are supported in hardmux other scripts will be shown as empty blocks on the video!</i>
 
-<a href="https://t.me/nokkiyirunnoippokottum/4">Repo URL</a>"""
+<a href="https://github.com/sahaynitin/video-sub-merger">Repo URL</a>"""
 
-    #NO_AUTH_USER = "You are not authorised to use this bot.\nContact Mehmed II through @SultanMehmed_Bot!"
+    
     DOWNLOAD_SUCCESS = """File downloaded successfully!
 
 Time taken : {} seconds."""
