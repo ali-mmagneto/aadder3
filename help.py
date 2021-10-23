@@ -1,6 +1,6 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-class Help(object)
+class Help(object):
 
 HELP_TEXT ="""<b>Welcome to the Help Menu</b>
 
