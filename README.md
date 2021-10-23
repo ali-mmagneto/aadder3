@@ -51,5 +51,6 @@ SOFTWARE.
 <a href="https://t.me/Tellybots_support"><img src="https://img.shields.io/badge/Support_Group-2cb6e0?style=for-the-badge&logo=telegram&logoColor=white"></a> <a href="https://t.me/tellybots_4u"><img src="https://img.shields.io/badge/Updates_Channel-2cb6e0?style=for-the-badge&logo=telegram&logoColor=white"></a>
 
 
-# Credit : Dan For His Pyrogram Library<a href="https://github.com/pyrogram/pyrogram">
-.........
+# Credit : <a href="https://github.com/pyrogram/pyrogram">
+Dan For His Pyrogram Library
+# Shrimadhav uk For His Anydl Bot [Just Scrapped Some Code From it]
