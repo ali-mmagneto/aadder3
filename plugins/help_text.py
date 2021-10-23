@@ -20,7 +20,7 @@ logging.getLogger('pyrogram').setLevel(logging.WARNING)
 async def help_user(bot, update):
     # logger.info(update)
     TRChatBase(update.from_user.id, update.text, "/help")
-    await addusers bot.send_message(
+    await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.HELP_TEXT,
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="⭕️ JOIN OUR CHANNEL ⭕️", url="https://t.me/All_Movie_Rockers")]]),
