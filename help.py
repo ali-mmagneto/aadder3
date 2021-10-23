@@ -2,7 +2,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 class Help(object):
 
-HELP_TEXT ="""<b>Welcome to the Help Menu</b>
+HELP_TEXT = """<b>Welcome to the Help Menu</b>
 
 1.) Send a Video file or url.
 2.) Send a subtitle file (ass or srt)
