@@ -3,17 +3,17 @@
 A Simple Telegram Bot By @Tellybots to add Subtitle Files in Video
 
 # Features
- 🔥
+- Force Sub Button Added Soon
 - Support Media Type Such as Mp4,Mkv,Webm etc 
-- Auto Detect Media For Merging Subtitle 🔥
-- Can add Subtitle in Any Video 🔥
-- And More Features Coming Soon ... 🌟
+- Auto Detect Media For Merging Subtitle
+- Can add Subtitle in Any Video
+- And More Features Coming Soon
 
 # Demo 
 <a href="Coming Soon"><img src=""></a>
 
 # Deploy
-Deploy Your Own Bot ♥️ **Star 🎉 Fork 🍴 & Deploy**
+Deploy Your Own Bot 💕 **Star 🎉 Fork 🍴 & Deploy**
 
 ### Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Tellybots/video-subtitle-merger)
