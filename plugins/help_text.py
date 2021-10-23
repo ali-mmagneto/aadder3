@@ -7,8 +7,8 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 logger = logging.getLogger(__name__)
-
 import os
+import Client
 import pyrogram
 from help import Help
 from script import Script
@@ -28,7 +28,7 @@ async def help_user(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
-@pyrogram.Client.on_message(pyrogram.filters.command(["start"]) & filters.private)
+@Client.on_message(filters.command(["start"]) & filters.private)
 async def start(bot, update):
     await update.reply_text(
         text=Script.START_TEXT.format(update.from_user.mention),
