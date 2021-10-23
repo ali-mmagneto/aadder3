@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 import os
 import pyrogram
-from chat import Chat
+from translation import Translation
 from config import Config
 logging.getLogger('pyrogram').setLevel(logging.WARNING)
 
