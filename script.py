@@ -10,10 +10,5 @@ class Script(object):
         InlineKeyboardButton('Close🔐', callback_data='close')
         ]]
     )
-    HELP_BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('🤖 About', callback_data='about'),
-        InlineKeyboardButton('Close 🔐', callback_data='close')
-        ]]
-    )
+    
     
