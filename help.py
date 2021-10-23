@@ -1,7 +1,7 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-class Help:
+class Help(object):
 
     HELP_USER = "??"
 
