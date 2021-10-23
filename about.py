@@ -1,4 +1,8 @@
-ABOUT_TEXT = """
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+class Script(object):
+
+    ABOUT_TEXT = """
 **Bot :** `Video Subtitle Merger`
 **Creator :** [Tellybots_4u](https://telegram.me/tellybots_4u)
 **Channel :** [Tellybots_4u](https://telegram.me/tellybots_4u)
