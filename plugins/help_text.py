@@ -28,16 +28,12 @@ async def help_user(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
     )
-@pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
+@pyrogram.Client.on_message(pyrogram.filters.command(["start"]) & filters.private)
 async def start(bot, update):
-    # logger.info(update)
-    (update.from_user.id, update.text, "/start")
-    await bot.send_message(
-        chat_id=update.chat.id,
-        text=Script.START_TEXT.format(user_mention),
-        reply_markup=Script.START_BUTTONS,
-        
-        reply_to_message_id=update.message_id
+    await update.reply_text(
+        text=Script.START_TEXT.format(update.from_user.mention),
+        disable_web_page_preview=True,
+        reply_markup=Script.START_BUTTONS
     )
 @pyrogram.Client.on_message(pyrogram.filters.command(["about"]))
 async def get_me_info(bot, update):
