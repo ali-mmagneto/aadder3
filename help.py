@@ -16,7 +16,7 @@ To give custom name to file send it with url seperated with |
 
 <b>Note : </b><i>Please note that only english type fonts are supported in hardmux other scripts will be shown as empty blocks on the video!</i>
 
-<a href="https://t.me/nokkiyirunnoippokottum/4">Repo URL</a>"""
+<a href="https://github.com/tellybots/video-sub-merger">Repo URL</a>"""
 
 
 
