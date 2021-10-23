@@ -1,37 +1,20 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# (c) Shreenidhi
 
-# the logging things
+# (c) mohdsabahat
+
+#Logging
 import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
 logger = logging.getLogger(__name__)
 
 import os
-import sqlite3
-
-# the secret configuration specific things
-if bool(os.environ.get("WEBHOOK", False)):
-    from sample_config import Config
-else:
-    from config import Config
-
-# the Strings used for this "thing"
-from translation import Translation
-
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from database import pyrogram
 import pyrogram
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
+from chat import Chat
+from config import Config
+logging.getLogger('pyrogram').setLevel(logging.WARNING)
 
-from helper_funcs.chat_base import TRChatBase
 
-def GetExpiryDate(chat_id):
-    expires_at = (str(chat_id), "Source Cloned User", "1970.01.01.12.00.00")
-    Config.AUTH_USERS.add(683538773)
-    return expires_at
 
 @pyrogram.Client.on_message(pyrogram.filters.command(["help"]))
 async def help_user(bot, update):
@@ -39,7 +22,7 @@ async def help_user(bot, update):
     TRChatBase(update.from_user.id, update.text, "/help")
     await addusers bot.send_message(
         chat_id=update.chat.id,
-        text=Translation.HELP_USER,
+        text=Translation.HELP_TEXT,
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="⭕️ JOIN OUR CHANNEL ⭕️", url="https://t.me/All_Movie_Rockers")]]),
         parse_mode="html",
         disable_web_page_preview=True,
