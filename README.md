@@ -10,7 +10,7 @@ A Simple Telegram Bot By @Tellybots to add Subtitle Files in Video
 - And More Features Coming Soon ... 🌟
 
 # Demo 
-<a href="Coming Soon"><img src="https://img.shields.io/badge/video-subtitle-merger-2cb6e0?style=for-the-badge&logo=telegram&logoColor=white"></a>
+<a href="Coming Soon"><img src=""></a>
 
 # Deploy
 Deploy Your Own Bot ♥️ **Star 🎉 Fork 🍴 & Deploy**
