@@ -11,3 +11,4 @@ To give custom name to file send it with url seperated with |
 <b>Note : </b><b>Please note that only english type fonts are supported in hardmux other scripts will be shown as empty blocks on the video!</b>
 
 <a href="https://github.com/sahaynitin/video-sub-merger">Repo URL</a>"""
+.............
