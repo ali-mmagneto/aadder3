@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.DEBUG,
 
 logger = logging.getLogger(__name__)
 import os
-import Client
+
 import pyrogram
 from help import Help
 from script import Script
