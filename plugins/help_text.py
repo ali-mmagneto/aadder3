@@ -19,7 +19,7 @@ logging.getLogger('pyrogram').setLevel(logging.WARNING)
 @pyrogram.Client.on_message(pyrogram.filters.command(["help"]))
 async def help_user(bot, update):
     # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/help")
+    (update.from_user.id, update.text, "/help")
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.HELP_TEXT,
@@ -31,7 +31,7 @@ async def help_user(bot, update):
 @pyrogram.Client.on_message(pyrogram.filters.command(["start"]))
 async def start(bot, update):
     # logger.info(update)
-    TRChatBase(update.from_user.id, update.text, "/start")
+    (update.from_user.id, update.text, "/start")
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.START_TEXT,
