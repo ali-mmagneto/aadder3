@@ -8,7 +8,7 @@ import os
 
 db = Db()
 
-@Client.on_message(filters.command('softmux') & check_user & filters.private)
+@Client.on_message(filters.command('softmux') & filters.private)
 async def softmux(client, message):
 
     chat_id = message.from_user.id
@@ -64,7 +64,7 @@ async def softmux(client, message):
     db.erase(chat_id)
 
 
-@Client.on_message(filters.command('hardmux') & check_user & filters.private)
+@Client.on_message(filters.command('hardmux') & filters.private)
 async def hardmux(client, message):
     
     chat_id = message.from_user.id
