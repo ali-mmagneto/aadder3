@@ -100,7 +100,7 @@ async def save_doc(client, message):
         os.remove(Config.DOWNLOAD_DIR+'/'+tg_filename)
 
 
-@Client.on_message(filters.video & check_user & filters.private)
+@Client.on_message(filters.video & filters.private)
 async def save_video(client, message):
 
     chat_id = message.from_user.id
