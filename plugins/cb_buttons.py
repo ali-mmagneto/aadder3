@@ -15,13 +15,13 @@ async def cb_handler(bot, update):
     if update.data == "home":
         await update.message.edit_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
-            reply_markup=Translation.START_BUTTONS,
+            reply_markup=Script.START_BUTTONS,
             disable_web_page_preview=True
         )
     elif update.data == "help":
         await update.message.edit_text(
             text=Translation.HELP_TEXT,
-            reply_markup=Translation.HELP_BUTTONS,
+            reply_markup=Script.HELP_BUTTONS,
             disable_web_page_preview=True
         )
     else:
