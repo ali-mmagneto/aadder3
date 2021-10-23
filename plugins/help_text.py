@@ -39,3 +39,17 @@ async def start(bot, update):
         
         reply_to_message_id=update.message_id
     )
+@pyrogram.Client.on_message(pyrogram.filters.command(["about"]))
+async def get_me_info(bot, update):
+    # logger.info(update)
+    (update.from_user.id, update.text, "/about")
+    chat_id = str(update.from_user.id)
+    chat_id, plan_type, expires_at = GetExpiryDate(chat_id)
+    await bot.send_message(
+        chat_id=update.chat.id,
+        text=About.ABOUT_TEXT,
+        reply_markup=About.ABOUT_BUTTONS,
+        parse_mode="html",
+        disable_web_page_preview=True,
+        reply_to_message_id=update.message_id
+    )
