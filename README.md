@@ -16,7 +16,7 @@ A Simple Telegram Bot By @Tellybots to add Subtitle Files in Video
 Deploy Your Own Bot 💕 **Star 🎉 Fork 🍴 & Deploy**
 
 ### Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Tellybots/video-subtitle-merger)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ### Self Host
 
