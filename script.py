@@ -1,22 +1,46 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 class Script(object):
+  ABOUT = """
+🤖 **Name:** {bot_name}
 
-    START_TEXT = """<b>Hey {}</b>\n
-<b>This is a Telegram Bot to Merge Subtitle into a video</b>
+📝 **Language:** [Python](https://www.python.org)
 
-<b>Send me a Telegram file to Get started</b>
+📚 **Library:** [Pyrogram](https://docs.pyrogram.org)
 
-Use help Command for more details..
+📡 **Hosted On:** [Heroku](https://heroku.com)
 
-    """
-    START_BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('🤔 Help', callback_data='help'),
-        InlineKeyboardButton('🤖 About', callback_data='about'),
-        ],[
-        InlineKeyboardButton('Close🔐', callback_data='close')
-        ]]
-    )
+🧑‍💻 **Developer:** [Tellybots_4u](https://t.me/tellybots_4u)
+
+👥 **Support Group:** [Tellybots_support](https://t.me/tellybots_support)
+
+📢 **Updates Channel:** [Tellybots_4u](https://t.me/Tellybots_4u)
+"""
+
+  HELP_USER = """
+I am **{bot_name}**
+
+Welcome to the Help Menu
+
+1.) Send a Video file or url.
+2.) Send a subtitle file (ass or srt)
+3.) Choose you desired type of muxing!
+
+To give custom name to file send it with url seperated with |
+url|custom_name.mp4
+
+Note :Please note that only english type fonts are supported in hardmux other scripts will be shown as empty blocks on the video! 
+
+**Made With 💕 By @Tellybots_4u**
+"""
+
+  START_TEXT = """
+**Hey** {user_mention}
+
+Welcome to **{bot_name}**\n
+I Can help you to Merge Subtitle in Video\n
+**Made With 💕 By @Tellybots_4u
+"""
+
     
     
