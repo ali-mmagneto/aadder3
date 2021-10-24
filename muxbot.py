@@ -1,11 +1,6 @@
 
 # (c) Tellybots | Shrimadhavuk
 
-import logging
-logging.basicConfig(level = logging.DEBUG,
-                     format="%(asctime)s - %(name)s - %(message)s - %(levelname)s")
-
-logger = logging.getLogger(__name__)
 
 import os
 
@@ -15,7 +10,6 @@ from helper_func.dbhelper import Database as Db
 db = Db().setup()
 
 import pyrogram
-logging.getLogger('pyrogram').setLevel(logging.WARNING)
 
 
 if __name__ == '__main__':
