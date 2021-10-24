@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 from helper_func.progress_bar import progress_bar
 from helper_func.dbhelper import Database as Db
 from helper_func.mux import softmux_vid, hardmux_vid
+from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
 from plugins.forcesub import handle_force_subscribe
 import time
@@ -99,18 +100,26 @@ async def hardmux(bot, message, cb=False):
     
     final_filename = db.get_filename(chat_id)
     os.rename(Config.DOWNLOAD_DIR+'/'+hardmux_filename,Config.DOWNLOAD_DIR+'/'+final_filename)
-    
+    video = os.path.join(Config.DOWNLOAD_DIR, final_filename)
+    duration = get_duration(video)
+    thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
+    width, height = get_width_height(video)
     start_time = time.time()
     try:
         await bot.send_video(
                 chat_id, 
-                progress = progress_bar, 
+                progress = progress_bar,
+                duration = duration,
+                thumb = thumb,
+                width = width,
+                height = height,
+                supports_streaming=True,
                 progress_args = (
                     'Uploading your File!',
                     sent_msg,
                     start_time
                     ), 
-                video = os.path.join(Config.DOWNLOAD_DIR, final_filename),
+                video = video,
                 caption = final_filename
                 )
         text = 'File Successfully Uploaded!\nTotal Time taken : {} seconds'.format(round(time.time()-start_time))
