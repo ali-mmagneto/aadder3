@@ -1,0 +1,50 @@
+{
+    "name": "Video-subtitle-merger",
+    "logo": "https://telegra.ph//file/d862f12b9c2ec6bc3cbaf.jpg",
+    "description": "Telegram bot to mux subtitles with the video",
+    "keywords": [
+        "telegram-bot",
+        "\nsubtitles",
+        "\nmuxing"
+    ],
+    "repository": "https://github.com/Tellybots/video-subtitle-merger",
+    "website": "https://t.me/tellybots_4u",
+    "success_url": "https://t.me/tellybots_4u",
+    "env": {
+        "BOT_TOKEN": {
+            "description": "",
+            "required": "True"
+        },
+        "API_HASH": {
+            "description": "",
+            "required": "True"
+        },
+        "APP_ID": {
+            "description": "",
+            "required": "True"
+        },
+        "OWNER_ID": {
+            "description": "",
+            "required": "True"
+        },
+        "UPDATES_CHANNEL": {
+            "description": "",
+            "required": "True"
+        }
+    },
+    "stack": "heroku-20",
+    "buildpacks": [
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git "
+        },
+        {
+            "url": " heroku/python"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "performance-m"
+        }
+    }
+}
