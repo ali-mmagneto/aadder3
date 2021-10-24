@@ -13,4 +13,4 @@ class Config:
     DOWNLOAD_DIR = 'downloads'
     OWNER_ID = int(os.environ.get("OWNER_ID", 1316963576))
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
-    WEBHOOK" = os.environ.get("ANYTHING", None)
+    
