@@ -4,8 +4,8 @@
     "description": "Telegram bot to mux subtitles with the video",
     "keywords": [
         "telegram-bot",
-        "\nsubtitles",
-        "\nmuxing"
+        "subtitles",
+        "muxing"
     ],
     "repository": "https://github.com/Tellybots/video-subtitle-merger",
     "website": "https://t.me/tellybots_4u",
@@ -35,10 +35,10 @@
     "stack": "heroku-20",
     "buildpacks": [
         {
-            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git "
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
         },
         {
-            "url": " heroku/python"
+            "url": "heroku/python"
         }
     ],
     "formation": {
