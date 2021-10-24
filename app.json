@@ -12,23 +12,23 @@
     "success_url": "https://t.me/tellybots_4u",
     "env": {
         "BOT_TOKEN": {
-            "description": "",
+            "description": "Create It New Bot From Bot Father and Paste a token here",
             "required": "True"
         },
         "API_HASH": {
-            "description": "",
+            "description": "Get it from my telegram.org",
             "required": "True"
         },
         "APP_ID": {
-            "description": "",
+            "description": "Get it from my telegram.org",
             "required": "True"
         },
         "OWNER_ID": {
-            "description": "",
+            "description": "Get It From IDFinderRobot by Pressing id command",
             "required": "True"
         },
         "UPDATES_CHANNEL": {
-            "description": "",
+            "description": "Get it From IDFinderRobot By Forwarding Msg From Channel to get id",
             "required": "True"
         }
     },
