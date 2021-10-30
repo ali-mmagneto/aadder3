@@ -16,12 +16,12 @@ async def progress_bar(current, total, text, message, start):
         elapsed_time = TimeFormatter(elapsed_time)
         ett = TimeFormatter(ett)
 
-        progress = "[{0}{1}] \n\n🔹Progress: {2}%\n".format(
+        progress = "[{0}{1}] \n\n🔹İlerleme: {2}%\n".format(
             ''.join(["◼️" for i in range(math.floor(percentage / 5))]),
             ''.join(["◻️" for i in range(20 - math.floor(percentage / 5))]),
             round(percentage, 2))
 
-        tmp = progress + "{0} of {1}\n\n️🔹Speed: {2}/s\n\n🔹ETA: {3}\n".format(
+        tmp = progress + "{0} of {1}\n\n️🔹Hız: {2}/s\n\n🔹Tahmini Süre: {3}\n".format(
             humanbytes(current),
             humanbytes(total),
             humanbytes(speed),
