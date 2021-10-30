@@ -29,7 +29,7 @@ async def save_doc(bot, message, cb=False):
         progress = progress_bar,
         progress_args = (
             'Başlatılıyor',
-            Indiriliyor,
+            downloading,
             start_time
         )
     )
