@@ -31,7 +31,7 @@ url|custom_name.mp4
 
 Note :Hardmux'ta yalnızca İngilizce yazı tiplerinin desteklendiğini lütfen unutmayın, diğer komut dosyaları videoda boş bloklar olarak gösterilecektir! 
 
-**OluşturaN 💕 @mmagneto**
+**Oluşturan 💕 @mmagneto**
 """
 
   START_TEXT = """
