@@ -28,8 +28,8 @@ async def save_doc(bot, message, cb=False):
         file_name = Config.DOWNLOAD_DIR+'/',
         progress = progress_bar,
         progress_args = (
-            'Initializing',
-            downloading,
+            'Başlatılıyor',
+            Indiriliyor,
             start_time
         )
     )
@@ -66,9 +66,9 @@ async def save_doc(bot, message, cb=False):
         os.rename(Config.DOWNLOAD_DIR+'/'+tg_filename,Config.DOWNLOAD_DIR+'/'+filename)
         db.put_sub(chat_id, filename)
         if db.check_video(chat_id):
-            text = 'Subtitle file downloaded successfully.\nChoose your desired muxing!\n[ /softmux , /hardmux ]'
+            text = 'Altyazı Dosyası Başarıyla Yüklendi.\nAltyazı Türünü Seç!\n[ /softmux , /hardmux ]'
         else:
-            text = 'Subtitle file downloaded.\nNow send Video File!'
+            text = 'Altyazı Yüklendi.\nŞimdi Videoyu yolla!'
 
         await bot.edit_message_text(
             text = text,
@@ -80,9 +80,9 @@ async def save_doc(bot, message, cb=False):
         os.rename(Config.DOWNLOAD_DIR+'/'+tg_filename,Config.DOWNLOAD_DIR+'/'+filename)
         db.put_video(chat_id, filename, save_filename)
         if db.check_sub(chat_id):
-            text = 'Video file downloaded successfully.\nChoose your desired muxing.\n[ /softmux , /hardmux ]'
+            text = 'Video Dosyası Başarı ile İndirildi.\nAltyazı Türünü Seç.\n[ /softmux , /hardmux ]'
         else :
-            text = 'Video file downloaded successfully.\nNow send Subtitle file!'
+            text = 'Video Dosyası Başarı İle İndirildi.\nŞimdi Altyazı Dosyasını Yolla!'
         await bot.edit_message_text(
             text = text,
             chat_id = chat_id,
@@ -122,7 +122,7 @@ async def save_video(bot, message, cb=False):
 
     if download_location is None:
         return bot.edit_message_text(
-            text = 'Downloading Failed!',
+            text = 'İndirme Başarısız!',
             chat_id = chat_id,
             message_id = downloading.message_id
         )
@@ -150,9 +150,9 @@ async def save_video(bot, message, cb=False):
     
     db.put_video(chat_id, filename, save_filename)
     if db.check_sub(chat_id):
-        text = 'Video file downloaded successfully.\nChoose your desired muxing.\n[ /softmux , /hardmux ]'
+        text = 'Video Dosyası Başarı İle İndirildi.\nAltyazı Türünü Seç.\n[ /softmux , /hardmux ]'
     else :
-        text = 'Video file downloaded successfully.\nNow send Subtitle file!'
+        text = 'Video Dosyası Başarı İle İndirildi.\nŞimdi Altyazı Dosyasını Yolla!'
     await bot.edit_message_text(
             text = text,
             chat_id = chat_id,
@@ -242,9 +242,9 @@ async def save_url(bot, message, cb=False):
 
     db.put_video(chat_id, filename, save_filename)
     if db.check_sub(chat_id) :
-        text = 'Video File Downloaded.\nChoose your desired muxing\n[ /softmux , /hardmux ]'
+        text = 'Video Dosyası İndirildi.\nAltyazı Türünü Seç\n[ /softmux , /hardmux ]'
     else :
-        text = 'Video File Downloaded.\nNow send Subtitle file!'
+        text = 'Video Dosyası İndirildi.\nŞimdi Altyazı Dosyasını Yolla!'
     try:
         await sent_msg.edit(text)
     except:
