@@ -15,7 +15,7 @@ async def handle_force_subscribe(bot, message):
         if user.status == "kicked":
             await bot.send_message(
                 chat_id=message.from_user.id,
-                text="Sorry Sir, You are Banned. Contact My [Support Group](https://t.me/tellybots_4u).",
+                text="Üzgünüm Dostum Banlandın. İletişime geç [Destek](https://t.me/mmagneto)ile.",
                 parse_mode="markdown",
                 disable_web_page_preview=True,
                 reply_to_message_id=message.message_id,
@@ -24,14 +24,14 @@ async def handle_force_subscribe(bot, message):
     except UserNotParticipant:
         await bot.send_message(
             chat_id=message.from_user.id,
-            text="**Please Join My Updates Channel To Use Me!**\n\nDue to Overload, Only Channel Subscribers Can Use Me!",
+            text="**Lütfen beni kullanabilmek için Kanalıma Katıl!**\n\nAşırı Yükleme Nedeniyle Beni Yalnızca Kanal Aboneleri Kullanabilir!",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🤖 Join Updates Channel 🤖", url=invite_link.invite_link)
+                        InlineKeyboardButton("🤖 Katıl işte 🤖", url=invite_link.invite_link)
                     ],
                     [
-                        InlineKeyboardButton("🔄 Refresh 🔄", callback_data="refreshmeh")
+                        InlineKeyboardButton("🔄 Yenile 🔄", callback_data="refreshmeh")
                     ]
                 ]
             ),
@@ -42,7 +42,7 @@ async def handle_force_subscribe(bot, message):
     except Exception:
         await bot.send_message(
             chat_id=message.from_user.id,
-            text="Something Went Wrong. Contact My [Support Group](https://t.me/Tellybots_4u).",
+            text="Bir Şeyler Ters Gitti. İletişime geçin [Destek](https://t.me/mmagneto) ile.",
             parse_mode="markdown",
             disable_web_page_preview=True,
             reply_to_message_id=message.message_id,
