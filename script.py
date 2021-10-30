@@ -29,7 +29,7 @@ Yardım Kısmına Hoşgeldin
 Dosyaya özel ad vermek için url ile ayrılmış olarak gönderin.|
 url|custom_name.mp4
 
-Note :Hardmux'ta yalnızca İngilizce yazı tiplerinin desteklendiğini lütfen unutmayın, diğer komut dosyaları videoda boş bloklar olarak gösterilecektir! 
+Not :Hardmux'ta yalnızca İngilizce yazı tiplerinin desteklendiğini lütfen unutmayın, diğer komut dosyaları videoda boş bloklar olarak gösterilecektir! 
 
 **Oluşturan 💕 @mmagneto**
 """
@@ -37,8 +37,8 @@ Note :Hardmux'ta yalnızca İngilizce yazı tiplerinin desteklendiğini lütfen 
   START_TEXT = """
 **Hey** {user_mention}
 
-HOŞLGELDİN **{bot_name}**\n
-Sana Videolara Altyazı Eklemen Konusumda Yardımcı Olacağım\n
+HOŞGELDİN **{bot_name}**\n
+Sana Videolara Altyazı Eklemen Konusunda Yardımcı Olacağım\n
 **Oluşturan 💕 @mmagneto
 """
 
