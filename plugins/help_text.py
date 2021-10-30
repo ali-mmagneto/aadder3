@@ -17,11 +17,11 @@ async def help(bot, message, cb=False):
         return
     me = await bot.get_me()
     button = [[
-        InlineKeyboardButton(f'🏡 Home', callback_data='back'),
-        InlineKeyboardButton(f'👲 About', callback_data='about')
+        InlineKeyboardButton(f'🏡 Ev', callback_data='back'),
+        InlineKeyboardButton(f'👲 Hakkımda', callback_data='about')
         ],[
-        InlineKeyboardButton(f'👥 Source', url='https://t.me/tellybots_digital'),
-        InlineKeyboardButton(f'⛔ Close', callback_data='close')
+        InlineKeyboardButton(f'👥 Kaynak', url='https://t.me/mmagneto'),
+        InlineKeyboardButton(f'⛔ Kapat', callback_data='close')
         ]]
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
@@ -49,11 +49,11 @@ async def start(bot, message, cb=False):
     owner = await bot.get_users(Config.OWNER_ID)
     owner_username = owner.username if owner.username else 'AsmSafone'
     button = [[
-        InlineKeyboardButton(f'💡 Help', callback_data='help'),
-        InlineKeyboardButton(f'👲 About', callback_data="about")
+        InlineKeyboardButton(f'💡 Yardım', callback_data='help'),
+        InlineKeyboardButton(f'👲 Hakkımda', callback_data="about")
         ],[
-        InlineKeyboardButton(f'🥰 Source', url='https://github.com/Tellybots/vid-sub-merger'),
-        InlineKeyboardButton(f'⛔ Close', callback_data="close")
+        InlineKeyboardButton(f'🥰 Kaynak', url='https://t.me/mmagneto'),
+        InlineKeyboardButton(f'⛔ Kapat', callback_data="close")
         ]]
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
@@ -79,11 +79,11 @@ async def about(bot, message, cb=False):
         return
     me = await bot.get_me()
     button = [[
-        InlineKeyboardButton(f'🏡 Home', callback_data='back'),
-        InlineKeyboardButton(f'❔ Help', callback_data='help')
+        InlineKeyboardButton(f'🏡 Ev', callback_data='back'),
+        InlineKeyboardButton(f'❔ Yardım', callback_data='help')
         ],[
-        InlineKeyboardButton(f'👥 Update Channel', url='https://t.me/Tellybots_4u'),
-        InlineKeyboardButton(f'⛔ Close', callback_data="close")
+        InlineKeyboardButton(f'👥 Güncelleme', url='https://t.me/quickwaste'),
+        InlineKeyboardButton(f'⛔ Kapat', callback_data="close")
         ]]
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
@@ -138,14 +138,14 @@ async def refreshmeh_cb(bot, message):
                 return
         except UserNotParticipant:
             await message.message.edit(
-                text="**You Still Didn't Join ☹️, Please Join My Updates Channel To Use Me!**\n\nDue to Overload, Only Channel Subscribers Can Use Me!",
+                text="**Lan Sen Hala Benim Kanalıma Katılmamışsın!**\n\nYopun Yüklenmeden Dolayı Sadece Kanal Üyeleri Kullanabilir Botu!",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("🤖 Join Updates Channel 🤖", url=invite_link.invite_link)
+                            InlineKeyboardButton("🤖 Benim Kanalım 🤖", url=invite_link.invite_link)
                         ],
                         [
-                            InlineKeyboardButton("🔄 Refresh 🔄", callback_data="refreshmeh")
+                            InlineKeyboardButton("🔄 Yenile 🔄", callback_data="refreshmeh")
                         ]
                     ]
                 ),
@@ -154,7 +154,7 @@ async def refreshmeh_cb(bot, message):
             return
         except Exception:
             await message.message.edit(
-                text="Something Went Wrong. Contact My [Support Group](https://t.me/safothebot).",
+                text="Birşeyler Ters Gitti. İletişime geç [Destek](https://t.me/mmagneto) ile.",
                 parse_mode="markdown",
                 disable_web_page_preview=True
             )
