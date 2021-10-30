@@ -38,10 +38,10 @@ async def read_stderr(start, msg, process):
                 #Progress bar logic
                 now = time.time()
                 diff = start-now
-                text = 'PROGRESS\n'
-                text += 'Size : {}\n'.format(progress['size'])
-                text += 'Time : {}\n'.format(progress['time'])
-                text += 'Speed : {}\n'.format(progress['speed'])
+                text = 'İLERLEME\n'
+                text += 'Boyut : {}\n'.format(progress['size'])
+                text += 'Süre : {}\n'.format(progress['time'])
+                text += 'Hız : {}\n'.format(progress['speed'])
 
                 if round(diff % 5)==0:
                     try:
@@ -86,9 +86,9 @@ async def softmux_vid(vid_filename, sub_filename, msg):
         ])
     
     if process.returncode == 0:
-        await msg.edit('Muxing  Completed Successfully!\n\nTime taken : {} seconds'.format(round(start-time.time())))
+        await msg.edit('Altyazı Ekleme Başarı İle Tamamlandı!\n\nGeçen Süre : {} saniye'.format(round(start-time.time())))
     else:
-        await msg.edit('An Error occured while Muxing!')
+        await msg.edit('Altyazı Eklenirken Bir Hata Oluştu!')
         return False
     time.sleep(2)
     return output
@@ -111,7 +111,7 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
             '-c:v','h264',
             '-map','0:v:0',
             '-map','0:a:0?',
-            '-preset','veryfast',
+            '-preset','superfast',
             '-y',out_location
             ]
     process = await asyncio.create_subprocess_exec(
@@ -129,9 +129,9 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
         ])
     
     if process.returncode == 0:
-        await msg.edit('Muxing  Completed Successfully!\n\nTime taken : {} seconds'.format(round(start-time.time())))
+        await msg.edit('Altyazı Ekleme Başarı İle Tamamlandı!\n\nGeçen Süre : {} saniye'.format(round(start-time.time())))
     else:
-        await msg.edit('An Error occured while Muxing!')
+        await msg.edit('Altyazı Eklenirken Bir Hata Oluştu!')
         return False
     
     time.sleep(2)
