@@ -1,1 +1,1 @@
-python3 encoder.py
+python3 muxbot.py
