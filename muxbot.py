@@ -16,11 +16,13 @@ if __name__ == '__main__':
 
     if not os.path.isdir(Config.DOWNLOAD_DIR):
         os.mkdir(Config.DOWNLOAD_DIR)
+    if not os.path.isdir('Config.ENCODES'):
+        os.mkdir('Config.ENCODES')
 
     plugins = dict(root='plugins')
 
     app = pyrogram.Client(
-        'Subtitle Muxer',
+        'encoder',
         bot_token = Config.BOT_TOKEN,
         api_id = Config.APP_ID,
         api_hash = Config.API_HASH,
