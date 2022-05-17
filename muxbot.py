@@ -16,8 +16,8 @@ if __name__ == '__main__':
 
     if not os.path.isdir(Config.DOWNLOAD_DIR):
         os.mkdir(Config.DOWNLOAD_DIR)
-    if not os.path.isdir(Config.ENCODES):
-        os.mkdir(Config.ENCODES)
+    if not os.path.isdir(Config.ENCODE_DIR):
+        os.mkdir(Config.ENCODE_DIR)
 
     plugins = dict(root='plugins')
 
