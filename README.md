@@ -18,6 +18,9 @@ Deploy Your Own Bot 💕 **Star 🎉 Fork 🍴 & Deploy**
 ### Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ali-mmagneto/video-subtitle-merger/blob/master/MuxBot.ipynb)
+
+
 ### Self Host
 
 
