@@ -4,14 +4,14 @@ import os
 class Config:
 
     ENCODE_DIR = os.environ.get("ENCODE_DIR", "encodes")
-    BOT_TOKEN = os.environ.get('BOT_TOKEN', None)
-    APP_ID = os.environ.get('APP_ID', None)
-    API_HASH = os.environ.get('API_HASH', None)
+    BOT_TOKEN = "1974636862:AAG2upXULcE2bjqQRXgk1B1XifQzTL-CP5I"
+    APP_ID = 2374174
+    API_HASH = "c23db4aa92da73ff603666812268597a"
 
     #comma seperated user id of users who are allowed to use
     #ALLOWED_USERS = [x.strip(' ') for x in os.environ.get('ALLOWED_USERS','1098504493').split(',')]
 
     DOWNLOAD_DIR = 'downloads'
-    OWNER_ID = int(os.environ.get("OWNER_ID", 1316963576))
-    UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
+    OWNER_ID = 1276627253
+    UPDATES_CHANNEL = [-1001157048481]
     
