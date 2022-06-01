@@ -12,6 +12,6 @@ class Config:
     #ALLOWED_USERS = [x.strip(' ') for x in os.environ.get('ALLOWED_USERS','1098504493').split(',')]
 
     DOWNLOAD_DIR = 'downloads'
-    OWNER_ID = 1276627253
-    UPDATES_CHANNEL = -1001157048481
+    OWNER_ID = os.environ.get("OWNER_ID", '1276627253') 
+    UPDATES_CHANNEL =  os.environ.get("UPDATES_CHANNEL", '-1001157048481) 
     
