@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     app = pyrogram.Client(
         'videomerger',
-        string_session= Config.STRING_SESSION,
+        session_string = Config.STRING_SESSION,
         api_id = Config.APP_ID,
         api_hash = Config.API_HASH,
         plugins = plugins
