@@ -4,7 +4,7 @@ import os
 class Config:
 
     ENCODE_DIR = os.environ.get("ENCODE_DIR", "encodes")
-    STRING_SESSION = os.environ.get("BOT_TOKEN", None) 
+    STRING_SESSION = os.environ.get("STRING_SESSION", None) 
     APP_ID = os.environ.get("APP_ID", None)
     API_HASH = os.environ.get("API_HASH", None)
 
