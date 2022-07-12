@@ -22,7 +22,7 @@ if __name__ == '__main__':
     plugins = dict(root='plugins')
 
     app = pyrogram.Client(
-        session_name=Config.STRING_SESSION,
+        session_name= Config.STRING_SESSION,
         api_id = Config.APP_ID,
         api_hash = Config.API_HASH,
         plugins = plugins
