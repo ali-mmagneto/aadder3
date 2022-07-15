@@ -25,7 +25,6 @@ class Config:
     ubot = pyrogram.Client(
         session_name = STRING_SESSION,
         api_id = APP_ID,
-        api_hash = API_HASH,
-        plugins = plugins
+        api_hash = API_HASH
     )
     ubot.run()
