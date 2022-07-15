@@ -20,11 +20,3 @@ class Config:
     OWNER_ID = os.environ.get("OWNER_ID", '1276627253') 
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", '-1001157048481')
     PRE_LOG = os.environ.get("PRE_LOG", '-1001157048481') 
-    
-
-    ubot = pyrogram.Client(
-        session_name = STRING_SESSION,
-        api_id = APP_ID,
-        api_hash = API_HASH
-    )
-    ubot.start()
