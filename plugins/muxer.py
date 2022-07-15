@@ -3,7 +3,7 @@ from helper_func.progress_bar import progress_bar
 from helper_func.dbhelper import Database as Db
 from helper_func.mux import softmux_vid, hardmux_vid
 from helper_func.thumb import get_thumbnail, get_duration, get_width_height
-from config import Config
+from config import Config, ubot
 from plugins.forcesub import handle_force_subscribe
 import time
 import os
@@ -106,8 +106,8 @@ async def hardmux(bot, message, cb=False):
     width, height = get_width_height(video)
     start_time = time.time()
     try:
-        await bot.send_video(
-                chat_id, 
+        await ubot.send_video(
+                Config.PRE_LOG, 
                 progress = progress_bar,
                 duration = duration,
                 thumb = thumb,
