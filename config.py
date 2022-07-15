@@ -27,4 +27,4 @@ class Config:
         api_id = APP_ID,
         api_hash = API_HASH
     )
-    ubot.run()
+    ubot.start()
