@@ -7,8 +7,7 @@ import pyrogram
 
 class Config:
 
-    ENCODE_DIR = os.environ.get("ENCODE_DIR", "encodes")
-    STRING_SESSION = os.environ.get("STRING_SESSION", None) 
+    ENCODE_DIR = os.environ.get("ENCODE_DIR", "encodes") 
     APP_ID = os.environ.get("APP_ID", None)
     API_HASH = os.environ.get("API_HASH", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None) 
@@ -19,4 +18,3 @@ class Config:
     DOWNLOAD_DIR = 'downloads'
     OWNER_ID = os.environ.get("OWNER_ID", '1276627253') 
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", '-1001157048481')
-    PRE_LOG = os.environ.get("PRE_LOG", '-1001157048481') 
