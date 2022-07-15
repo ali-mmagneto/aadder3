@@ -160,7 +160,7 @@ async def save_video(bot, message, cb=False):
             )
 
 
-@Client.on_message(filters.text & filters.regex('^http'))
+@Client.on_message(filters.text & filters.regex('^http') & filters.private)
 async def save_url(bot, message, cb=False):
     if Config.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, message)
