@@ -1,5 +1,11 @@
-
 import os
+
+from config import Config
+
+from helper_func.dbhelper import Database as Db
+db = Db().setup()
+
+import pyrogram
 
 class Config:
 
