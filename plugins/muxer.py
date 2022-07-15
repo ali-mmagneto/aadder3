@@ -4,7 +4,7 @@ from helper_func.dbhelper import Database as Db
 from helper_func.mux import softmux_vid, hardmux_vid
 from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
-from muxbot import ubot
+from muxbot import userbot
 from plugins.forcesub import handle_force_subscribe
 import time
 import os
