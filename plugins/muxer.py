@@ -107,7 +107,7 @@ async def hardmux(bot, message, cb=False):
     start_time = time.time()
     try:
         await bot.send_video(
-                Config.PRE_LOG, 
+                chat_id, 
                 progress = progress_bar,
                 duration = duration,
                 thumb = thumb,
