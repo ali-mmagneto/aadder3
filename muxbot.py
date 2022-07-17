@@ -22,8 +22,7 @@ if __name__ == '__main__':
     plugins = dict(root='plugins')
 
     app = pyrogram.Client(
-        session_name='videomerge',
-        session_string = Config.BOT_TOKEN,
+        session_name = Config.BOT_TOKEN,
         api_id = Config.APP_ID,
         api_hash = Config.API_HASH,
         plugins = plugins
