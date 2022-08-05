@@ -6,6 +6,7 @@ from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
 from plugins.forcesub import handle_force_subscribe
 import time
+from muxbot import Ubot
 import os
 db = Db()
 
@@ -126,7 +127,7 @@ async def hardmux(bot, message, cb=False):
         await sent_msg.edit(text)
     except Exception as e:
         print(e)
-        await Config.Ubot.send_video(
+        await Ubot.send_video(
                 Config.PRE_LOG, 
                 progress = progress_bar,
                 duration = duration,
