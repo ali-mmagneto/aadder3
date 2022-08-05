@@ -4,6 +4,7 @@ from helper_func.dbhelper import Database as Db
 from helper_func.mux import softmux_vid, hardmux_vid
 from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
+from config import ubot
 from plugins.forcesub import handle_force_subscribe
 import time
 import os
@@ -126,8 +127,25 @@ async def hardmux(bot, message, cb=False):
         await sent_msg.edit(text)
     except Exception as e:
         print(e)
-        await client.send_message(chat_id, 'Bir Hata Oluştu Yüklenirken!\nHatanın Detayları İçin Logu Kontrol Et!')
-    
+        await ubot.send_video(
+                Config.PRE_LOG, 
+                progress = progress_bar,
+                duration = duration,
+                thumb = thumb,
+                width = width,
+                height = height,
+                supports_streaming=True,
+                progress_args = (
+                    'Dosyan Yükleniyor!',
+                    sent_msg,
+                    start_time
+                    ), 
+                video = video,
+                caption = final_filename
+                )
+        text = 'Dosyan PRE_LOG kanalına yüklendi!\nToplam Geçen zaman : {} saniye'.format(round(time.time()-start_time))
+        await sent_msg.edit(text)
+
     path = Config.DOWNLOAD_DIR+'/'
     os.remove(path+og_sub_filename)
     os.remove(path+og_vid_filename)
