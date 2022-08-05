@@ -17,7 +17,7 @@ class Config:
         api_id = APP_ID,
         api_hash = API_HASH,
     )
-    ubot.run()
+    ubot.start()
     #comma seperated user id of users who are allowed to use
     #ALLOWED_USERS = [x.strip(' ') for x in os.environ.get('ALLOWED_USERS','1098504493').split(',')]
 
