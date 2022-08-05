@@ -208,11 +208,6 @@ async def save_url(bot, message, cb=False):
     if 'content-length' in r.headers.keys() :
         size = int(r.headers['content-length'])
 
-    if not size :
-        return await sent_msg.edit(Chat.FILE_SIZE_ERROR)
-    if size>(2*1000*1000*1000) :
-        return await sent_msg.edit(Chat.MAX_FILE_SIZE)
-
     if not os.path.exists(Config.DOWNLOAD_DIR) :
         os.mkdir(Config.DOWNLOAD_DIR)
 
