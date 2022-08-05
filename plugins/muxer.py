@@ -6,9 +6,15 @@ from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
 from plugins.forcesub import handle_force_subscribe
 import time
-from muxbot import Ubot
 import os
 db = Db()
+
+Ubot = Client(
+session_name = Config.STRING_SESSION,
+api_id = Config.APP_ID,
+api_hash = Config.API_HASH,
+)
+Ubot.run()
 
 @Client.on_message(filters.command('softmux') & filters.private)
 async def softmux(bot, message, cb=False):
