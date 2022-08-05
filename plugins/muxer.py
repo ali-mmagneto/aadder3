@@ -6,7 +6,7 @@ from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
 from plugins.forcesub import handle_force_subscribe
 import time
-from config import Ubot
+from muxbot import Ubot
 import os
 db = Db()
 
