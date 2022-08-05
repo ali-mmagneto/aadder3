@@ -12,7 +12,12 @@ class Config:
     API_HASH = os.environ.get("API_HASH", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None) 
     STRING_SESSION = os.environ.get("STRING_SESSION", None) 
-
+    ubot = pyrogram.Client(
+        session_name = STRING_SESSION,
+        api_id = APP_ID,
+        api_hash = API_HASH,
+    )
+    ubot.run()
     #comma seperated user id of users who are allowed to use
     #ALLOWED_USERS = [x.strip(' ') for x in os.environ.get('ALLOWED_USERS','1098504493').split(',')]
 
