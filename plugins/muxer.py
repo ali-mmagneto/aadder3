@@ -14,7 +14,7 @@ session_name = Config.STRING_SESSION,
 api_id = Config.APP_ID,
 api_hash = Config.API_HASH,
 )
-Ubot.run()
+Ubot.start()
 
 @Client.on_message(filters.command('softmux') & filters.private)
 async def softmux(bot, message, cb=False):
