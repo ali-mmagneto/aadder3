@@ -6,7 +6,6 @@ from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
 from plugins.forcesub import handle_force_subscribe
 import time
-from muxbot import Ubot
 import os
 db = Db()
 
@@ -127,25 +126,8 @@ async def hardmux(bot, message, cb=False):
         await sent_msg.edit(text)
     except Exception as e:
         print(e)
-        await Ubot.send_video(
-                Config.PRE_LOG, 
-                progress = progress_bar,
-                duration = duration,
-                thumb = thumb,
-                width = width,
-                height = height,
-                supports_streaming=True,
-                progress_args = (
-                    'Dosyan Yükleniyor!',
-                    sent_msg,
-                    start_time
-                    ), 
-                video = video,
-                caption = final_filename
-                )
-        text = 'Dosyan PRE_LOG kanalına yüklendi!\nToplam Geçen zaman : {} saniye'.format(round(time.time()-start_time))
-        await sent_msg.edit(text)
-
+        await client.send_message(chat_id, 'Bir Hata Oluştu Yüklenirken!\nHatanın Detayları İçin Logu Kontrol Et!')
+    
     path = Config.DOWNLOAD_DIR+'/'
     os.remove(path+og_sub_filename)
     os.remove(path+og_vid_filename)
@@ -154,6 +136,4 @@ async def hardmux(bot, message, cb=False):
     except :
         pass
     db.erase(chat_id)
-
-
 
