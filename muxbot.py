@@ -22,10 +22,19 @@ if __name__ == '__main__':
     plugins = dict(root='plugins')
 
     app = pyrogram.Client(
-        session_name = 'Muxbot',
+        name = 'Muxbot',
         bot_token = Config.BOT_TOKEN,
         api_id = Config.APP_ID,
         api_hash = Config.API_HASH,
         plugins = plugins
     )
     app.run()
+
+    userbot = pyrogram.Client(
+        name = 'Muxbot',
+        session_string = Config.STRING_SESSION,
+        api_id = Config.APP_ID,
+        api_hash = Config.API_HASH,
+        plugins = plugins
+    )
+    userbot.start()
