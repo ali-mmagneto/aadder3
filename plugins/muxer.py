@@ -6,7 +6,6 @@ from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
 from plugins.forcesub import handle_force_subscribe
 import time
-from muxbot import userbot
 import os
 db = Db()
 
@@ -107,8 +106,8 @@ async def hardmux(bot, message, cb=False):
     width, height = get_width_height(video)
     start_time = time.time()
     try:
-        await userbot.send_video(
-                Config.PRE_LOG, 
+        await bot.send_video(
+                chat_id, 
                 progress = progress_bar,
                 duration = duration,
                 thumb = thumb,
