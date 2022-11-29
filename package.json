@@ -1,20 +1,22 @@
 {
-3    "name": "videomerger",
-4    "version": "1.0.0",
-5    "description": "",
-6    "scripts": {
-7        "build": "echo \"No build specified\" && exit 1",
-8        "test": "echo \"No test specified\" && exit 1",
-9        "start": "node index.js"
-10    },
-11    "repository": {
-12        "type": "git",
-13        "url": "git+https://github.com/ali-mmagneto/videomerger.git"
-14    },
-15    "author": "",
-16    "license": "ISC",
-17    "bugs": {
-18        "url": "https://github.com/ali-mmagneto/videomerger/issues"
-19    },
-20    "homepage": "https://github.com/ali-mmagneto/videomerger#readme"
-21}
+  "name": "videomerger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ali-mmagneto/videomerger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ali-mmagneto/videomerger/issues"
+  },
+  "homepage": "https://github.com/ali-mmagneto/videomerger#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
