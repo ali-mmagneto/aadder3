@@ -60,7 +60,6 @@ async def softmux(bot, message, cb=False):
             chat_id=chat_id, 
             from_chat_id=Config.PRE_LOG, 
             message_id=copy.id)
-        await bot.send_message(chat_id, 'Dosya yüklenirken bir hata oluştu!\nHata Detayları İçin Logu kontrol et!')
     else:
         copy = await bot.send_document(
                 chat_id, 
@@ -75,7 +74,6 @@ async def softmux(bot, message, cb=False):
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
         await sent_msg.edit(text)
-        await bot.send_message(chat_id, 'Dosya yüklenirken bir hata oluştu!\nHata Detayları İçin Logu kontrol et!') 
     path = Config.DOWNLOAD_DIR+'/'
     os.remove(path+og_sub_filename)
     os.remove(path+og_vid_filename)
@@ -146,7 +144,6 @@ async def hardmux(bot, message, cb=False):
             chat_id=chat_id, 
             from_chat_id=Config.PRE_LOG, 
             message_id=copy.id)
-        await client.send_message(chat_id, 'Bir Hata Oluştu Yüklenirken!\nHatanın Detayları İçin Logu Kontrol Et!')
     else:
         copy = await bot.send_video(
                 chat_id, 
@@ -166,7 +163,6 @@ async def hardmux(bot, message, cb=False):
                 )
         text = 'Dosya Başarı İle Yüklendi!\nToplam Geçen zaman : {} saniye'.format(round(time.time()-start_time))
         await sent_msg.edit(text)
-        await client.send_message(chat_id, 'Bir Hata Oluştu Yüklenirken!\nHatanın Detayları İçin Logu Kontrol Et!')
             
     path = Config.DOWNLOAD_DIR+'/'
     os.remove(path+og_sub_filename)
