@@ -7,8 +7,8 @@ import pyrogram
 from pyrogram import Client
 
 
-PRE_LOG = environ.get("PRE_LOG", "")
-STRING_SESSION = environ.get('STRING_SESSION', '')
+PRE_LOG = os.environ.get("PRE_LOG", "")
+STRING_SESSION = os.environ.get('STRING_SESSION', '')
 
 userbot = Client(name='userbot', api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION, parse_mode=enums.ParseMode.HTML)
 userbot.start()
