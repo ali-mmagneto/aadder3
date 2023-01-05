@@ -4,6 +4,15 @@ from helper_func.dbhelper import Database as Db
 db = Db().setup()
 
 import pyrogram
+from pyrogram import Client
+
+
+PRE_LOG = environ.get("PRE_LOG", "")
+STRING_SESSION = environ.get('STRING_SESSION', '')
+
+userbot = Client(name='userbot', api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION, parse_mode=enums.ParseMode.HTML)
+userbot.start()
+print("Userbot Başlatıldı 4 gb yükleme aktif")
 
 class Config:
 
