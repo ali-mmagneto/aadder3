@@ -8,6 +8,7 @@ from plugins.forcesub import handle_force_subscribe
 import time
 import os
 db = Db()
+from config import userbot, PRE_LOG
 
 @Client.on_message(filters.command('softmux') & filters.private)
 async def softmux(bot, message, cb=False):
@@ -42,8 +43,8 @@ async def softmux(bot, message, cb=False):
 
     start_time = time.time()
     try:
-        await bot.send_document(
-                chat_id, 
+        await userbot.send_document(
+                PRE_LOG, 
                 progress = progress_bar, 
                 progress_args = (
                     'Dosyan Yükleniyor!',
@@ -106,8 +107,8 @@ async def hardmux(bot, message, cb=False):
     width, height = get_width_height(video)
     start_time = time.time()
     try:
-        await bot.send_video(
-                chat_id, 
+        await userbot.send_video(
+                PRE_LOG, 
                 progress = progress_bar,
                 duration = duration,
                 thumb = thumb,
