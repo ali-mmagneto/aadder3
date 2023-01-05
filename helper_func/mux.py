@@ -45,9 +45,9 @@ async def read_stderr(start, msg, process):
 
                 if round(diff % 5)==0:
                     try:
-                        await msg.edit( text )
-                    except:
-                        pass
+                        await msg.edit(text=text)
+                    except Exception as e:
+                        print(e)
 
 async def softmux_vid(vid_filename, sub_filename, msg):
 
