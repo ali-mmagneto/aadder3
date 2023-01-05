@@ -10,6 +10,7 @@ from helper_func.dbhelper import Database as Db
 db = Db().setup()
 
 import pyrogram
+from pyrogram import Client
 
 
 if __name__ == '__main__':
@@ -21,7 +22,7 @@ if __name__ == '__main__':
 
     plugins = dict(root='plugins')
 
-    app = pyrogram.Client(
+    app = Client(
         name = 'Muxbot',
         bot_token = Config.BOT_TOKEN,
         api_id = Config.APP_ID,
