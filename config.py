@@ -4,7 +4,7 @@ from helper_func.dbhelper import Database as Db
 db = Db().setup()
 
 import pyrogram
-from pyrogram import Client
+from pyrogram import Client, enums
 
 
 
