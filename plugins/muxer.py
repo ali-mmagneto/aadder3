@@ -41,9 +41,29 @@ async def softmux(bot, message, cb=False):
     os.rename(Config.DOWNLOAD_DIR+'/'+softmux_filename,Config.DOWNLOAD_DIR+'/'+final_filename)
 
     start_time = time.time()
-    try:
-        await Config.userbot.send_document(
+    file_size = os.stat(Config.DOWNLOAD_DIR, final_filename).st_size
+    if file_size > 2093796556:
+        copy = await Config.userbot.send_document(
                 Config.PRE_LOG, 
+                progress = progress_bar, 
+                progress_args = (
+                    'Dosyan Yükleniyor!',
+                    sent_msg,
+                    start_time
+                    ), 
+                document = os.path.join(Config.DOWNLOAD_DIR, final_filename),
+                caption = final_filename
+                )
+        text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
+        await sent_msg.edit(text)
+        await bot.copy_message(
+            chat_id=chat_id, 
+            from_chat_id=PRE_LOG, 
+            message_id=copy.id)
+        await bot.send_message(chat_id, 'Dosya yüklenirken bir hata oluştu!\nHata Detayları İçin Logu kontrol et!')
+    else:
+        copy = await bot.send_document(
+                chat_id, 
                 progress = progress_bar, 
                 progress_args = (
                     'Dosyan Yükleniyor!',
@@ -57,8 +77,7 @@ async def softmux(bot, message, cb=False):
         await sent_msg.edit(text)
     except Exception as e:
         print(e)
-        await bot.send_message(chat_id, 'Dosya yüklenirken bir hata oluştu!\nHata Detayları İçin Logu kontrol et!')
-
+        await bot.send_message(chat_id, 'Dosya yüklenirken bir hata oluştu!\nHata Detayları İçin Logu kontrol et!') 
     path = Config.DOWNLOAD_DIR+'/'
     os.remove(path+og_sub_filename)
     os.remove(path+og_vid_filename)
@@ -105,9 +124,34 @@ async def hardmux(bot, message, cb=False):
     thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
     width, height = get_width_height(video)
     start_time = time.time()
-    try:
-        await Config.userbot.send_video(
+    file_size = os.stat(video).st_size
+    if file_size > 2093796556:
+        copy = await Config.userbot.send_video(
                 Config.PRE_LOG, 
+                progress = progress_bar,
+                duration = duration,
+                thumb = thumb,
+                width = width,
+                height = height,
+                supports_streaming=True,
+                progress_args = (
+                    'Dosyan Yükleniyor!',
+                    sent_msg,
+                    start_time
+                    ), 
+                video = video,
+                caption = final_filename
+                )
+        text = 'Dosya Başarı İle Yüklendi!\nToplam Geçen zaman : {} saniye'.format(round(time.time()-start_time))
+        await sent_msg.edit(text)
+        await bot.copy_message(
+            chat_id=chat_id, 
+            from_chat_id=PRE_LOG, 
+            message_id=copy.id)
+        await client.send_message(chat_id, 'Bir Hata Oluştu Yüklenirken!\nHatanın Detayları İçin Logu Kontrol Et!')
+    else:
+        copy = await bot.send_video(
+                chat_id, 
                 progress = progress_bar,
                 duration = duration,
                 thumb = thumb,
@@ -127,7 +171,7 @@ async def hardmux(bot, message, cb=False):
     except Exception as e:
         print(e)
         await client.send_message(chat_id, 'Bir Hata Oluştu Yüklenirken!\nHatanın Detayları İçin Logu Kontrol Et!')
-    
+            
     path = Config.DOWNLOAD_DIR+'/'
     os.remove(path+og_sub_filename)
     os.remove(path+og_vid_filename)
