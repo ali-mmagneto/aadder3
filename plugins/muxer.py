@@ -58,7 +58,7 @@ async def softmux(bot, message, cb=False):
         await sent_msg.edit(text)
         await bot.copy_message(
             chat_id=chat_id, 
-            from_chat_id=PRE_LOG, 
+            from_chat_id=Config.PRE_LOG, 
             message_id=copy.id)
         await bot.send_message(chat_id, 'Dosya yüklenirken bir hata oluştu!\nHata Detayları İçin Logu kontrol et!')
     else:
@@ -144,7 +144,7 @@ async def hardmux(bot, message, cb=False):
         await sent_msg.edit(text)
         await bot.copy_message(
             chat_id=chat_id, 
-            from_chat_id=PRE_LOG, 
+            from_chat_id=Config.PRE_LOG, 
             message_id=copy.id)
         await client.send_message(chat_id, 'Bir Hata Oluştu Yüklenirken!\nHatanın Detayları İçin Logu Kontrol Et!')
     else:
