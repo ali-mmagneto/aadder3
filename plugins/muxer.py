@@ -75,8 +75,6 @@ async def softmux(bot, message, cb=False):
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
         await sent_msg.edit(text)
-    except Exception as e:
-        print(e)
         await bot.send_message(chat_id, 'Dosya yüklenirken bir hata oluştu!\nHata Detayları İçin Logu kontrol et!') 
     path = Config.DOWNLOAD_DIR+'/'
     os.remove(path+og_sub_filename)
@@ -168,8 +166,6 @@ async def hardmux(bot, message, cb=False):
                 )
         text = 'Dosya Başarı İle Yüklendi!\nToplam Geçen zaman : {} saniye'.format(round(time.time()-start_time))
         await sent_msg.edit(text)
-    except Exception as e:
-        print(e)
         await client.send_message(chat_id, 'Bir Hata Oluştu Yüklenirken!\nHatanın Detayları İçin Logu Kontrol Et!')
             
     path = Config.DOWNLOAD_DIR+'/'
