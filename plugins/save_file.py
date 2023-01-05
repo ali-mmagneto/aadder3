@@ -38,13 +38,13 @@ async def save_doc(bot, message, cb=False):
         return bot.edit_message_text(
             text = 'Downloading Failed!',
             chat_id = chat_id,
-            message_id = downloading.message_id
+            message_id = downloading.id
         )
 
     await bot.edit_message_text(
         text = Translation.DOWNLOAD_SUCCESS.format(round(time.time()-start_time)),
         chat_id = chat_id,
-        message_id = downloading.message_id
+        message_id = downloading.id
     )
 
     tg_filename = os.path.basename(download_location)
@@ -73,7 +73,7 @@ async def save_doc(bot, message, cb=False):
         await bot.edit_message_text(
             text = text,
             chat_id = chat_id,
-            message_id = downloading.message_id
+            message_id = downloading.id
         )
 
     elif ext in ['mp4','mkv']:
@@ -86,7 +86,7 @@ async def save_doc(bot, message, cb=False):
         await bot.edit_message_text(
             text = text,
             chat_id = chat_id,
-            message_id = downloading.message_id
+            message_id = downloading.id
         )
 
     else:
@@ -94,7 +94,7 @@ async def save_doc(bot, message, cb=False):
         await bot.edit_message_text(
             text = text,
             chat_id = chat_id,
-            message_id = downloading.message_id
+            message_id = downloading.id
         )
         os.remove(Config.DOWNLOAD_DIR+'/'+tg_filename)
 
@@ -124,13 +124,13 @@ async def save_video(bot, message, cb=False):
         return bot.edit_message_text(
             text = 'İndirme Başarısız!',
             chat_id = chat_id,
-            message_id = downloading.message_id
+            message_id = downloading.id
         )
 
     await bot.edit_message_text(
         text = Translation.DOWNLOAD_SUCCESS.format(round(time.time()-start_time)),
         chat_id = chat_id,
-        message_id = downloading.message_id
+        message_id = downloading.id
     )
 
     tg_filename = os.path.basename(download_location)
@@ -156,7 +156,7 @@ async def save_video(bot, message, cb=False):
     await bot.edit_message_text(
             text = text,
             chat_id = chat_id,
-            message_id = downloading.message_id
+            message_id = downloading.id
             )
 
 
