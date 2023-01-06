@@ -8,8 +8,9 @@ from config import Config
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from plugins.forcesub import handle_force_subscribe
 from script import Script
+from pyrogram import enums
 
-@pyrogram.Client.on_message(pyrogram.filters.command("h"))
+@pyrogram.Client.on_message(pyrogram.filters.command("help"))
 async def help(bot, message, cb=False):
     if Config.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, message)
@@ -39,7 +40,7 @@ async def help(bot, message, cb=False):
         )
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command("s"))
+@pyrogram.Client.on_message(pyrogram.filters.command("start"))
 async def start(bot, message, cb=False):
     if Config.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, message)
@@ -71,7 +72,7 @@ async def start(bot, message, cb=False):
         ) 
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command("a"))
+@pyrogram.Client.on_message(pyrogram.filters.command("about"))
 async def about(bot, message, cb=False):
     if Config.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, message)
