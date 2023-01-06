@@ -2,6 +2,8 @@
 
 A Simple Telegram Bot By @Tellybots to add Subtitle Files in Video
 
+# 4 Gb Support Added
+
 # Features
 - Force Sub Button Added Soon
 - Support Media Type Such as Mp4,Mkv,Webm etc 
