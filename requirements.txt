@@ -5,3 +5,4 @@ aiofiles
 hachoir
 ffmpeg-python
 asyncio
+git+https://github.com/FFmpeg/FFmpeg
