@@ -26,13 +26,13 @@ async def help(bot, message, cb=False):
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
         await message.message.edit(
-            text=Script.HELP_USER.format(bot_name=me.mention(style='md')),
+            text=Script.HELP_USER.format(bot_name=me.mention),
             disable_web_page_preview=True,
             reply_markup=reply_markup
         )
     else:
         await message.reply_text(
-            text=Script.HELP_USER.format(bot_name=me.mention(style='md')),
+            text=Script.HELP_USER.format(bot_name=me.mention),
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             quote=True
@@ -58,13 +58,13 @@ async def start(bot, message, cb=False):
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
         await message.message.edit(
-            text=Script.START_TEXT.format(user_mention=message.from_user.mention, bot_name=me.mention(style='md'), bot_owner=owner.mention(style="md")), 
+            text=Script.START_TEXT.format(user_mention=message.from_user.mention, bot_name=me.mention, bot_owner=owner.mention), 
             disable_web_page_preview=True,
             reply_markup=reply_markup
         )
     else:
         await message.reply_text(
-            text=Script.START_TEXT.format(user_mention=message.from_user.mention, bot_name=me.mention(style='md'), bot_owner=owner.mention(style="md")), 
+            text=Script.START_TEXT.format(user_mention=message.from_user.mention, bot_name=me.mention, bot_owner=owner.mention), 
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             quote=True
@@ -88,13 +88,13 @@ async def about(bot, message, cb=False):
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
         await message.message.edit(
-            text=Script.ABOUT.format(bot_name=me.mention(style='md')),
+            text=Script.ABOUT.format(bot_name=me.mention),
             disable_web_page_preview=True,
             reply_markup=reply_markup
         )
     else:
         await message.reply_text(
-            text=Script.ABOUT.format(bot_name=me.mention(style='md')),
+            text=Script.ABOUT.format(bot_name=me.mention),
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             quote=True
@@ -132,7 +132,7 @@ async def refreshmeh_cb(bot, message):
             if user.status == "kicked":
                 await message.message.edit(
                     text="Sorry Sir, You are Banned. Contact My [Support Group](https://t.me/safothebot).",
-                    parse_mode="markdown",
+                    parse_mode="enums.MARKDOWN",
                     disable_web_page_preview=True
                 )
                 return
@@ -149,13 +149,13 @@ async def refreshmeh_cb(bot, message):
                         ]
                     ]
                 ),
-                parse_mode="markdown"
+                parse_mode="enums.MARKDOWN"
             )
             return
         except Exception:
             await message.message.edit(
                 text="Birşeyler Ters Gitti. İletişime geç [Destek](https://t.me/mmagneto) ile.",
-                parse_mode="markdown",
+                parse_mode=enums.MARKDOWN,
                 disable_web_page_preview=True
             )
             return
