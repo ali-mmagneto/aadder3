@@ -4,6 +4,9 @@ import time
 import re
 import asyncio
 
+import subprocess
+subprocess.call("apt install ffmpeg")
+
 progress_pattern = re.compile(
     r'(frame|fps|size|time|bitrate|speed)\s*\=\s*(\S+)'
 )
