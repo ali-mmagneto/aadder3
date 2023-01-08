@@ -44,8 +44,9 @@ async def softmux(bot, message, cb=False):
     duration = get_duration(video)
     thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
     width, height = get_width_height(video)
-    get_chat = await Config.userbot.get_chat(chat_id=Config.PRE_LOG)
+    get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
     print(get_chat.title)
+    await bot.send_message(Config.PRE_LOG, "2 Gb üstü video geliyor..")
     file_size = os.stat(video).st_size
     if file_size > 2093796556:
         copy = await Config.userbot.send_document(
@@ -124,6 +125,7 @@ async def hardmux(bot, message, cb=False):
     duration = get_duration(video)
     get_chat = await Config.userbot.get_chat(chat_id=Config.PRE_LOG)
     print(get_chat.title)
+    await bot.send_message(Config.PRE_LOG, "2 Gb üstü video geliyor..")
     thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
     width, height = get_width_height(video)
     start_time = time.time()
