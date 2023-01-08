@@ -122,6 +122,8 @@ async def hardmux(bot, message, cb=False):
     os.rename(Config.DOWNLOAD_DIR+'/'+hardmux_filename,Config.DOWNLOAD_DIR+'/'+final_filename)
     video = os.path.join(Config.DOWNLOAD_DIR, final_filename)
     duration = get_duration(video)
+    get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
+    print(get_chat.title)
     thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
     width, height = get_width_height(video)
     start_time = time.time()
