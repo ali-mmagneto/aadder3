@@ -41,6 +41,9 @@ async def softmux(bot, message, cb=False):
     os.rename(Config.DOWNLOAD_DIR+'/'+softmux_filename,Config.DOWNLOAD_DIR+'/'+final_filename)
     video = os.path.join(Config.DOWNLOAD_DIR, final_filename)
     start_time = time.time()
+    duration = get_duration(video)
+    thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
+    width, height = get_width_height(video)
     file_size = os.stat(video).st_size
     if file_size > 2093796556:
         copy = await Config.userbot.send_video(
@@ -52,6 +55,11 @@ async def softmux(bot, message, cb=False):
                     start_time
                     ), 
                 video = video,
+                duration = duration,
+                thumb = thumb,
+                width = width,
+                height = height,
+                supports_streaming=True,
                 caption = final_filename
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
@@ -69,6 +77,11 @@ async def softmux(bot, message, cb=False):
                     sent_msg,
                     start_time
                     ), 
+                duration = duration,
+                thumb = thumb,
+                width = width,
+                height = height,
+                supports_streaming=True,
                 video = video,
                 caption = final_filename
                 )
