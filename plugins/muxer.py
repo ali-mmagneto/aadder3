@@ -43,7 +43,7 @@ async def softmux(bot, message, cb=False):
     start_time = time.time()
     file_size = os.stat(video).st_size
     if file_size > 2093796556:
-        copy = await Config.userbot.send_document(
+        copy = await Config.userbot.send_video(
                 Config.PRE_LOG, 
                 progress = progress_bar, 
                 progress_args = (
@@ -51,7 +51,7 @@ async def softmux(bot, message, cb=False):
                     sent_msg,
                     start_time
                     ), 
-                document = video,
+                video = video,
                 caption = final_filename
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
@@ -61,7 +61,7 @@ async def softmux(bot, message, cb=False):
             from_chat_id=Config.PRE_LOG, 
             message_id=copy.id)
     else:
-        copy = await bot.send_document(
+        copy = await bot.send_video(
                 chat_id, 
                 progress = progress_bar, 
                 progress_args = (
@@ -69,7 +69,7 @@ async def softmux(bot, message, cb=False):
                     sent_msg,
                     start_time
                     ), 
-                document = video,
+                video = video,
                 caption = final_filename
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
