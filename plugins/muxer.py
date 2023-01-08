@@ -46,20 +46,15 @@ async def softmux(bot, message, cb=False):
     width, height = get_width_height(video)
     file_size = os.stat(video).st_size
     if file_size > 2093796556:
-        copy = await Config.userbot.send_video(
-                Config.PRE_LOG, 
+        copy = await Config.userbot.send_document(
+                chat_id = Config.PRE_LOG, 
                 progress = progress_bar, 
                 progress_args = (
                     'Dosyan Yükleniyor!',
                     sent_msg,
                     start_time
                     ), 
-                video = video,
-                duration = duration,
-                thumb = thumb,
-                width = width,
-                height = height,
-                supports_streaming=True,
+                document = video,
                 caption = final_filename
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
@@ -69,20 +64,15 @@ async def softmux(bot, message, cb=False):
             from_chat_id=Config.PRE_LOG, 
             message_id=copy.id)
     else:
-        copy = await bot.send_video(
-                chat_id, 
+        copy = await bot.send_document(
+                chat_id = chat_id, 
                 progress = progress_bar, 
                 progress_args = (
                     'Dosyan Yükleniyor!',
                     sent_msg,
                     start_time
                     ), 
-                duration = duration,
-                thumb = thumb,
-                width = width,
-                height = height,
-                supports_streaming=True,
-                video = video,
+                document = video,
                 caption = final_filename
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
@@ -136,7 +126,7 @@ async def hardmux(bot, message, cb=False):
     file_size = os.stat(video).st_size
     if file_size > 2093796556:
         copy = await Config.userbot.send_video(
-                Config.PRE_LOG, 
+                chat_id = Config.PRE_LOG, 
                 progress = progress_bar,
                 duration = duration,
                 thumb = thumb,
@@ -159,7 +149,7 @@ async def hardmux(bot, message, cb=False):
             message_id=copy.id)
     else:
         copy = await bot.send_video(
-                chat_id, 
+                chat_id = chat_id, 
                 progress = progress_bar,
                 duration = duration,
                 thumb = thumb,
