@@ -107,7 +107,7 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
     
     command = [
             'ffmpeg','-hide_banner',
-            '-rtbufsize 150M',
+            '-rtbufsize','150M',
             '-i',vid,
             '-vf','subtitles='+sub,
             '-c:v','h264',
