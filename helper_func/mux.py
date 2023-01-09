@@ -61,7 +61,7 @@ async def softmux_vid(vid_filename, sub_filename, msg):
     sub_ext = sub_filename.split('.').pop()
     command = [
             'ffmpeg','-hide_banner',
-            '-rtbufsize 150M',
+            '-rtbufsize','150M',
             '-i',vid,
             '-i',sub,
             '-map','1:0','-map','0',
