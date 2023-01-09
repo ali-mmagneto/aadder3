@@ -61,7 +61,6 @@ async def softmux_vid(vid_filename, sub_filename, msg):
     sub_ext = sub_filename.split('.').pop()
     command = [
             'ffmpeg','-hide_banner',
-            '-rtbufsize','10M',
             '-i',vid,
             '-i',sub,
             '-map','1:0','-map','0',
@@ -107,7 +106,6 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
     
     command = [
             'ffmpeg','-hide_banner',
-            '-rtbufsize','10M',
             '-i',vid,
             '-vf','subtitles='+sub,
             '-c:v','h264',
