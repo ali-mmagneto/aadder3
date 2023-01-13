@@ -30,4 +30,8 @@ class Config:
     userbot = Client(name='userbot', api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION, parse_mode=enums.ParseMode.HTML)
     userbot.start()
     print("Userbot Başlatıldı 4 gb yükleme aktif")
+    
+    plugins = dict(root='plugins')
 
+    app = Client(name='Muxbot', bot_token=Config.BOT_TOKEN, api_id=Config.APP_ID, api_hash=Config.API_HASH, plugins=plugins, parse_mode=enums.ParseMode.HTML)
+    app.run()
