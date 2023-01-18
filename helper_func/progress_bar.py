@@ -21,7 +21,7 @@ async def progress_bar(current, total, text, message, start):
             ''.join(["⚪" for i in range(10 - math.floor(percentage / 10))]),
             round(percentage, 2))
 
-        tmp = progress + "{0} of {1}\n**Hız**: `{2}`/s\n**Tahmini Süre**: `{3}`\n".format(
+        tmp = progress + "{0}/{1}\n**Hız**: `{2}`/s\n**Tahmini Süre**: `{3}`\n".format(
             humanbytes(current),
             humanbytes(total),
             humanbytes(speed),
