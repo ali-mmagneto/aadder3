@@ -8,7 +8,7 @@ class Script(object):
 
 📚 **Kütüphane:** [Pyrogram](https://docs.pyrogram.org)
 
-📡 **Sunucu:** [Heroku](https://heroku.com)
+📡 **Sunucu:** [Napçan](https://heroku.com)
 
 🧑‍💻 **Geliştirici:** [Napçan](https://t.me/mmagneto)
 
@@ -23,23 +23,13 @@ Ben **{bot_name}**
 Yardım Kısmına Hoşgeldin
 
 1.) Bir Video Dosyası Gönder.
-2.) Bir Altyazı Dosyası Gönder. (ass Yada srt)
-3.) Altyazı Türünü Seç!
-
-Dosyaya özel ad vermek için url ile ayrılmış olarak gönderin.|
-url|custom_name.mp4
-
-Not :Hardmux'ta yalnızca İngilizce yazı tiplerinin desteklendiğini lütfen unutmayın, diğer komut dosyaları videoda boş bloklar olarak gösterilecektir! 
-
-**Oluşturan 💕 @mmagneto**
+2.) Bir Ses Dosyası Gönder. (ass Yada srt)
+3.) /sesekle komutunu kullan!
 """
 
   START_TEXT = """
-**Hey** {user_mention}
-
-HOŞGELDİN **{bot_name}**\n
-Sana Videolara Altyazı Eklemen Konusunda Yardımcı Olacağım\n
-**Oluşturan 💕 @mmagneto
+HOŞGELDİN **{user_mention}**\n
+Ben Bir video dosyası ile ses dosyasını tek bir videoda birleștiren bir botum iyi kullanımlar.\n\nKullanmayı bilmiyorsan /help komutunu kullan..
 """
 
     
