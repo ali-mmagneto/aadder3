@@ -63,10 +63,10 @@ async def softmux_vid(vid_filename, sub_filename, msg):
             'ffmpeg','-hide_banner',
             '-i',vid,
             '-i',sub,
-            '-map','1:0','-map','0',
-            '-disposition:s:0','default',
+            '-map','0:v:0','-map','0:s:?',
+            'disposition:a:0','default',
             '-c:v','copy',
-            '-c:a','aac',
+            '-c:a','copy',
             '-c:s',sub_ext,
             '-y',out_location
             ]
