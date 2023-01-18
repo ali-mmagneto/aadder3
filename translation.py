@@ -12,4 +12,4 @@ Geçen Süre : {} saniye."""
     MAX_FILE_SIZE = "Dosya boyutu 2 Gb'den büyük. Telegramın getirdiği sınır da bu!"
     LONG_CUS_FILENAME = """Sağladığınız dosya adı 60 karakterden büyük.
 Lütfen daha kısa bir ad girin."""
-    UNSUPPORTED_FORMAT = "Hata : Dosya Şekli {} Desteklenmiyor!"
+    UNSUPPORTED_FORMAT = "Hata : Dosya Türü {} Desteklenmiyor!"
