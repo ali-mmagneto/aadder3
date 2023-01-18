@@ -47,7 +47,7 @@ async def softmux(bot, message, cb=False):
     get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
     print(get_chat)
     file_size = os.stat(video).st_size
-    if file_size > 2093796556:
+    if file_size > 2:
         await bot.send_message(Config.PRE_LOG, "2 gb üstüVideo Geliyor.")
         copy = await Config.userbot.send_video(
                 chat_id = Config.PRE_LOG, 
