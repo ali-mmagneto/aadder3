@@ -23,7 +23,7 @@ Ben **{bot_name}**
 Yardım Kısmına Hoşgeldin
 
 1.) Bir Video Dosyası Gönder.
-2.) Bir Ses Dosyası Gönder. (ass Yada srt)
+2.) Bir Ses Dosyası Gönder. (m4a, aac ya da mp3)
 3.) /sesekle komutunu kullan!
 """
 
