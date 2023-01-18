@@ -13,7 +13,7 @@ import requests
 from urllib.parse import quote, unquote
 db = Db()
 
-@Client.on_message(filters.document & filters.private & filters.music)
+@Client.on_message(filters.document & filters.private & filters.message)
 async def save_doc(bot, message, cb=False):
     if Config.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, message)
