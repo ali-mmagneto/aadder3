@@ -22,15 +22,15 @@ async def softmux(bot, message, cb=False):
     og_sub_filename = db.get_sub_filename(chat_id)
     text = ''
     if not og_vid_filename :
-        text += 'İlk Önce Bir Video Dosyası Gönder\n'
+        text += 'hop dostum Önce Bir Video Dosyası Gönder\n'
     if not og_sub_filename :
-        text += 'Altyazı Dosyası Gönder!'
+        text += 'sonra Altyazı Dosyası Gönder!'
 
     if not (og_sub_filename and og_vid_filename) :
         await bot.send_message(chat_id, text)
         return
 
-    text = 'Dosyanıza soft altyazı uygulanıyor. Birkaç saniye içinde yapılır!'
+    text = 'Ses dosyanız Video dosyanıza ekleniyor..'
     sent_msg = await bot.send_message(chat_id, text)
 
     softmux_filename = await softmux_vid(og_vid_filename, og_sub_filename, sent_msg)
