@@ -65,7 +65,6 @@ async def softmux_vid(vid_filename, sub_filename, msg):
             '-i',sub,
             '-map','0:v','-map','1:a',
             '-c:v','copy',
-            '-c:a','sub_ext',
             '-y',out_location
             ]
 
