@@ -9,7 +9,7 @@ import time
 import os
 db = Db()
 
-@Client.on_message(filters.command('softmux') & filters.private)
+@Client.on_message(filters.command('sesekle') & filters.private)
 async def softmux(bot, message, cb=False):
     if Config.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, message)
@@ -67,15 +67,20 @@ async def softmux(bot, message, cb=False):
             from_chat_id=Config.PRE_LOG, 
             message_id=copy.id)
     else:
-        copy = await bot.send_document(
+        copy = await bot.send_video(
                 chat_id = chat_id, 
                 progress = progress_bar, 
                 progress_args = (
                     'Dosyan Yükleniyor!',
                     sent_msg,
                     start_time
-                    ), 
-                document = video,
+                    ),
+                duration = duration,
+                thumb = thumb,
+                width = width,
+                height = height,
+                supports_streaming=True,
+                video = video,
                 caption = final_filename
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
@@ -123,7 +128,7 @@ async def hardmux(bot, message, cb=False):
     os.rename(Config.DOWNLOAD_DIR+'/'+hardmux_filename,Config.DOWNLOAD_DIR+'/'+final_filename)
     video = os.path.join(Config.DOWNLOAD_DIR, final_filename)
     duration = get_duration(video)
-    get_chat = await Config.userbot.get_chat(chat_id=Config.PRE_LOG)
+    get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
     print(get_chat.title)
     await bot.send_message(Config.PRE_LOG, "Video Geliyor.")
     thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
