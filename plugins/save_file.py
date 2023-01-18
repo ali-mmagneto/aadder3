@@ -68,7 +68,7 @@ async def save_doc(bot, message, cb=False):
         if db.check_video(chat_id):
             text = 'Ses Dosyası Başarıyla Yüklendi.\n\n /sesekle komutu ile ișleme bașlayabilirsin.'
         else:
-            text = Ses Dosyası Yüklendi.\nŞimdi Video Dosyasını yolla!'
+            text = 'Ses Dosyası Yüklendi.\nŞimdi Video Dosyasını yolla!'
 
         await bot.edit_message_text(
             text = text,
