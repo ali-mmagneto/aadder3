@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from helper_func.progress_bar import progress_bar
 from helper_func.dbhelper import Database as Db
-from helper_func.mux import softmux_vid, hardmux_vid
+from helper_func.mux import softmux_vid
 from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
 from plugins.forcesub import handle_force_subscribe
