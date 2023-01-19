@@ -5,8 +5,8 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import Config
 from script import Script
 
-from helpers.ffmpeg import download_file, DATA
-from helpers.ffmpeg import extract_audio, extract_subtitle    
+from helper_func.mux import download_file, DATA
+from helper_func.mux import extract_audio, extract_subtitle    
 
 @Client.on_callback_query()
 async def cb_handler(bot, query):
