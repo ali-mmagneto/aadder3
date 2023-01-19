@@ -1,18 +1,18 @@
 
 from pyrogram import filters
-from pyrogram import Client as trojanz
+from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from config import Config
 from script import Script
 
-from helper_func.progress import PRGRS
+from helper_func.progress_bar import PRGRS
 from helper_func.tools import clean_up
 from helper_func.download import download_file, DATA
 from helper_funx.ffmpeg import extract_audio, extract_subtitle
 
 
-@trojanz.on_callback_query()
+@Client.on_callback_query()
 async def cb_handler(client, query):
     if query.data == "close": 
         await query.message.delete()  
