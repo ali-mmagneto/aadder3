@@ -65,7 +65,7 @@ async def cb_handler(client, query):
     elif query.data == "download_file":
         await query.answer()
         await query.message.delete()
-        await download_file(client, query.message.reply_to_message)
+        await download_file(client, query.message)
 
 
     elif query.data == "progress_msg":
