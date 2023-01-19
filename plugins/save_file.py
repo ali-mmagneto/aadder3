@@ -208,7 +208,7 @@ async def confirm_dwnld(bot, message):
 
     details = json.loads(output[0])
     buttons = []
-    DATA[f"{message.chat.id}-{downloading.message_id}"] = {}
+    DATA[f"{message.chat.id}-{downloading.id}"] = {}
     for stream in details["streams"]:
         mapping = stream["index"]
         stream_name = stream["codec_name"]
@@ -222,7 +222,7 @@ async def confirm_dwnld(bot, message):
         except:
             lang = mapping
         
-        DATA[f"{message.chat.id}-{downloading.message_id}"][int(mapping)] = {
+        DATA[f"{message.chat.id}-{downloading.id}"][int(mapping)] = {
             "map" : mapping,
             "name" : stream_name,
             "type" : stream_type,
@@ -231,12 +231,12 @@ async def confirm_dwnld(bot, message):
         }
         buttons.append([
             InlineKeyboardButton(
-                f"{stream_type.upper()} - {str(lang).upper()}", f"{stream_type}_{mapping}_{message.chat.id}-{downloading.message_id}"
+                f"{stream_type.upper()} - {str(lang).upper()}", f"{stream_type}_{mapping}_{message.chat.id}-{downloading.id}"
             )
         ])
 
     buttons.append([
-        InlineKeyboardButton("CANCEL",f"cancel_{mapping}_{message.chat.id}-{downloading.message_id}")
+        InlineKeyboardButton("CANCEL",f"cancel_{mapping}_{message.chat.id}-{downloading.id}")
     ])    
 
     await bot.edit_message_text(
