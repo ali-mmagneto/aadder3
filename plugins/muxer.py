@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from helper_func.progress_bar import progress_bar
 from helper_func.dbhelper import Database as Db
-from helper_func.mux import softmux_vid
+from helper_func.mux import sesekle_vid
 from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
 from plugins.forcesub import handle_force_subscribe
@@ -10,7 +10,7 @@ import os
 db = Db()
 
 @Client.on_message(filters.command('sesekle') & filters.private)
-async def softmux(bot, message, cb=False):
+async def sesekle(bot, message, cb=False):
     if Config.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, message)
       if fsub == 400:
@@ -19,21 +19,21 @@ async def softmux(bot, message, cb=False):
 
     chat_id = message.from_user.id
     og_vid_filename = db.get_vid_filename(chat_id)
-    og_sub_filename = db.get_sub_filename(chat_id)
+    og_aud_filename = db.get_aud_filename(chat_id)
     text = ''
     if not og_vid_filename :
         text += 'Dostum Önce Bir Video Gönder\n'
-    if not og_sub_filename :
+    if not og_aud_filename :
         text += 'Sonra Ses Dosyası Gönder!'
 
-    if not (og_sub_filename and og_vid_filename) :
+    if not (og_aud_filename and og_vid_filename) :
         await bot.send_message(chat_id, text)
         return
 
     text = 'Ses dosyanız Video dosyanıza ekleniyor..'
     sent_msg = await bot.send_message(chat_id, text)
 
-    softmux_filename = await softmux_vid(og_vid_filename, og_sub_filename, sent_msg)
+    softmux_filename = await sesekle_vid(og_vid_filename, og_aud_filename, sent_msg)
     if not softmux_filename:
         return
 
@@ -47,7 +47,7 @@ async def softmux(bot, message, cb=False):
     get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
     print(get_chat)
     file_size = os.stat(video).st_size
-    if file_size > 2:
+    if file_size > 2093796556:
         await bot.send_message(Config.PRE_LOG, "2 gb üstüVideo Geliyor.")
         copy = await Config.userbot.send_video(
                 chat_id = Config.PRE_LOG, 
@@ -91,7 +91,7 @@ async def softmux(bot, message, cb=False):
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
         await sent_msg.edit(text)
     path = Config.DOWNLOAD_DIR+'/'
-    os.remove(path+og_sub_filename)
+    os.remove(path+og_aud_filename)
     os.remove(path+og_vid_filename)
     try :
         os.remove(path+final_filename)
