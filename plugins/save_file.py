@@ -224,7 +224,7 @@ async def confirm_dwnld(bot, message):
 
     details = json.loads(output[0])
     buttons = []
-    DATA[f"{message.chat.id}-{msg.message_id}"] = {}
+    DATA[f"{message.chat.id}-{downloading.id}"] = {}
     for stream in details["streams"]:
         mapping = stream["index"]
         stream_name = stream["codec_name"]
