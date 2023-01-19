@@ -19,7 +19,7 @@ async def download_file(client, message):
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="Check Progress", callback_data="progress_msg")]
         ]),
-        reply_to_message_id=media.message_id
+        reply_to_message_id=media.id
     )
     filetype = media.document or media.video
 
