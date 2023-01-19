@@ -24,21 +24,7 @@ from script import Script
 async def confirm_dwnld(client, message):
     media = message.reply_to_message
     filetype = media.document or media.video
-
-    if filetype.mime_type.startswith("video/"):
-        await message.reply_text(
-            "**What you want me to do??**",
-            quote=True,
-            reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton(text="DOWNLOAD and PROCESS", callback_data="download_file")],
-                [InlineKeyboardButton(text="CANCEL", callback_data="close")]
-            ])
-        )
-    else:
-        await message.reply_text(
-            "Invalid Media",
-            quote=True
-        )
+    await download_file(client, media)
 
 @Client.on_message(filters.command('ses') & filters.private)
 async def save_doc(bot, message, cb=False):
