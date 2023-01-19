@@ -12,10 +12,6 @@ from pyrogram import enums
 
 @pyrogram.Client.on_message(pyrogram.filters.command("help"))
 async def help(bot, message, cb=False):
-    if Config.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, message)
-      if fsub == 400:
-        return
     me = await bot.get_me()
     button = [[
         InlineKeyboardButton(f'🏡 Ev', callback_data='back'),
@@ -42,10 +38,6 @@ async def help(bot, message, cb=False):
 
 @pyrogram.Client.on_message(pyrogram.filters.command("start"))
 async def start(bot, message, cb=False):
-    if Config.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, message)
-      if fsub == 400:
-        return
     me = await bot.get_me()
     owner = await bot.get_users(Config.OWNER_ID)
     owner_username = owner.username if owner.username else 'AsmSafone'
