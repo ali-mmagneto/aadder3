@@ -5,7 +5,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import Config
 from script import Script
 
-from helper_func.mux import download_file, DATA
+from helper_func.download import download_file, DATA
 from helper_func.mux import extract_audio, extract_subtitle    
 
 @Client.on_callback_query()
