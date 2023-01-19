@@ -45,9 +45,9 @@ async def cb_handler(bot, query):
         try:
             stream_type, mapping, keyword = query.data.split('_')
             data = DATA[keyword][int(mapping)]
-            await extract_audio(client, query.message, data)
-        except:
-            await query.message.edit_text("**Details Not Found**")   
+            await extract_audio(bot, query.message, data)
+        except Exception as e:
+            await query.message.edit_text(f'**Details Not Found {e}**')   
 
 
     elif query.data.startswith('subtitle'):
@@ -55,6 +55,6 @@ async def cb_handler(bot, query):
         try:
             stream_type, mapping, keyword = query.data.split('_')
             data = DATA[keyword][int(mapping)]
-            await extract_subtitle(client, query.message, data)
+            await extract_subtitle(bot, query.message, data)
         except:
             await query.message.edit_text("**Details Not Found**")  
