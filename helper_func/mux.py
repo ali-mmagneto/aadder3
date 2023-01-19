@@ -9,6 +9,51 @@ progress_pattern = re.compile(
     r'(frame|fps|size|time|bitrate|speed)\s*\=\s*(\S+)'
 )
 
+from helper_func.tools import execute, clean_up
+from helper_func.upload import upload_audio, upload_subtitle
+
+async def extract_audio(bot, message, data):
+    await message.edit_text("Extracting Stream from file...")
+
+    dwld_loc = data['location']
+    out_loc = data['location'] + ".mp3"
+
+    if data['name'] == "mp3":
+        out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} -c copy '{out_loc}' -y")
+        if rcode != 0:
+            await message.edit_text("**Error Occured. See Logs for more info.**")
+            print(err)
+            await clean_up(dwld_loc, out_loc)
+            return
+    else:
+        out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} '{out_loc}' -y")
+        if rcode != 0:
+            await message.edit_text("**Error Occured. See Logs for more info.**")
+            print(err)
+            await clean_up(dwld_loc, out_loc)
+            return
+
+    await clean_up(dwld_loc)
+    await upload_audio(bot, message, out_loc)
+
+
+
+async def extract_subtitle(bot, message, data):
+    await message.edit_text("Extracting Stream from file")
+
+    dwld_loc = data['location']
+    out_loc = data['location'] + ".srt"   
+
+    out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} '{out_loc}' -y")
+    if rcode != 0:
+        await message.edit_text("**Error Occured. See Logs for more info.**")
+        print(err)
+        await clean_up(dwld_loc, out_loc)
+        return
+
+    await clean_up(dwld_loc)  
+    await upload_subtitle(bot, message, out_loc)
+
 def parse_progress(line):
     items = {
         key: value for key, value in progress_pattern.findall(line)
