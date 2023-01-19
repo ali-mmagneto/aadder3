@@ -215,10 +215,10 @@ async def confirm_dwnld(bot, message):
         chat_id = chat_id,
         message_id = downloading.id)
 
-    output = await execute(f"ffprobe -hide_banner -show_streams -print_format json '{og_filename}'")
+    output = await execute(f"ffprobe -hide_banner -show_streams -print_format json '{download_location}'")
     
     if not output:
-        await clean_up(og_filename)
+        await clean_up(download_location)
         await msg.edit_text("Some Error Occured while Fetching Details...")
         return
 
