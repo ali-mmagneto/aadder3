@@ -257,5 +257,6 @@ async def confirm_dwnld(bot, message):
 
     await bot.edit_message(
         text="**Select the Stream to be Extracted...**",
+        message_id=downloading.id,
         reply_markup=InlineKeyboardMarkup(buttons)
         )
