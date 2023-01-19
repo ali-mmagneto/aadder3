@@ -38,9 +38,6 @@ async def help(bot, message, cb=False):
 
 @pyrogram.Client.on_message(pyrogram.filters.command("start"))
 async def start(bot, message, cb=False):
-    me = await bot.get_me()
-    owner = await bot.get_users(Config.OWNER_ID)
-    owner_username = owner.username if owner.username else 'AsmSafone'
     button = [[
         InlineKeyboardButton(f'💡 Yardım', callback_data='help'),
         InlineKeyboardButton(f'👲 Hakkımda', callback_data="about")
