@@ -195,9 +195,6 @@ async def confirm_dwnld(bot, message):
         message_id = downloading.id
     )
 
-    ext = save_filename.split('.').pop()
-    filename = str(round(start_time))+'.'+ext
-
     await bot.edit_message_text(
         text="Processing your file....",
         chat_id = chat_id,
