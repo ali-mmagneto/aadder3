@@ -195,18 +195,6 @@ async def confirm_dwnld(bot, message):
         message_id = downloading.id
     )
 
-    tg_filename = os.path.basename(download_location)
-    try:
-        og_filename = message.document.filename
-    except:
-        og_filename = False
-
-    if og_filename:
-        #os.rename(Config.DOWNLOAD_DIR+'/'+tg_filename,Config.DOWNLOAD_DIR+'/'+og_filename)
-        save_filename = og_filename
-    else :
-        save_filename = tg_filename
-
     ext = save_filename.split('.').pop()
     filename = str(round(start_time))+'.'+ext
 
