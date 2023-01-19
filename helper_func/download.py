@@ -8,7 +8,7 @@ from helper_func.tools import execute, clean_up
 DATA = {}
 
 async def download_file(bot, message):
-    media = message.reply_to_message
+    media = message
     if media.empty:
         await message.reply_text('Why did you delete that?? 😕', True)
         return
