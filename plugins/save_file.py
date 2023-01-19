@@ -9,6 +9,7 @@ from helper_func.progress_bar import progress_bar
 from helper_func.dbhelper import Database as Db
 from plugins.forcesub import handle_force_subscribe
 import re
+import json
 import requests
 from urllib.parse import quote, unquote
 db = Db()
