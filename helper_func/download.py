@@ -75,7 +75,7 @@ async def download_file(client, message):
     ])    
 
     await msg.edit_text(
-        "**Select the Stream to be Extracted...**",
+        "`Istediğin Dosyayı Seç Dostum..`",
         reply_markup=InlineKeyboardMarkup(buttons)
         )
 
