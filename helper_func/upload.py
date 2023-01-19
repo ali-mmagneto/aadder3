@@ -17,7 +17,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 async def upload_audio(client, message, file_loc):
 
     msg = await message.edit_text(
-        text="**Uploading extracted stream...**",
+        text="**Ayıklanan Dosyan Yükleniyor...**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Progress", callback_data="progress_msg")]])
     )
@@ -65,7 +65,7 @@ async def upload_audio(client, message, file_loc):
 async def upload_subtitle(client, message, file_loc):
 
     msg = await message.edit_text(
-        text="**Uploading extracted subtitle...**",
+        text="**Ayıklanan Dosyan Yükleniyor...**",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Progress", callback_data="progress_msg")]])
     )
