@@ -9,7 +9,7 @@ from script import Script
 from helper_func.progress_bar import PRGRS
 from helper_func.tools import clean_up
 from helper_func.download import download_file, DATA
-from helper_funx.ffmpeg import extract_audio, extract_subtitle
+from helper_func.ffmpeg import extract_audio, extract_subtitle
 
 
 @Client.on_callback_query()
