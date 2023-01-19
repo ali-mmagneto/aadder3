@@ -13,6 +13,36 @@ import requests
 from urllib.parse import quote, unquote
 db = Db()
 DATA = {} 
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+from config import Config
+from script import Script
+
+
+@Client.on_message(filters.private & (filters.document | filters.video))
+async def confirm_dwnld(client, message):
+
+    if message.from_user.id not in Config.AUTH_USERS:
+        return
+
+    media = message
+    filetype = media.document or media.video
+
+    if filetype.mime_type.startswith("video/"):
+        await message.reply_text(
+            "**What you want me to do??**",
+            quote=True,
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton(text="DOWNLOAD and PROCESS", callback_data="download_file")],
+                [InlineKeyboardButton(text="CANCEL", callback_data="close")]
+            ])
+        )
+    else:
+        await message.reply_text(
+            "Invalid Media",
+            quote=True
+        )
 
 @Client.on_message(filters.command('ses') & filters.private)
 async def save_doc(bot, message, cb=False):
