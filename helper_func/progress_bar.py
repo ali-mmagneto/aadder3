@@ -1,6 +1,7 @@
 
 import time
 import math
+PRGRS = {}
 
 async def progress_bar(current, total, text, message, start):
 
