@@ -49,16 +49,16 @@ async def read_stderr(start, msg, process):
                     except Exception as e:
                         print(e)
 
-async def softmux_vid(vid_filename, sub_filename, msg):
+async def sesekle_vid(vid_filename, aud_filename, msg):
 
     start = time.time()
     vid = Config.DOWNLOAD_DIR+'/'+vid_filename
-    sub = Config.DOWNLOAD_DIR+'/'+sub_filename
+    sub = Config.DOWNLOAD_DIR+'/'+aud_filename
 
     out_file = '.'.join(vid_filename.split('.')[:-1])
     output = out_file+'1.mkv'
     out_location = Config.DOWNLOAD_DIR+'/'+output
-    sub_ext = sub_filename.split('.').pop()
+    aud_ext = aud_filename.split('.').pop()
     command = [
             'ffmpeg','-hide_banner',
             '-i',vid,
