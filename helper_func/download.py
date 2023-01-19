@@ -26,7 +26,7 @@ async def download_file(client, message):
     c_time = time.time()
 
     download_location = await client.download_media(
-        message=media,
+        message=media.reply_to_message,
         progress=progress_bar,
         progress_args=(
             "**Downloading your file to server...**",
