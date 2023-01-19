@@ -13,6 +13,7 @@ import requests
 from urllib.parse import quote, unquote
 db = Db()
 DATA = {} 
+from helper_func.download import download_file
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
