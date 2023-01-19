@@ -12,7 +12,6 @@ from pyrogram import enums
 
 @pyrogram.Client.on_message(pyrogram.filters.command("help"))
 async def help(bot, message, cb=False):
-    me = await bot.get_me()
     button = [[
         InlineKeyboardButton(f'🏡 Ev', callback_data='back'),
         InlineKeyboardButton(f'👲 Hakkımda', callback_data='about')
@@ -23,13 +22,13 @@ async def help(bot, message, cb=False):
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
         await message.message.edit(
-            text=Script.HELP_USER.format(bot_name=me.mention),
+            text=Script.HELP_USER,
             disable_web_page_preview=True,
             reply_markup=reply_markup
         )
     else:
         await message.reply_text(
-            text=Script.HELP_USER.format(bot_name=me.mention),
+            text=Script.HELP_USER,
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             quote=True
@@ -48,13 +47,13 @@ async def start(bot, message, cb=False):
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
         await message.message.edit(
-            text=Script.START_TEXT.format(user_mention=message.from_user.mention, bot_name=me.mention, bot_owner=owner.mention), 
+            text=Script.START_TEXT, 
             disable_web_page_preview=True,
             reply_markup=reply_markup
         )
     else:
         await message.reply_text(
-            text=Script.START_TEXT.format(user_mention=message.from_user.mention, bot_name=me.mention, bot_owner=owner.mention), 
+            text=Script.START_TEXT, 
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             quote=True
@@ -78,13 +77,13 @@ async def about(bot, message, cb=False):
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
         await message.message.edit(
-            text=Script.ABOUT.format(bot_name=me.mention),
+            text=Script.ABOUT,
             disable_web_page_preview=True,
             reply_markup=reply_markup
         )
     else:
         await message.reply_text(
-            text=Script.ABOUT.format(bot_name=me.mention),
+            text=Script.ABOUT,
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             quote=True
