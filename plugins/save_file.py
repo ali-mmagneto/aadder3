@@ -173,7 +173,6 @@ async def confirm_dwnld(bot, message):
     downloading = await bot.send_message(chat_id, '`İndiriliyor..`')
     download_location = await bot.download_media(
         message = message.reply_to_message,
-        file_name = Config.DOWNLOAD_DIR+'/',
         progress = progress_bar,
         progress_args = (
             'Başlatılıyor',
