@@ -45,7 +45,7 @@ async def cb_handler(bot, query):
         try:
             stream_type, mapping, keyword = query.data.split('_')
             data = DATA[keyword][int(mapping)]
-            await extract_audio(bot, query.message.reply_to_message, data)
+            await extract_audio(bot, query.message, data)
         except Exception as e:
             await query.message.edit_text(f'**Details Not Found {e}**')   
 
