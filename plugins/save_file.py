@@ -231,7 +231,7 @@ async def confirm_dwnld(bot, message):
         }
         buttons.append([
             InlineKeyboardButton(
-                f"{stream_type.upper()} - {str(lang).upper()}", f"{stream_type}_{mapping}_{message.chat.id}-{downloading.id}"
+                f"{stream_type.upper()} - {str(lang).upper()}", f"{stream_type()}_{mapping()}_{message.chat.id}-{downloading.id}"
             )
         ])
 
