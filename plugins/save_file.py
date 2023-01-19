@@ -252,10 +252,10 @@ async def confirm_dwnld(bot, message):
         ])
 
     buttons.append([
-        InlineKeyboardButton("CANCEL",f"cancel_{mapping}_{message.chat.id}-{downloadingid}")
+        InlineKeyboardButton("CANCEL",f"cancel_{mapping}_{message.chat.id}-{downloading.id}")
     ])    
 
     await bot.edit_message(
-        "**Select the Stream to be Extracted...**",
+        text="**Select the Stream to be Extracted...**",
         reply_markup=InlineKeyboardMarkup(buttons)
         )
