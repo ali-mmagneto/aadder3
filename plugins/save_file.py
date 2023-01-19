@@ -215,16 +215,16 @@ async def confirm_dwnld(bot, message):
         chat_id = chat_id,
         message_id = downloading.id)
 
-    output = await execute(f"ffprobe -hide_banner -show_streams -print_format json '{download_location}'")
+    output = await execute(f"ffprobe -hide_banner -show_streams -print_format json '{og_filename}'")
     
     if not output:
-        await clean_up(download_location)
+        await clean_up(og_filename)
         await msg.edit_text("Some Error Occured while Fetching Details...")
         return
 
     details = json.loads(output[0])
     buttons = []
-    DATA[f"{message.chat.id}-{message.reply_to_message.id}"] = {}
+    DATA[f"{message.chat.id}-{downloading.id}"] = {}
     for stream in details["streams"]:
         mapping = stream["index"]
         stream_name = stream["codec_name"]
@@ -238,7 +238,7 @@ async def confirm_dwnld(bot, message):
         except:
             lang = mapping
         
-        DATA[f"{message.chat.id}-{message.reply_to_message.id}"][int(mapping)] = {
+        DATA[f"{message.chat.id}-{downloading.id}"][int(mapping)] = {
             "map" : mapping,
             "name" : stream_name,
             "type" : stream_type,
@@ -247,12 +247,12 @@ async def confirm_dwnld(bot, message):
         }
         buttons.append([
             InlineKeyboardButton(
-                f"{stream_type.upper()} - {str(lang).upper()}", f"{stream_type}_{mapping}_{message.chat.id}-{message.reply_to_message.id}"
+                f"{stream_type.upper()} - {str(lang).upper()}", f"{stream_type}_{mapping}_{message.chat.id}-{downloading.id}"
             )
         ])
 
     buttons.append([
-        InlineKeyboardButton("CANCEL",f"cancel_{mapping}_{message.chat.id}-{message.reply_to_message.id}")
+        InlineKeyboardButton("CANCEL",f"cancel_{mapping}_{message.chat.id}-{downloading.id}")
     ])    
 
     await bot.edit_message_text(
