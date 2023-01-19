@@ -1,7 +1,7 @@
 
 import time
 import os
-
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from translation import Translation
 from config import Config
 from pyrogram import Client, filters
