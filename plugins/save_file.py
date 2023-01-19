@@ -158,3 +158,23 @@ async def save_video(bot, message, cb=False):
             chat_id = chat_id,
             message_id = downloading.id
             )
+
+@Client.on_message(filters.command('extract') & filters.private)
+async def confirm_dwnld(bot, message):
+    media = message.reply_to_message
+    filetype = media.document or media.video
+
+    if filetype.mime_type.startswith("video/"):
+        await message.reply_text(
+            "**Ne İşlem yapayım?**",
+            quote=True,
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton(text="Indir ve Ayıkla", callback_data="download_file")],
+                [InlineKeyboardButton(text="Iptal", callback_data="close")]
+            ])
+        )
+    else:
+        await message.reply_text(
+            "Invalid Media",
+            quote=True
+        )
