@@ -13,6 +13,7 @@ import json
 import requests
 from urllib.parse import quote, unquote
 db = Db()
+DATA = {} 
 
 @Client.on_message(filters.command('ses') & filters.private)
 async def save_doc(bot, message, cb=False):
