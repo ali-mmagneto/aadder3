@@ -15,10 +15,7 @@ async def download_file(client, message):
 
     msg = await client.send_message(
         chat_id=message.chat.id,
-        text="**Downloading your file to server...**",
-        reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton(text="Check Progress", callback_data="progress_msg")]
-        ]),
+        text="`Indiriliyor`",
         reply_to_message_id=media.id
     )
     filetype = media.document or media.video
@@ -29,19 +26,19 @@ async def download_file(client, message):
         message=media,
         progress=progress_bar,
         progress_args=(
-            "**Downloading your file to server...**",
+            "`Indiriliyor`",
             msg,
             c_time
         )
     )
 
-    await msg.edit_text("Processing your file....")
+    await msg.edit_text("`Dosyan Ayıklanıyor`")
 
     output = await execute(f"ffprobe -hide_banner -show_streams -print_format json '{download_location}'")
     
     if not output:
         await clean_up(download_location)
-        await msg.edit_text("Some Error Occured while Fetching Details...")
+        await msg.edit_text("`Ayıklarken Hata oluştu`")
         return
 
     details = json.loads(output[0])
