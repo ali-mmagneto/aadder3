@@ -22,10 +22,6 @@ from script import Script
 
 @Client.on_message(filters.private & (filters.document | filters.video))
 async def confirm_dwnld(client, message):
-
-    if message.from_user.id not in Config.AUTH_USERS:
-        return
-
     media = message
     filetype = media.document or media.video
 
