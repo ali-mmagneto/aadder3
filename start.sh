@@ -1,1 +1,1 @@
-python3 muxbot.py
+python3 audiobot.py
