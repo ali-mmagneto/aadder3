@@ -20,9 +20,9 @@ from config import Config
 from script import Script
 
 
-@Client.on_message(filters.private & (filters.document | filters.video))
+@Client.on_message(filters.command('extract') & filters.private)
 async def confirm_dwnld(client, message):
-    media = message
+    media = message.reply_to_message
     filetype = media.document or media.video
 
     if filetype.mime_type.startswith("video/"):
