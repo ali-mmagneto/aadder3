@@ -85,7 +85,7 @@ class Database:
         else :
             return False
 
-    def get_sub_filename(self, user_id) :
+    def get_aud_filename(self, user_id) :
 
         cmd = f'SELECT * FROM muxbot WHERE user_id={user_id};'
         res = self.conn.execute(cmd).fetchone()
