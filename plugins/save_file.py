@@ -98,7 +98,7 @@ async def save_doc(bot, message, cb=False):
         )
         os.remove(Config.DOWNLOAD_DIR+'/'+tg_filename)
 
-@Client.on_message(filters.video & filters.private)
+@Client.on_message(filters.command('video') & filters.private)
 async def save_video(bot, message, cb=False):
     if Config.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, message)
@@ -108,7 +108,7 @@ async def save_video(bot, message, cb=False):
 
     chat_id = message.from_user.id
     start_time = time.time()
-    downloading = await bot.send_message(chat_id, 'Dosyan Indiriliyor!')
+    downloading = await bot.send_message(chat_id, '`Indiriliyor.`')
     download_location = await bot.download_media(
         message = message,
         file_name = Config.DOWNLOAD_DIR+'/',
