@@ -12,7 +12,7 @@ progress_pattern = re.compile(
 from helper_func.tools import execute, clean_up
 from helper_func.upload import upload_audio, upload_subtitle
 
-async def extract_audio(bot, message, data):
+async def extract_audio(bot, query.message, data):
     await message.edit_text("Extracting Stream from file...")
 
     dwld_loc = data['location']
