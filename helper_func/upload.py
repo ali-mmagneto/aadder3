@@ -4,7 +4,7 @@ from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
 
 from helper_func.tools import clean_up
-from helper_func.progress import progress_func
+from helper_func.progress_bar import progress_bar
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -41,7 +41,7 @@ async def upload_audio(bot, message, file_loc):
             title=title,
             performer=artist,
             duration=duration,
-            progress=progress_func,
+            progress=progress_bar,
             progress_args=(
                 "**Uploading extracted stream...**",
                 msg,
@@ -72,7 +72,7 @@ async def upload_subtitle(bot, message, file_loc):
             chat_id=message.chat.id,
             document=file_loc,
             caption="**@TroJanzHEX**",
-            progress=progress_func,
+            progress=progress_bar,
             progress_args=(
                 "**Uploading extracted subtitle...**",
                 msg,
