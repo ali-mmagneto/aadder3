@@ -161,7 +161,7 @@ async def save_video(bot, message, cb=False):
 
 @Client.on_message(filters.command('extract') & filters.private)
 async def confirm_dwnld(bot, message):
-    media = message.reply_to_message
+    media = message
     filetype = media.document or media.video
 
     if filetype.mime_type.startswith("video/"):
