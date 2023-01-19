@@ -1,34 +1,10 @@
-
-TroJanzHEX
-/
-Streams-Extractor
-Public
-Code
-Issues
-3
-Pull requests
-3
-Actions
-Projects
-Security
-Insights
-Streams-Extractor/helpers/upload.py
-@Adithyan1133-ctrl
-Adithyan1133-ctrl Fix
- 2 contributors
-93 lines (74 sloc)  2.54 KB
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# @trojanzhex
-
-
 import time
 
 from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
 
-from helpers.tools import clean_up
-from helpers.progress import progress_func
+from helper_func.tools import clean_up
+from helper_func.progress import progress_func
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
