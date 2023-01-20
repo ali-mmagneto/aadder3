@@ -8,11 +8,11 @@ class Database:
     
     def set_thumbnail(self, id, thumbnail):
         
-        await self.col.update_one({'id': id}, {'$set': {'thumbnail': thumbnail}})
+        self.col.update_one({'id': id}, {'$set': {'thumbnail': thumbnail}})
 
     def get_thumbnail(self, id):
  
-        user = await self.col.find_one({'id': int(id)})
+        user = self.col.find_one({'id': int(id)})
         return user.get('thumbnail', None)
     
     def setup(self):
