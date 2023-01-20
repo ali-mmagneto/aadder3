@@ -17,7 +17,7 @@ async def sesekle(bot, message, cb=False):
         return
     me = await bot.get_me()
 
-    chat_id = message.from_user.id
+    chat_id = str(message.from_user.id)
     og_vid_filename = db.get_vid_filename(chat_id)
     og_aud_filename = db.get_aud_filename(chat_id)
     text = ''
