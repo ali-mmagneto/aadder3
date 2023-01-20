@@ -14,6 +14,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 LOGGER = logging.getLogger(__name__)
 botStartTime = time.time()
 
+plugins = dict(root='plugins')
+
 if not os.path.isdir(Config.DOWNLOAD_DIR):
         os.mkdir(Config.DOWNLOAD_DIR)
 if not os.path.isdir(Config.ENCODE_DIR):
