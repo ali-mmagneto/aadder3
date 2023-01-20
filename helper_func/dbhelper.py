@@ -8,7 +8,9 @@ class Database:
     
     def set_thumbnail(self, id, thumbnail):
         
-        self.conn.commit({'id': id}, {'$set': {'thumbnail': thumbnail}})
+        cmd = ({'id': id}, {'$set': {'thumbnail': thumbnail}})
+        self.conn.execute(thm)
+        self.conn.commit()
 
     def get_thumbnail(self, id):
  
