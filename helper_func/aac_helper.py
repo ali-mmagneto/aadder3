@@ -40,7 +40,7 @@ async def add_task(bot, message):
             random,
             file_name
         )
-        filepath = await message.reply_to_message.download(
+        filepath = await message.download(
             file_name=path,
             progress=progress_bar,
             progress_args=("`İndiriliyor...`", msg, c_time))
