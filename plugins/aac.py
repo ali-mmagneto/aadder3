@@ -21,7 +21,7 @@ video_mimetype = [
     "video/mpeg"
 ]
 
-@Client.on_message(filters.command('aac')
+@Client.on_message(filters.command('aac'))
 async def encode_video(bot, message):
     if message.reply_to_message.document:
         if not message.reply_to_message.document.mime_type in video_mimetype:
