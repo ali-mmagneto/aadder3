@@ -108,7 +108,7 @@ async def handle_upload(bot, new_file, message, msg, random):
             print(get_chat)
             await bot.send_message(Config.PRE_LOG, "2 gb üstü video geliyor..")
             video = await Config.userbot.send_video(
-                PRE_LOG,
+                Config.PRE_LOG,
                 new_file,
                 supports_streaming=True,
                 caption=caption,
