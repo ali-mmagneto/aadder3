@@ -70,7 +70,7 @@ async def add_task(bot, message):
 
 
 async def handle_upload(bot, new_file, message, msg, random):
-    user_id = str(message.from_user.id)
+    user_id = str(message.chat.id)
     path = os.path.join(
         Config.DOWNLOAD_DIR,
         user_id,
