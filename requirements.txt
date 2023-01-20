@@ -6,3 +6,6 @@ hachoir
 ffmpeg-python
 asyncio
 motor
+python-dotenv
+Pillow
+psutil
