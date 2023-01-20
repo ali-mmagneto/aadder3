@@ -15,7 +15,7 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 @Client.on_message(filters.incoming & filters.photo)
 async def save_photo(c, m):
     v = await m.reply_text("`Thumbnail Alıniyor..`", True)
-    chat_id = m.from_user.id
+    chat_id = str(m.from_user.id)
     path = os.path.join(
         Config.DOWNLOAD_DIR,
         chat_id
@@ -42,7 +42,7 @@ async def save_photo(c, m):
 
 @Client.on_message(filters.incoming & filters.command(["delthumb"]))
 async def delete_thumbnail(c, m):
-    chat_id = m.from_user.id
+    chat_id = str(m.from_user.id)
     path = os.path.join(
         Config.DOWNLOAD_DIR,
         chat_id
