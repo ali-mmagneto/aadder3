@@ -8,11 +8,11 @@ class Database:
     
     def set_thumbnail(self, id, thumbnail):
         
-        self.conn.update_one({'id': id}, {'$set': {'thumbnail': thumbnail}})
+        self.conn.commit({'id': id}, {'$set': {'thumbnail': thumbnail}})
 
     def get_thumbnail(self, id):
  
-        user = self.conn.find_one({'id': int(id)})
+        user = self.conn.commit({'id': int(id)})
         return user.get('thumbnail', None)
     
     def setup(self):
