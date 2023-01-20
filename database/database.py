@@ -1,6 +1,6 @@
 import datetime
 import motor.motor_asyncio
-from config import DATABASE_URL, SESSION_NAME
+from config import Config
 
 
 class Database:
@@ -12,4 +12,4 @@ class Database:
         user = await self.col.find_one({'id': int(id)})
         return user.get('thumbnail', None)
 
-db = Database(DATABASE_URL, SESSION_NAME)
+db = Database(Config.DATABASE_URL, Config.SESSION_NAME)
