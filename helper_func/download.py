@@ -1,6 +1,6 @@
 import time
 import json
-
+from plugins.save_file import equee
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from helper_func.progress_bar import progress_bar
 from helper_func.tools import execute, clean_up
