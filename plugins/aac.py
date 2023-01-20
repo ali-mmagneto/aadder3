@@ -28,6 +28,6 @@ async def encode_video(bot, message):
             message.reply_text("```Bu Video Dosyası Değil.```", quote=True)
             return
     await message.reply_text(f"`Sıraya Ekledim...\n\nSıran: {len(aquee)}`", quote=True)
-    aquee.append(message.reply_to_message)
+    aquee.append(message)
     if len(aquee) == 1:
         await add_task(bot, message) 
