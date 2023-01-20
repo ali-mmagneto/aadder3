@@ -100,11 +100,11 @@ async def handle_upload(bot, new_file, message, msg, random):
         caption = caption_str
     
     # Upload
-    get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
-    print(get_chat) 
     file_size = os.stat(new_file).st_size
     if file_size > 2093796556:
         try:
+            get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
+            print(get_chat)
             await bot.send_message(Config.PRE_LOG, "2 gb üstü video geliyor..")
             video = await Config.userbot.send_video(
                 PRE_LOG,
@@ -146,7 +146,7 @@ async def handle_upload(bot, new_file, message, msg, random):
                 duration=duration,
                 width=width,
                 height=height,
-                progress=progress_for_pyrogram,
+                progress=progress_bar,
                 progress_args=("`Yükleniyor...`", msg, c_time)
             )
             if not audio_codec:
