@@ -12,7 +12,7 @@ import ffmpeg
 from subprocess import check_output
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from config import ENCODE_DIR
+from config import Config
 
 def get_codec(filepath, channel="v:0"):
     output = check_output(
@@ -36,7 +36,7 @@ async def encode(filepath):
     path, extension = os.path.splitext(filepath)
     file_name = os.path.basename(path)
     encode_dir = os.path.join(
-        ENCODE_DIR,
+        Config.ENCODE_DIR,
         file_name
     )
     output_filepath = encode_dir + '.mp4'
