@@ -1,23 +1,15 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# @trojanzhex
+#:d
 
 
 import time
-from plugins.save_file equee
 from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
-
+from helper_func.download import download_file
 from helper_func.tools import clean_up
 from helper_func.progress_bar import progress_bar
-
+from plugins.save_file import equee
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-
-async def on_task_complete(client, message:):
-    del equee[0]
-    if len(equee) > 0:
-        await download_file(client, quee[0])
 
 async def upload_audio(client, message, file_loc):
 
@@ -65,7 +57,9 @@ async def upload_audio(client, message, file_loc):
 
     await msg.delete()
     await clean_up(file_loc)    
-    await on_task_complete(client, message)
+    del equee[0]
+    if len(equee) > 0:
+        await download_file(client, equee[0])
 
 async def upload_subtitle(client, message, file_loc):
 
@@ -96,3 +90,6 @@ async def upload_subtitle(client, message, file_loc):
 
     await msg.delete()
     await clean_up(file_loc)        
+    del equee[0]
+    if len(equee) > 0:
+        await download_file(client, equee[0])
