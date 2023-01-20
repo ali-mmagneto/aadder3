@@ -6,6 +6,7 @@ from helper_func.dbhelper import Database as Db
 db = Db().setup()
 from pyrogram.raw.all import layer
 import pyrogram
+from helper_func.thumb import ReadableTime
 from pyrogram import Client, __version__
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
