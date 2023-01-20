@@ -9,4 +9,4 @@ motor
 python-dotenv
 Pillow
 psutil
-https://github.com/ali-mmagneto/gerek02
+git+https://github.com/ali-mmagneto/gerek02
