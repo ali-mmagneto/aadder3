@@ -50,9 +50,6 @@ async def add_task(bot, message):
             await msg.edit("`Yükleniyor`")
             await handle_upload(bot, new_file, message, msg, random)
             await msg.edit_text(f"`{file_name} Tamamlandı!`")
-            del aquee[0]
-            if len(aquee) > 0:
-                await add_task(bot, aquee[0])
         else:
             await message.reply_text("<code>Dosyanızı kodlarken bir şeyler ters gitti.</code>")
             os.remove(filepath)
