@@ -6,17 +6,6 @@ class Database:
 
         self.conn = sqlite3.connect('muxdb.sqlite', check_same_thread = False)
     
-    def set_thumbnail(self, id, thumbnail):
-        
-        cmd = ({'id': id}, {'$set': {'thumbnail': thumbnail}})
-        self.conn.execute(thm)
-        self.conn.commit()
-
-    def get_thumbnail(self, id):
- 
-        user = self.conn.commit({'id': int(id)})
-        return user.get('thumbnail', None)
-    
     def setup(self):
 
         cmd = """CREATE TABLE IF NOT EXISTS muxbot(
