@@ -9,12 +9,6 @@ from helper_func.progress_bar import progress_bar
 from pyrogram.errors import FloodWait, MessageNotModified, MessageIdInvalid
 from config import Config
 
-async def on_task_complete(bot, message: Message):
-    del aquee[0]
-    if len(aquee) > 0:
-        await add_task(bot, aquee[0])
-
-
 async def add_task(bot, message):
     try:
         user_id = str(message.from_user.id)
@@ -135,6 +129,9 @@ async def handle_upload(bot, new_file, message, msg, random):
                os.remove(thumb)
         except:
             pass
+        del aquee[0]
+        if len(aquee) > 0:
+            await add_task(bot, aquee[0])
     else:
         try:
             video = await bot.send_video(
@@ -162,3 +159,6 @@ async def handle_upload(bot, new_file, message, msg, random):
                os.remove(thumb)
         except:
             pass     
+        del aquee[0]
+        if len(aquee) > 0:
+            await add_task(bot, aquee[0])
