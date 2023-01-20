@@ -15,13 +15,11 @@ class Config:
     API_HASH = os.environ.get("API_HASH", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
    
-    #comma seperated user id of users who are allowed to use
-    #ALLOWED_USERS = [x.strip(' ') for x in os.environ.get('ALLOWED_USERS','1098504493').split(',')]
-
+    
     DOWNLOAD_DIR = 'downloads'
     OWNER_ID = os.environ.get("OWNER_ID", '1276627253') 
-    UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", '-1001157048481')
     
+
     PRE_LOG = os.environ.get("PRE_LOG", "")
     STRING_SESSION = os.environ.get('STRING_SESSION', '')
 
