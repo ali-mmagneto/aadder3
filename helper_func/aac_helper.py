@@ -15,12 +15,12 @@ async def add_task(bot, message):
         c_time = time.time()
         random = str(c_time)
 
-        if message.reply_to_message.video:
-             file_name = message.reply_to_message.video.file_name
-        elif message.reply_to_message.document:
-             file_name = message.reply_to_message.document.file_name
-        elif message.reply_to_message.audio:
-             file_name = message.reply_to_message.audio.file_name
+        if message.video:
+             file_name = message.video.file_name
+        elif message.document:
+             file_name = message.document.file_name
+        elif message.audio:
+             file_name = message.audio.file_name
         else:
              file_name = None
 
