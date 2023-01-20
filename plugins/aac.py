@@ -27,7 +27,7 @@ async def encode_video(bot, message):
         if not message.reply_to_message.document.mime_type in video_mimetype:
             message.reply_text("```Bu Video Dosyası Değil.```", quote=True)
             return
-    await message.reply_text(f"`Sıraya Ekledim...\n\nSıran: {len(aquee)}`", quote=True)
+    await message.reply_to_message.reply_text(f"`Sıraya Ekledim...\n\nSıran: {len(aquee)}`", quote=True)
     aquee.append(message.reply_to_message)
     if len(aquee) == 1:
         await add_task(bot, message) 
