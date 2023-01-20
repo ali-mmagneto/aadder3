@@ -44,8 +44,8 @@ async def sesekle(bot, message, cb=False):
     duration = get_duration(video)
     thumb_image_path = os.path.join(
         Config.DOWNLOAD_DIR,
-        user_id,
-        user_id + ".jpg"
+        chat_id,
+        chat_id + ".jpg"
     )
     if os.path.exists(thumb_image_path):
         thumb = thumb_image_path
