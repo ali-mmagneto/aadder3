@@ -33,14 +33,14 @@ async def add_task(bot, message):
         if file_name is None:
             file_name = user_id
 
-        msg = await message.reply_text("`Videon Indiriliyor...`", quote=True)
+        msg = await message.reply_to_message.reply_text("`Videon Indiriliyor...`", quote=True)
         path = os.path.join(
             Config.DOWNLOAD_DIR,
             user_id,
             random,
             file_name
         )
-        filepath = await message.download(
+        filepath = await message.reply_to_message.download(
             file_name=path,
             progress=progress_bar,
             progress_args=("`İndiriliyor...`", msg, c_time))
