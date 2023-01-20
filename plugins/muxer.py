@@ -42,7 +42,15 @@ async def sesekle(bot, message, cb=False):
     video = os.path.join(Config.DOWNLOAD_DIR, final_filename)
     start_time = time.time()
     duration = get_duration(video)
-    thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
+    thumb_image_path = os.path.join(
+        Config.DOWNLOAD_DIR,
+        user_id,
+        user_id + ".jpg"
+    )
+    if os.path.exists(thumb_image_path):
+        thumb = thumb_image_path
+    else:
+        thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
     width, height = get_width_height(video)
     get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
     print(get_chat)
