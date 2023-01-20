@@ -9,3 +9,4 @@ motor
 python-dotenv
 Pillow
 psutil
+speedtest-cli
