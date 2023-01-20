@@ -21,12 +21,7 @@ class Config:
     DOWNLOAD_DIR = 'downloads'
     OWNER_ID = os.environ.get("OWNER_ID", '1276627253') 
     UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", '-1001157048481')
-    SESSION_NAME = os.environ.get("SESSION_NAME", "")
-
-    # database uri (mongodb)
-    DATABASE_URL = os.environ.get("DATABASE_URL", "")
-
-
+    
     PRE_LOG = os.environ.get("PRE_LOG", "")
     STRING_SESSION = os.environ.get('STRING_SESSION', '')
 
