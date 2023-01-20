@@ -58,7 +58,10 @@ async def add_task(bot, message):
         print(f"Sleep of {e.value} required by FloodWait ...")
         time.sleep(e.value)
     except Exception as e:
-        await msg.edit_text(f"<code>{e}</code>")
+        await bot.edit_text(
+            chat_id=user_id,
+            text=f"<code>{e}</code>",
+            message_id=msg.id)
         del aquee[0]
         if len(aquee) > 0:
             await add_task(bot, aquee[0])
