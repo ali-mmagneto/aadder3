@@ -69,7 +69,7 @@ async def add_task(bot, message):
 
 
 
-async def handle_upload(bot, new_file, message.reply_to_message, msg, random):
+async def handle_upload(bot, new_file, message, msg, random):
     user_id = str(message.from_user.id)
     path = os.path.join(
         Config.DOWNLOAD_DIR,
