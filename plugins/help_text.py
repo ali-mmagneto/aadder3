@@ -62,10 +62,6 @@ async def start(bot, message, cb=False):
 
 @pyrogram.Client.on_message(pyrogram.filters.command("about"))
 async def about(bot, message, cb=False):
-    if Config.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, message)
-      if fsub == 400:
-        return
     me = await bot.get_me()
     button = [[
         InlineKeyboardButton(f'🏡 Ev', callback_data='back'),
@@ -110,44 +106,4 @@ async def back_cb(bot, message):
 async def about_cb(bot, message):
     await message.answer()
     await about(bot, message, True)
-
-
-@pyrogram.Client.on_callback_query(pyrogram.filters.regex('^refreshmeh$'))
-async def refreshmeh_cb(bot, message):
-    if Config.UPDATES_CHANNEL:
-        invite_link = await bot.create_chat_invite_link(int(Config.UPDATES_CHANNEL))
-        try:
-            user = await bot.get_chat_member(int(Config.UPDATES_CHANNEL), message.from_user.id)
-            if user.status == "kicked":
-                await message.message.edit(
-                    text="Sorry Sir, You are Banned. Contact My [Support Group](https://t.me/safothebot).",
-                    parse_mode="enums.MARKDOWN",
-                    disable_web_page_preview=True
-                )
-                return
-        except UserNotParticipant:
-            await message.message.edit(
-                text="**Lan Sen Hala Benim Kanalıma Katılmamışsın!**\n\nYopun Yüklenmeden Dolayı Sadece Kanal Üyeleri Kullanabilir Botu!",
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton("🤖 Benim Kanalım 🤖", url=invite_link.invite_link)
-                        ],
-                        [
-                            InlineKeyboardButton("🔄 Yenile 🔄", callback_data="refreshmeh")
-                        ]
-                    ]
-                ),
-                parse_mode="enums.MARKDOWN"
-            )
-            return
-        except Exception:
-            await message.message.edit(
-                text="Birşeyler Ters Gitti. İletişime geç [Destek](https://t.me/mmagneto) ile.",
-                parse_mode=enums.MARKDOWN,
-                disable_web_page_preview=True
-            )
-            return
-    await message.answer()
-    await start(bot, message, True)
 
