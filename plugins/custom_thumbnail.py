@@ -53,4 +53,4 @@ async def delete_thumbnail(c, m):
     )
     if os.path.exists(thumb_image_path):
         os.remove(thumb_image_path)
-    await m.reply_text("Thumbnail Removed.", quote=True)
+    await m.reply_text("Thumbnail Silindi.", quote=True)
