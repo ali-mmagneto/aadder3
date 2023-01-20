@@ -10,7 +10,7 @@ from pyrogram.errors import FloodWait, MessageNotModified, MessageIdInvalid
 from config import Config
 
 
-async def on_task_complete(bot, message):
+async def on_task_complete(bot, message: Message):
     del aquee[0]
     if len(aquee) > 0:
         await add_task(app, aquee[0])
