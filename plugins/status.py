@@ -1,12 +1,13 @@
 import shutil
 import psutil
 import math
+import time
 
 from helper_func.progress_bar import humanbytes
 from plugins.save_file import equee
 from plugins.aac import aquee
 from pyrogram import Client, filters
-from audiobot inport botStartTime
+from audiobot import botStartTime
 from helper_func.thumb import ReadableTime
 
 @Client.on_message(filters.command("status"))
@@ -23,7 +24,8 @@ async def status(bot, message):
     text += f"**Kullanılan Alan:** `{kullanilan}({disk_usage}%)` \n"
     text += f"**Boş Alanım:** `{bos}` \n"
     text += f"**CPU Kullanımım:** `{cpu_usage}%` \n"
-    text += f"**RAM Kullanımım:** `{ram_usage}%`\n\n"
+    text += f"**RAM Kullanımım:** `{ram_usage}%`\n"
+    text += f"**Yașım:** `{ReadableTime(time.time() - botStartTime)}`\n\n"
     text += f"**Yapacak extract ișim: {len(equee)} 😡**\n"
     text += f"**Yapacak aac ișim: {len(aquee)} 😡**" 
     await msg.edit(
