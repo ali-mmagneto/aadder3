@@ -1,7 +1,5 @@
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from functions.settings import *
-from translation import Translation
 from database.database import db
 
 @Client.on_message(filters.command(["setthumb", "set_thumbnail"]) & filters.incoming & filters.reply)
