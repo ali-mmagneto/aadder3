@@ -44,12 +44,12 @@ async def add_task(bot, message):
             file_name=path,
             progress=progress_bar,
             progress_args=("`İndiriliyor...`", msg, c_time))
-        await msg.edit("`🟣 Video Kodlanıyor... 🟣\n\n⚙ Motor: FFMPEG\n\n#kodlama`")
+        await msg.edit("`Video Kodlanıyor...`")
         new_file = await encode(filepath)
         if new_file:
-            await msg.edit("`🟢 Video Kodlandı, Veriler Alınıyor... 🟢`")
+            await msg.edit("`Yükleniyor`")
             await handle_upload(bot, new_file, message, msg, random)
-            await msg.edit_text("`Başarıyla Tamamlandı!`")
+            await msg.edit_text(f"`{file_name} Tamamlandı!`")
         else:
             await message.reply_text("<code>Dosyanızı kodlarken bir şeyler ters gitti.</code>")
             os.remove(filepath)
