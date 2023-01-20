@@ -7,12 +7,12 @@ logger = logging.getLogger(__name__)
 import os
 from pyrogram import Client, filters
 from PIL import Image
-from config import DOWNLOAD_DIR, SUDO_USERS
+from config import DOWNLOAD_DIR
 
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
-@Client.on_message(filters.user(SUDO_USERS) & filters.incoming & filters.photo)
+@Client.on_message(filters.incoming & filters.photo)
 async def save_photo(c, m):
     v = await m.reply_text("Thumbnail Processing.", True)
     user_id = str(m.from_user.id)
@@ -40,7 +40,7 @@ async def save_photo(c, m):
         print(f"#Error {e}")
 
 
-@Client.on_message(filters.user(SUDO_USERS) & filters.incoming & filters.command(["delthumb"]))
+@Client.on_message(filters.incoming & filters.command(["delthumb"]))
 async def delete_thumbnail(c, m):
     user_id = str(m.from_user.id)
     path = os.path.join(
