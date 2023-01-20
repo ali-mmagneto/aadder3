@@ -18,13 +18,16 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from config import Config
 from script import Script
-
+equee = []
 
 @Client.on_message(filters.command('extract') & filters.private)
 async def confirm_dwnld(client, message):
     media = message.reply_to_message
     filetype = media.document or media.video
-    await download_file(client, message)
+    await message.reply_text(f"`Sıraya Ekledim.\n\nSıran: {len(equee)}`", quote=True)
+    equee.append(message)
+    if len(equee) == 1:
+        await download_file(client, message)
 
 @Client.on_message(filters.command('ses') & filters.private)
 async def save_doc(bot, message, cb=False):
