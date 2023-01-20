@@ -48,7 +48,7 @@ async def add_task(bot, message):
         new_file = await encode(filepath)
         if new_file:
             await msg.edit("`Yükleniyor`")
-            await handle_upload(bot, new_file, message, msg, random)
+            await handle_upload(bot, new_file, message.reply_to_message, msg, random)
             await msg.edit_text(f"`{file_name} Tamamlandı!`")
             del aquee[0]
             if len(aquee) > 0:
@@ -69,7 +69,7 @@ async def add_task(bot, message):
 
 
 
-async def handle_upload(bot, new_file, message, msg, random):
+async def handle_upload(bot, new_file, message.reply_to_message, msg, random):
     user_id = str(message.from_user.id)
     path = os.path.join(
         Config.DOWNLOAD_DIR,
