@@ -1,4 +1,5 @@
 import os
+import time
 
 from helper_func.dbhelper import Database as Db
 db = Db().setup()
@@ -6,7 +7,7 @@ db = Db().setup()
 import pyrogram
 from pyrogram import Client, enums
 
-
+botStartTime2 = time.time()
 
 class Config:
 
