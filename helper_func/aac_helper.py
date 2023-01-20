@@ -100,7 +100,7 @@ async def handle_upload(bot, new_file, message, msg, random):
         caption = caption_str
     
     # Upload
-    get_chat = await bot.get_chat(chat_id=PRE_LOG)
+    get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
     print(get_chat) 
     file_size = os.stat(new_file).st_size
     if file_size > 2093796556:
