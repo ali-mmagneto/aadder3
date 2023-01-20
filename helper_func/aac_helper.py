@@ -9,6 +9,12 @@ from helper_func.progress_bar import progress_bar
 from pyrogram.errors import FloodWait, MessageNotModified, MessageIdInvalid
 from config import Config
 
+
+async def on_task_complete(bot, message):
+    del aquee[0]
+    if len(aquee) > 0:
+        await add_task(app, aquee[0])
+
 async def add_task(bot, message):
     try:
         user_id = str(message.from_user.id)
@@ -27,7 +33,7 @@ async def add_task(bot, message):
         if file_name is None:
             file_name = user_id
 
-        msg = await message.reply_to_message.reply_text("`Videon Indiriliyor...`", quote=True)
+        msg = await message.reply_text("`Videon Indiriliyor...`", quote=True)
         path = os.path.join(
             Config.DOWNLOAD_DIR,
             user_id,
@@ -58,13 +64,10 @@ async def add_task(bot, message):
         print(f"Sleep of {e.value} required by FloodWait ...")
         time.sleep(e.value)
     except Exception as e:
-        await bot.edit_text(
-            chat_id=user_id,
-            text=f"<code>{e}</code>",
-            message_id=msg.id)
-        del aquee[0]
-        if len(aquee) > 0:
-            await add_task(bot, aquee[0])
+        await msg.edit_text(f"<code>{e}</code>")
+    await on_task_complete(bot, message)
+
+
 
 async def handle_upload(bot, new_file, message, msg, random):
     user_id = str(message.from_user.id)
