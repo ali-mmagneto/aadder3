@@ -37,7 +37,7 @@ class Bot(Client):
     async def start(self):
         if not os.path.isdir(Config.DOWNLOAD_DIR): os.makedirs(Config.DOWNLOAD_DIR)
         await super().start()
-        owner = await self.get_user(Config.OWNER_ID)
+        owner = await self.get_chat(Config.OWNER_ID)
         print(owner)
         me = await self.get_me()
         self.username = '@' + me.username
