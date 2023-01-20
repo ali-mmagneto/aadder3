@@ -1,7 +1,3 @@
-
-# (c) Tellybots | Shrimadhavuk
-
-
 import os
 
 from config import Config
@@ -23,7 +19,7 @@ if __name__ == '__main__':
     plugins = dict(root='plugins')
 
     app = Client(
-        name = 'Muxbot',
+        name = 'Multibot',
         bot_token = Config.BOT_TOKEN,
         api_id = Config.APP_ID,
         api_hash = Config.API_HASH,
