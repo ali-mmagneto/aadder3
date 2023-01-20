@@ -56,8 +56,9 @@ async def add_task(bot, message):
         time.sleep(e.value)
     except Exception as e:
         await msg.edit_text(f"<code>{e}</code>")
-    await on_task_complete(bot, message)
-
+    del aquee[0]
+    if len(aquee) > 0:
+        await add_task(bot, aquee[0])
 
 async def handle_upload(bot, new_file, message, msg, random):
     user_id = str(message.from_user.id)
@@ -129,9 +130,6 @@ async def handle_upload(bot, new_file, message, msg, random):
                os.remove(thumb)
         except:
             pass
-        del aquee[0]
-        if len(aquee) > 0:
-            await add_task(bot, aquee[0])
     else:
         try:
             video = await bot.send_video(
@@ -159,6 +157,3 @@ async def handle_upload(bot, new_file, message, msg, random):
                os.remove(thumb)
         except:
             pass     
-        del aquee[0]
-        if len(aquee) > 0:
-            await add_task(bot, aquee[0])
