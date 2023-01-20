@@ -24,17 +24,14 @@ equee = []
 async def confirm_dwnld(client, message):
     media = message.reply_to_message
     filetype = media.document or media.video
-    await message.reply_text(f"`Sıraya Ekledim.\n\nSıran: {len(equee)}`", quote=True)
+    siram = await message.reply_text(f"`Sıraya Ekledim.\n\nSıran: {len(equee)}`", quote=True)
     equee.append(message)
     if len(equee) == 1:
         await download_file(client, message)
+        await siram.delete()
 
 @Client.on_message(filters.command('ses') & filters.private)
 async def save_doc(bot, message, cb=False):
-    if Config.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, message)
-      if fsub == 400:
-        return
     me = await bot.get_me()
     chat_id = message.from_user.id
     start_time = time.time()
@@ -116,10 +113,6 @@ async def save_doc(bot, message, cb=False):
 
 @Client.on_message(filters.command('video') & filters.private)
 async def save_video(bot, message, cb=False):
-    if Config.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, message)
-      if fsub == 400:
-        return
     me = await bot.get_me()
 
     chat_id = message.from_user.id
