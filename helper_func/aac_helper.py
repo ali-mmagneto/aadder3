@@ -13,7 +13,7 @@ from config import Config
 async def on_task_complete(bot, message: Message):
     del aquee[0]
     if len(aquee) > 0:
-        await add_task(app, aquee[0])
+        await add_task(bot, message)
 
 async def add_task(bot, message):
     try:
