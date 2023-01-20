@@ -4,17 +4,12 @@ from helper_func.dbhelper import Database as Db
 from helper_func.mux import sesekle_vid
 from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from config import Config
-from plugins.forcesub import handle_force_subscribe
 import time
 import os
 db = Db()
 
 @Client.on_message(filters.command('sesekle') & filters.private)
 async def sesekle(bot, message, cb=False):
-    if Config.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, message)
-      if fsub == 400:
-        return
     me = await bot.get_me()
 
     chat_id = str(message.from_user.id)
