@@ -6,7 +6,8 @@ from helper_func.progress_bar import humanbytes
 from plugins.save_file import equee
 from plugins.aac import aquee
 from pyrogram import Client, filters
-
+from audiobot inport botStartTime
+from helper_func.thumb import ReadableTime
 
 @Client.on_message(filters.command("status"))
 async def status(bot, message):
