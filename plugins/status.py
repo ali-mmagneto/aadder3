@@ -2,7 +2,7 @@ import shutil
 import psutil
 import math
 
-from functions.progress import humanbytes
+from helper_func.progress_bar import humanbytes
 from plugins.save_file import equee
 from plugins.aac import aquee
 from pyrogram import Client, filters
