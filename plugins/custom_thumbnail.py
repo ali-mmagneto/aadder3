@@ -45,7 +45,7 @@ async def delete_thumbnail(c, m):
     chat_id = m.from_user.id
     path = os.path.join(
         Config.DOWNLOAD_DIR,
-        user_id
+        chat_id
     )
     thumb_image_path = os.path.join(
         path,
