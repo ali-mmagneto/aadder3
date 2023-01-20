@@ -6,7 +6,7 @@ from helper_func.dbhelper import Database as Db
 db = Db().setup()
 
 import pyrogram
-from pyrogram import Client
+from pyrogram import Client, __version__
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
