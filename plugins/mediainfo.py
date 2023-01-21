@@ -44,7 +44,7 @@ async def telegram_mediainfo(client, message):
     reply_msg = await message.reply_text("`Mediainfoyu almaya çalıșıyorum, bekle..`", quote=True)
 
     file = await client.download_media(
-        message = message.reply_to_message,
+        message = message,
         file_name = Config.DOWNLOAD_DIR+'/',
         )
     mediainfo = subprocess.check_output(['file', filename]).decode("utf-8")
