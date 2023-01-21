@@ -72,7 +72,7 @@ async def telegram_mediainfo(client, message):
             elif 'IsTruncated' in lines[i] or 'FileExtension_Invalid' in lines[i]:
                 lines[i] = ''
 
-        remove_N(lines)
+        
         with open(f'{filename}.txt', 'w') as f:
             f.write('\n'.join(lines))
 
