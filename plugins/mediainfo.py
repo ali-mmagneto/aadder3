@@ -1,5 +1,5 @@
 from helper_func.tools import katbin_paste
-from helper_func.tools import get_readable_size, get_readable_bitrate, telegram_mediainfo
+from helper_func.tools import get_readable_size, get_readable_bitrate
 
 from pyrogram.types import Message
 from pyrogram import Client, filters
@@ -81,7 +81,7 @@ async def telegram_mediainfo(client, message):
 
         output = await katbin_paste(content)
 
-        await reply_msg.edit(f"**File Name :** `{filename}`\n\n**Mediainfo :** {output}", disable_web_page_preview=True)
+        await reply_msg.edit(f"**Dosya Adı :** `{filename}`\n\n**Mediainfo :** {output}", disable_web_page_preview=True)
         os.remove(f'{filename}.txt')
         os.remove(filename)
 
@@ -90,7 +90,7 @@ async def telegram_mediainfo(client, message):
         await message.reply_text(f"mediainfoyu alırken bir hata oluștu bir daha dene.", quote=True)
 
 
-@Client.on_message(filters.command('mediainfo')
+@Client.on_message(filters.command('mediainfo'))
 async def mediainfo(client, message: Message):
     if message.reply_to_message:
         await telegram_mediainfo(client, message)
