@@ -11,7 +11,7 @@ from pyrogram import Client, filters
 from config import botStartTime2
 from helper_func.thumb import ReadableTime
 from pyrogram.types import Message
-thumb = https://telegra.ph/file/e66fb7028a6b6c8e518b2.jpg
+thumb = 'https://telegra.ph/file/e66fb7028a6b6c8e518b2.jpg'
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
