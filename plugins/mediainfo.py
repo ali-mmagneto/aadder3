@@ -1,5 +1,5 @@
 from helper_func.tools import katbin_paste
-from helper_func.tools import get_readable_size, get_readable_bitrate
+from helper_func.tools import get_readable_size, get_readable_bitrate, telegram_mediainfo
 
 from pyrogram.types import Message
 from pyrogram import Client, filters
