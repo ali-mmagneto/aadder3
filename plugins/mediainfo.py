@@ -85,9 +85,9 @@ async def telegram_mediainfo(client, message):
         os.remove(f'{filename}.txt')
         os.remove(filename)
 
-    except:
+    except Exception as e:
         await reply_msg.delete()
-        await message.reply_text(f"mediainfoyu alırken bir hata oluștu bir daha dene.", quote=True)
+        await message.reply_text(f"mediainfoyu alırken bir hata oluștu bir daha dene. {e}", quote=True)
 
 
 @Client.on_message(filters.command('mediainfo'))
