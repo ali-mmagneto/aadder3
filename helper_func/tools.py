@@ -3,7 +3,7 @@ import shlex
 import asyncio
 from bs4 import BeautifulSoup
 from typing import Tuple
-
+import httpx
 import string
 import shutil
 import random
