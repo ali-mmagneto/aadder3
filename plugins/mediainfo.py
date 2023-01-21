@@ -84,7 +84,7 @@ async def telegram_mediainfo(client, message):
         await reply_msg.edit(f"**Dosya Adı :** `{filename}`\n\n**Mediainfo :** {output}", disable_web_page_preview=True)
         document = filename + '.txt'
         await client.send_document(
-            chat_id=message.chat.id
+            chat_id=message.chat.id,
             document=document)
 
     except Exception as e:
