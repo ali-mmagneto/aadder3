@@ -52,7 +52,7 @@ async def read_stderr(start, msg, process):
 async def sesekle_vid(vid_filename, aud_filename, msg):
 
     start = time.time()
-    vid = Config.DOWNLOAD_DIR+'/'+vid_filename
+    vid = Config.DOWNLOAD_DIR+'/'+vid_filename  + '.mp4'
     sub = Config.DOWNLOAD_DIR+'/'+aud_filename
 
     out_file = '.'.join(vid_filename.split('.')[:-1])
