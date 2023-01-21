@@ -89,7 +89,7 @@ async def sesekle(bot, message, cb=False):
                 height = height,
                 supports_streaming=True,
                 video = video,
-                caption = final_filename
+                caption = final_filename + '.mp4'
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
         await sent_msg.edit(text)
