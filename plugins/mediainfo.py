@@ -47,7 +47,8 @@ async def telegram_mediainfo(client, message):
         message = message,
         file_name = Config.DOWNLOAD_DIR+'/',
         )
-    mediainfo = subprocess.check_output(['file', filename]).decode("utf-8")
+    media_filename = os.path.basename(file)
+    mediainfo = subprocess.check_output(['media_filename', filename]).decode("utf-8")
     mediainfo_json = json.loads(subprocess.check_output(['mediainfo', filename, '--Output=JSON']).decode("utf-8"))
     readable_size = get_readable_size(size)
 
