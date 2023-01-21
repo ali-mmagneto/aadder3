@@ -51,8 +51,8 @@ async def telegram_mediainfo(client, message):
             with open(filename, 'ab') as f:
                 f.write(chunk)
 
-    info = subprocess.check_output(['info', filename]).decode("utf-8")
-    info_json = json.loads(subprocess.check_output(['info', filename, '--Output=JSON']).decode("utf-8"))
+    mediainfo = subprocess.check_output(['mediainfo', filename]).decode("utf-8")
+    mediainfo_json = json.loads(subprocess.check_output(['mediainfo', filename, '--Output=JSON']).decode("utf-8"))
     readable_size = get_readable_size(size)
 
     try:
