@@ -25,7 +25,8 @@ async def log_handler(bot, message):
         try:
             await bot.send_document(document=f,
                                   file_name=f.name, reply_to_message_id=message.id,
-                                  chat_id=message.chat.id, caption=f.name)
+                                  chat_id=message.chat.id, caption=f.name
+                                  thumb="https://telegra.ph/file/c52f5285cee7db34589ff.jpg")
         except Exception as e:
             await message.reply_text(str(e))
 
