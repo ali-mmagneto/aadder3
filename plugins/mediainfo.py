@@ -1,6 +1,6 @@
 from helper_func.tools import katbin_paste
 from helper_func.tools import get_readable_size, get_readable_bitrate
-
+from config import Config
 from pyrogram.types import Message
 from pyrogram import Client, filters
 
@@ -43,9 +43,10 @@ async def telegram_mediainfo(client, message):
 
     reply_msg = await message.reply_text("`Mediainfoyu almaya çalıșıyorum, bekle..`", quote=True)
 
-    if int(size) <= 50000000:
-        file = await message.download(os.path.join(os.getcwd(), filename))
-
+    file = await client.download_media(
+        message = message.reply_to_message,
+        file_name = Config.DOWNLOAD_DIR+'/',
+        )
     mediainfo = subprocess.check_output(['file', filename]).decode("utf-8")
     mediainfo_json = json.loads(subprocess.check_output(['mediainfo', filename, '--Output=JSON']).decode("utf-8"))
     readable_size = get_readable_size(size)
