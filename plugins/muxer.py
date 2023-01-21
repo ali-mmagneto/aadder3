@@ -33,8 +33,8 @@ async def sesekle(bot, message, cb=False):
         return
 
     final_filename = db.get_filename(chat_id)
-    os.rename(Config.DOWNLOAD_DIR+'/'+softmux_filename,Config.DOWNLOAD_DIR+'/'+final_filename)
-    video = os.path.join(Config.DOWNLOAD_DIR, final_filename)
+    os.rename(Config.DOWNLOAD_DIR+'/'+softmux_filename,Config.DOWNLOAD_DIR+'/'+final_filename + '.mp4')
+    video = os.path.join(Config.DOWNLOAD_DIR, final_filename + '.mp4')
     start_time = time.time()
     duration = get_duration(video)
     thumb_image_path = os.path.join(
