@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from config import Config
 
-@Client.on_message(filters.command('rename')
+@Client.on_message(filters.command('rename'))
 async def rename(bot, message):
     message = message.reply_to_message
     msg = await bot.send_message("yeni Video ismini yaz")
