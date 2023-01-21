@@ -11,3 +11,4 @@ Pillow
 psutil
 git+https://github.com/ali-mmagneto/gerek02
 bs4
+httpx
