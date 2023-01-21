@@ -41,15 +41,18 @@ async def telegram_mediainfo(client, message):
     mime = media.mime_type
     size = media.file_size
 
-    reply_msg = await message.reply_text("`Mediainfoyu almaya çalıșıyorum, bekle..`", quote=True)
+    reply_msg = await message.reply_text("Mediainfo alınıyor..", quote=True)
 
-    file = await client.download_media(
-        message = message,
-        file_name = Config.DOWNLOAD_DIR+'/',
-        )
-    media_filename = os.path.basename(file)
-    mediainfo = subprocess.check_output(['media_filename', filename]).decode("utf-8")
-    mediainfo_json = json.loads(subprocess.check_output(['mediainfo', filename, '--Output=JSON']).decode("utf-8"))
+    if int(size) <= 50000000:
+        await message.download(os.path.join(os.getcwd(), filename))
+
+    else:
+        async for chunk in client.stream_media(message, limit=5):
+            with open(filename, 'ab') as f:
+                f.write(chunk)
+
+    info = subprocess.check_output(['info', filename]).decode("utf-8")
+    info_json = json.loads(subprocess.check_output(['info', filename, '--Output=JSON']).decode("utf-8"))
     readable_size = get_readable_size(size)
 
     try:
