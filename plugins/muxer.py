@@ -47,10 +47,10 @@ async def sesekle(bot, message, cb=False):
     else:
         thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
     width, height = get_width_height(video)
-    get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
-    print(get_chat)
     file_size = os.stat(video).st_size
     if file_size > 2093796556:
+        get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
+        print(get_chat)
         await bot.send_message(Config.PRE_LOG, "2 gb üstüVideo Geliyor.")
         copy = await Config.userbot.send_video(
                 chat_id = Config.PRE_LOG, 
