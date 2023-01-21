@@ -52,12 +52,12 @@ async def read_stderr(start, msg, process):
 async def sesekle_vid(vid_filename, aud_filename, msg):
 
     start = time.time()
-    vid = Config.DOWNLOAD_DIR+'/'+vid_filename  + '.mp4'
+    vid = Config.DOWNLOAD_DIR+'/'+vid_filename
     sub = Config.DOWNLOAD_DIR+'/'+aud_filename
 
     out_file = '.'.join(vid_filename.split('.')[:-1])
     output = out_file+'1.mkv'
-    out_location = Config.DOWNLOAD_DIR+'/'+output
+    out_location = Config.DOWNLOAD_DIR+'/'+output  + '.mp4'
     aud_ext = aud_filename.split('.').pop()
     command = [
             'ffmpeg','-hide_banner',
