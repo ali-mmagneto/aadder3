@@ -4,10 +4,19 @@ import os
 
 import pyrogram
 from config import Config
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
 
 from script import Script
 from pyrogram import enums
+
+buttonz=ReplyKeyboardMarkup(
+            [
+                ["Kanalım"],
+                ["Bot Sahibi😎"]
+                        
+            ],
+            resize_keyboard=True
+        )
 
 @pyrogram.Client.on_message(pyrogram.filters.command("help"))
 async def help(bot, message, cb=False):
@@ -23,7 +32,7 @@ async def help(bot, message, cb=False):
         await message.message.edit(
             text=Script.HELP_USER,
             disable_web_page_preview=True,
-            reply_markup=reply_markup
+            reply_markup=buttonz
         )
     else:
         await message.reply_text(
