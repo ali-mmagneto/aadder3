@@ -11,6 +11,10 @@ from helper_func.progress_bar import progress_bar
 from pyrogram.errors import FloodWait, MessageNotModified, MessageIdInvalid
 from config import Config
 
+progress_pattern = re.compile(
+    r'(frame|fps|size|time|bitrate|speed)\s*\=\s*(\S+)'
+)
+
 def parse_progress(line):
     items = {
         key: value for key, value in progress_pattern.findall(line)
