@@ -6,7 +6,7 @@ import asyncio
 from plugins.aac import aquee
 from config import Config
 from pyrogram.types import Message
-from helper_func.thumb import encode, get_codec, get_thumbnail, get_duration, get_width_height
+from helper_func.thumb import get_codec, get_thumbnail, get_duration, get_width_height
 from helper_func.progress_bar import progress_bar
 from pyrogram.errors import FloodWait, MessageNotModified, MessageIdInvalid
 from config import Config
