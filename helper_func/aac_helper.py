@@ -197,11 +197,11 @@ async def encode(msg, filepath):
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE
     )
+    await proc.communicate()
     await asyncio.wait([
             read_stdera(start, msg, proc),
             proc.wait(),
-        ])
-    await proc.communicate()
+        ]) 
     return output_filepath
 
 
