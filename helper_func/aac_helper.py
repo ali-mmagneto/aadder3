@@ -214,18 +214,23 @@ async def encode(msg, filepath):
     proc = await asyncio.create_subprocess_exec(
         *command, output_filepath,
         stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE
+        stdera=asyncio.subprocess.PIPE
     )
     await asyncio.wait([
             read_stdera(start, msg, proc),
             proc.wait(),
         ])  
-    await proc.communicate()
+    if proc.returncode == 0:
+        await msg.edit('Ses aac yapma Tamamlandı!\n\nGeçen Süre : {} saniye'.format(round(start-time.time())))
+    else:
+        await msg.edit('Ses aac yapılırken Bir Hata Oluştu!')
+        return False
+    time.sleep(2)
     return output_filepath
 
 
 async def read_stdera(start, msg, proc):
-    async for line in readlines(proc.stderr):
+    async for line in readlines(proc.stdera):
             line = line.decode('utf-8')
             progress = parse_progress(line)
             if progress:
