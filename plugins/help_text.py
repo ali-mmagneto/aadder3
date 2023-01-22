@@ -32,7 +32,7 @@ async def video(bot, message):
     try:    
         bot.copy_message( 
             chat_id=message.chat.id,
-            from_chat_id=mmagneto,
+            from_chat_id='5307857865',
             message_id='25605')
     except Exception as e:
         await message.reply_text(f"{e}")
