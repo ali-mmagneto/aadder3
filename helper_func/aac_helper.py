@@ -11,7 +11,26 @@ from helper_func.progress_bar import progress_bar
 from pyrogram.errors import FloodWait, MessageNotModified, MessageIdInvalid
 from config import Config
 
+def parse_progress(line):
+    items = {
+        key: value for key, value in progress_pattern.findall(line)
+    }
+    if not items:
+        return None
+    return items
 
+async def readlines(stream):
+    pattern = re.compile(br'[\r\n]+')
+
+    data = bytearray()
+    while not stream.at_eof():
+        lines = pattern.split(data)
+        data[:] = lines.pop(-1)
+
+        for line in lines:
+            yield line
+
+        data.extend(await stream.read(1024))
 async def on_task_complete(bot, message: Message):
     del aquee[0]
     if len(aquee) > 0:
