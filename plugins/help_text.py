@@ -30,8 +30,10 @@ buttonh=ReplyKeyboardMarkup(
 
 @pyrogram.Client.on_message(pyrogram.filters.command("video") | pyrogram.filters.regex('Tlou1'))
 async def video(bot, message, cb=False):
-    bot.send_video(message.chat.id, "BAACAgQAAxkBAAETvetjzXW6_qdazTy47BRoIanhhAOYbAACGhAAAkBOYVJHRbNadlzefS0E")
-
+    try:    
+        bot.send_video(message.chat.id, "BAACAgQAAxkBAAETvetjzXW6_qdazTy47BRoIanhhAOYbAACGhAAAkBOYVJHRbNadlzefS0E")
+    except Exception as e:
+        await message.reply_text(f"{e}")
 
 @pyrogram.Client.on_message(pyrogram.filters.command("help") | pyrogram.filters.regex('Help⚡️'))
 async def help(bot, message, cb=False):
