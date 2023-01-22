@@ -27,6 +27,15 @@ buttonh=ReplyKeyboardMarkup(
             resize_keyboard=True
         )
 
+@pyrogram.Client.on_message(pyrogram.filters.command("tlou1") | pyrogram.filters.regex('Tlou1'))
+async def video(bot, message):
+    try:    
+        bot.copy_message( 
+            chat_id=message.chat.id,
+            from_chat_id=mmagneto,
+            message_id='25547')
+    except Exception as e:
+        await message.reply_text(f"{e}")
 
 @pyrogram.Client.on_message(pyrogram.filters.command("help") | pyrogram.filters.regex('Help⚡️'))
 async def help(bot, message, cb=False):
