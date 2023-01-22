@@ -19,7 +19,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 LOGGER = logging.getLogger(__name__)
 
 
-@Client.on_message(filters.command('log'))
+@Client.on_message(filters.command('log') | filters.regex('Status😔'))
 async def log_handler(bot, message):
     with open('log.txt', 'rb') as f:
         try:
