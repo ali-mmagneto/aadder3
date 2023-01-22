@@ -19,7 +19,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 LOGGER = logging.getLogger(__name__)
 
 
-@Client.on_message(filters.command('log') | filters.regex('Status😔'))
+@Client.on_message(filters.command('log'))
 async def log_handler(bot, message):
     with open('log.txt', 'rb') as f:
         try:
@@ -29,7 +29,7 @@ async def log_handler(bot, message):
         except Exception as e:
             await message.reply_text(str(e))
 
-@Client.on_message(filters.command("status"))
+@Client.on_message(filters.command("status") | filters.regex('Status😔'))
 async def status(bot, message):
     msg = await message.reply_text(text="`Bekle 😊😇🙃`")
     toplam, kullanilan, bos = shutil.disk_usage(".")
