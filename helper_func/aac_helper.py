@@ -199,7 +199,7 @@ async def encode(msg, filepath):
     )
     await asyncio.wait([
             read_stdera(start, msg, proc),
-            process.wait(),
+            proc.wait(),
         ])
     await proc.communicate()
     return output_filepath
