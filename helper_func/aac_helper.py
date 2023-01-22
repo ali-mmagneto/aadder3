@@ -1,6 +1,8 @@
 import os
 import time
 import shutil
+import re
+import asyncio
 from plugins.aac import aquee
 from config import Config
 from pyrogram.types import Message
@@ -45,7 +47,7 @@ async def add_task(bot, message):
             progress=progress_bar,
             progress_args=("`İndiriliyor...`", msg, c_time))
         await msg.edit("`Video Kodlanıyor...`")
-        new_file = await encode(filepath)
+        new_file = await encode(msg, filepath)
         if new_file:
             await msg.edit("`Yükleniyor`")
             await handle_upload(bot, new_file, message, msg, random)
@@ -163,3 +165,61 @@ async def handle_upload(bot, new_file, message, msg, random):
                os.remove(thumb)
         except:
             pass     
+
+async def encode(msg, filepath):
+    start = time.time()
+    path, extension = os.path.splitext(filepath)
+    file_name = os.path.basename(path)
+    encode_dir = os.path.join(
+        Config.ENCODE_DIR,
+        file_name
+    )
+    output_filepath = encode_dir + '.mp4'
+    assert (output_filepath != filepath)
+    if os.path.isfile(output_filepath):
+        print('"{}" Atlanıyor: dosya zaten var'.format(output_filepath))
+    print(filepath)
+
+    # Get the audio and subs channel codec
+    audio_codec = get_codec(filepath, channel='a:0')
+
+    if not audio_codec:
+        audio_opts = '-c:v copy'
+    elif audio_codec[0] in 'aac':
+        audio_opts = '-c:v copy'
+    else:
+        audio_opts = '-c:a aac -c:v copy'
+
+    command = ['ffmpeg', '-y', '-i', filepath]
+    command.extend(audio_opts.split())
+    proc = await asyncio.create_subprocess_exec(
+        *command, output_filepath,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE
+    )
+    await asyncio.wait([
+            read_stdera(start, msg, proc),
+            process.wait(),
+        ])
+    await proc.communicate()
+    return output_filepath
+
+
+async def read_stdera(start, msg, proc):
+    async for line in readlines(proc.stderr):
+            line = line.decode('utf-8')
+            progress = parse_progress(line)
+            if progress:
+                #Progress bar logic
+                now = time.time()
+                diff = start-now
+                text = 'İLERLEME\n'
+                text += 'Boyut : {}\n'.format(progress['size'])
+                text += 'Süre : {}\n'.format(progress['time'])
+                text += 'Hız : {}\n'.format(progress['speed'])
+
+                if round(diff % 5)==0:
+                    try:
+                        await msg.edit(text=text)
+                    except Exception as e:
+                        print(e)
