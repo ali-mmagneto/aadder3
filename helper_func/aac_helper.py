@@ -31,6 +31,7 @@ async def readlines(stream):
             yield line
 
         data.extend(await stream.read(1024))
+
 async def on_task_complete(bot, message: Message):
     del aquee[0]
     if len(aquee) > 0:
@@ -66,48 +67,7 @@ async def add_task(bot, message):
             progress=progress_bar,
             progress_args=("`İndiriliyor...`", msg, c_time))
         await msg.edit("`Video Kodlanıyor...`")
-        start = time.time()
-        path, extension = os.path.splitext(filepath)
-        file_name = os.path.basename(path)
-        encode_dir = os.path.join(
-            Config.ENCODE_DIR,
-            file_name
-        )
-        output_filepath = encode_dir + '.mp4'
-        assert (output_filepath != filepath)
-        if os.path.isfile(output_filepath):
-            print('"{}" Atlanıyor: dosya zaten var'.format(output_filepath))
-        print(filepath)
-
-        # Get the audio and subs channel codec
-        audio_codec = get_codec(filepath, channel='a:0')
-
-        if not audio_codec:
-            audio_opts = '-c:v copy'
-        elif audio_codec[0] in 'aac':
-            audio_opts = '-c:v copy'
-        else:
-            audio_opts = '-c:a aac -c:v copy'
-
-        command = ['ffmpeg', '-y', '-i', filepath]
-        command.extend(audio_opts.split())
-        proc = await asyncio.create_subprocess_exec(
-            *command, output_filepath,
-            stdout=asyncio.subprocess.PIPE,
-            stdera=asyncio.subprocess.PIPE
-        )
-        await asyncio.wait([
-                read_stdera(start, msg, proc),
-                proc.wait(),
-           ])  
-        await proc.communicate()
-        if proc.returncode == 0:
-            await msg.edit('Ses aac yapma Tamamlandı!\n\nGeçen Süre : {} saniye'.format(round(start-time.time())))
-        else:
-           await msg.edit('Ses aac yapılırken Bir Hata Oluştu!')
-           return False
-        time.sleep(2)
-        new_file=output_filepath
+        new_file = await encode(msg, filepath)
         if new_file:
             await msg.edit("`Yükleniyor`")
             await handle_upload(bot, new_file, message, msg, random)
@@ -224,11 +184,49 @@ async def handle_upload(bot, new_file, message, msg, random):
             if thumb_image_path is None:
                os.remove(thumb)
         except:
-            pass    
+            pass     
+
+async def encode(msg, filepath):
+    start = time.time()
+    path, extension = os.path.splitext(filepath)
+    file_name = os.path.basename(path)
+    encode_dir = os.path.join(
+        Config.ENCODE_DIR,
+        file_name
+    )
+    output_filepath = encode_dir + '.mp4'
+    assert (output_filepath != filepath)
+    if os.path.isfile(output_filepath):
+        print('"{}" Atlanıyor: dosya zaten var'.format(output_filepath))
+    print(filepath)
+
+    # Get the audio and subs channel codec
+    audio_codec = get_codec(filepath, channel='a:0')
+
+    if not audio_codec:
+        audio_opts = '-c:v copy'
+    elif audio_codec[0] in 'aac':
+        audio_opts = '-c:v copy'
+    else:
+        audio_opts = '-c:a aac -c:v copy'
+
+    command = ['ffmpeg', '-y', '-i', filepath]
+    command.extend(audio_opts.split())
+    proc = await asyncio.create_subprocess_exec(
+        *command, output_filepath,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE
+    )
+    await asyncio.wait([
+            read_stdera(start, msg, proc),
+            proc.wait(),
+        ])
+    await proc.communicate()
+    return output_filepath
 
 
 async def read_stdera(start, msg, proc):
-    async for line in readlines(proc.stdera):
+    async for line in readlines(proc.stderr):
             line = line.decode('utf-8')
             progress = parse_progress(line)
             if progress:
