@@ -66,7 +66,6 @@ async def add_task(bot, message):
             progress=progress_bar,
             progress_args=("`İndiriliyor...`", msg, c_time))
         await msg.edit("`Video Kodlanıyor...`")
-        new_file = await encode(msg, filepath)
         start = time.time()
         path, extension = os.path.splitext(filepath)
         file_name = os.path.basename(path)
