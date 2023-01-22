@@ -31,8 +31,7 @@ buttonh=ReplyKeyboardMarkup(
 @pyrogram.Client.on_message(pyrogram.filters.command("video") | pyrogram.filters.regex('Tlou1'))
 async def video(bot, message):
     try:    
-        message.reply_video(
-            chat_id=message.chat.id, 
+        message.reply_video( 
             video="BAACAgQAAxkBAAETvetjzXW6_qdazTy47BRoIanhhAOYbAACGhAAAkBOYVJHRbNadlzefS0E")
     except Exception as e:
         await message.reply_text(f"{e}")
