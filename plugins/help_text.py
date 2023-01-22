@@ -9,16 +9,25 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from script import Script
 from pyrogram import enums
 
-buttonz=ReplyKeyboardMarkup(
+buttons=ReplyKeyboardMarkup(
             [
-                ["Kanalım"],
-                ["Bot Sahibi😎"]
+                ["Help⚡️"],
+                ["Status😔"]
                         
             ],
             resize_keyboard=True
         )
 
-@pyrogram.Client.on_message(pyrogram.filters.command("help"))
+buttonh=ReplyKeyboardMarkup(
+            [
+                ["Start⚡️"],
+                ["Status😔"]
+                        
+            ],
+            resize_keyboard=True
+        )
+
+@pyrogram.Client.on_message(pyrogram.filters.command("help") | pyrogram.filters.regex('Help⚡️'))
 async def help(bot, message, cb=False):
     button = [[
         InlineKeyboardButton(f'🏡 Ev', callback_data='back'),
@@ -32,18 +41,18 @@ async def help(bot, message, cb=False):
         await message.message.edit(
             text=Script.HELP_USER,
             disable_web_page_preview=True,
-            reply_markup=buttonz
+            reply_markup=buttonh
         )
     else:
         await message.reply_text(
             text=Script.HELP_USER,
             disable_web_page_preview=True,
-            reply_markup=buttonz,
+            reply_markup=buttonh,
             quote=True
         )
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command("start"))
+@pyrogram.Client.on_message(pyrogram.filters.command("start") | pyrogram.filters.regex('Start⚡️'))
 async def start(bot, message, cb=False):
     button = [[
         InlineKeyboardButton(f'💡 Yardım', callback_data='help'),
@@ -57,13 +66,13 @@ async def start(bot, message, cb=False):
         await message.message.edit(
             text=Script.START_TEXT, 
             disable_web_page_preview=True,
-            reply_markup=reply_markup
+            reply_markup=buttons
         )
     else:
         await message.reply_text(
             text=Script.START_TEXT, 
             disable_web_page_preview=True,
-            reply_markup=reply_markup,
+            reply_markup=buttons,
             quote=True
         ) 
 
