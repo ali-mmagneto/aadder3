@@ -28,13 +28,6 @@ buttonh=ReplyKeyboardMarkup(
         )
 
 
-@pyrogram.Client.on_message(pyrogram.filters.command("video") | pyrogram.filters.regex('Tlou1'))
-async def video(bot, message):
-    bot.copy_message( 
-        chat_id=message.chat.id,
-        from_chat_id=Config.PRE_LOG,
-        message_id=155)
-
 @pyrogram.Client.on_message(pyrogram.filters.command("help") | pyrogram.filters.regex('Help⚡️'))
 async def help(bot, message, cb=False):
     button = [[
