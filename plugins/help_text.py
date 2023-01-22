@@ -38,7 +38,7 @@ async def help(bot, message, cb=False):
         await message.reply_text(
             text=Script.HELP_USER,
             disable_web_page_preview=True,
-            reply_markup=reply_markup,
+            reply_markup=buttonz,
             quote=True
         )
 
