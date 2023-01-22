@@ -32,84 +32,89 @@ async def confirm_dwnld(client, message):
 
 @Client.on_message(filters.command('ses') & filters.private)
 async def save_doc(bot, message, cb=False):
-    me = await bot.get_me()
-    chat_id = message.from_user.id
-    start_time = time.time()
-    downloading = await bot.send_message(chat_id, '`İndiriliyor..`')
-    download_location = await bot.download_media(
-        message = message.reply_to_message,
-        file_name = Config.DOWNLOAD_DIR+'/',
-        progress = progress_bar,
-        progress_args = (
-            'Başlatılıyor',
-            downloading,
-            start_time
-        )
-    )
-
-    if download_location is None:
-        return bot.edit_message_text(
-            text = 'Indirme Bașarısız!',
-            chat_id = chat_id,
-            message_id = downloading.id
-        )
-
-    await bot.edit_message_text(
-        text = Translation.DOWNLOAD_SUCCESS.format(round(time.time()-start_time)),
-        chat_id = chat_id,
-        message_id = downloading.id
-    )
-
-    tg_filename = os.path.basename(download_location)
-    try:
-        og_filename = message.document.filename
-    except:
-        og_filename = False
-
-    if og_filename:
-        #os.rename(Config.DOWNLOAD_DIR+'/'+tg_filename,Config.DOWNLOAD_DIR+'/'+og_filename)
-        save_filename = og_filename
-    else :
-        save_filename = tg_filename
-
-    ext = save_filename.split('.').pop()
-    filename = str(round(start_time))+'.'+ext
-
-    if ext in ['aac','mp3','m4a']:
-        os.rename(Config.DOWNLOAD_DIR+'/'+tg_filename,Config.DOWNLOAD_DIR+'/'+filename)
-        db.put_sub(chat_id, filename)
-        if db.check_video(chat_id):
-            text = 'Ses Dosyası Başarıyla Yüklendi.\n\n /sesekle komutu ile ișleme bașlayabilirsin.'
-        else:
-            text = 'Ses Dosyası Yüklendi.\nŞimdi Video Dosyasını yolla!'
-
-        await bot.edit_message_text(
-            text = text,
-            chat_id = chat_id,
-            message_id = downloading.id
-        )
-
-    elif ext in ['mp4','mkv']:
-        os.rename(Config.DOWNLOAD_DIR+'/'+tg_filename,Config.DOWNLOAD_DIR+'/'+filename)
-        db.put_video(chat_id, filename, save_filename)
-        if db.check_sub(chat_id):
-            text = 'Video Dosyası Başarı ile İndirildi.\n\n /sesekle komutu ile ișleme bașlayabilirsin.'
-        else :
-            text = 'Video Dosyası Başarı İle İndirildi.\nŞimdi Ses Dosyasını Yolla!'
-        await bot.edit_message_text(
-            text = text,
-            chat_id = chat_id,
-            message_id = downloading.id
-        )
-
+    if not m.from_user:
+        return await m.reply_text("`Kim olduğunu bilmiyorum :')`")
+    if (not m.reply_to_message) or (not m.reply_to_message.media) or (not get_file_attr(m.reply_to_message)):
+        return await m.reply_text("`Lütfen Bir Dosya Yanıtla 😡!`", quote=True)
     else:
-        text = Translation.UNSUPPORTED_FORMAT.format(ext)+f'\nFile = {tg_filename}'
+        me = await bot.get_me()
+        chat_id = message.from_user.id
+        start_time = time.time()
+        downloading = await bot.send_message(chat_id, '`İndiriliyor..`')
+        download_location = await bot.download_media(
+            message = message.reply_to_message,
+            file_name = Config.DOWNLOAD_DIR+'/',
+            progress = progress_bar,
+            progress_args = (
+                'Başlatılıyor',
+                downloading,
+                start_time
+            )
+        )
+
+        if download_location is None:
+            return bot.edit_message_text(
+                text = 'Indirme Bașarısız!',
+                chat_id = chat_id,
+                message_id = downloading.id
+            )
+
         await bot.edit_message_text(
-            text = text,
+            text = Translation.DOWNLOAD_SUCCESS.format(round(time.time()-start_time)),
             chat_id = chat_id,
             message_id = downloading.id
         )
-        os.remove(Config.DOWNLOAD_DIR+'/'+tg_filename)
+
+        tg_filename = os.path.basename(download_location)
+        try:
+            og_filename = message.document.filename
+        except:
+            og_filename = False
+
+        if og_filename:
+            #os.rename(Config.DOWNLOAD_DIR+'/'+tg_filename,Config.DOWNLOAD_DIR+'/'+og_filename)
+            save_filename = og_filename
+        else:
+            save_filename = tg_filename
+
+        ext = save_filename.split('.').pop()
+        filename = str(round(start_time))+'.'+ext
+
+        if ext in ['aac','mp3','m4a']:
+            os.rename(Config.DOWNLOAD_DIR+'/'+tg_filename,Config.DOWNLOAD_DIR+'/'+filename)
+            db.put_sub(chat_id, filename)
+            if db.check_video(chat_id):
+                text = 'Ses Dosyası Başarıyla Yüklendi.\n\n /sesekle komutu ile ișleme bașlayabilirsin.'
+            else:
+                text = 'Ses Dosyası Yüklendi.\nŞimdi Video Dosyasını yolla!'
+
+            await bot.edit_message_text(
+                text = text,
+                chat_id = chat_id,
+            message_id = downloading.id
+            )
+
+        elif ext in ['mp4','mkv']:
+            os.rename(Config.DOWNLOAD_DIR+'/'+tg_filename,Config.DOWNLOAD_DIR+'/'+filename)
+            db.put_video(chat_id, filename, save_filename)
+            if db.check_sub(chat_id):
+                text = 'Video Dosyası Başarı ile İndirildi.\n\n /sesekle komutu ile ișleme bașlayabilirsin.'
+            else :
+                text = 'Video Dosyası Başarı İle İndirildi.\nŞimdi Ses Dosyasını Yolla!'
+            await bot.edit_message_text(
+                text = text,
+                chat_id = chat_id,
+                message_id = downloading.id
+            )
+
+        else:
+            text = Translation.UNSUPPORTED_FORMAT.format(ext)+f'\nFile = {tg_filename}'
+            await bot.edit_message_text(
+                text = text,
+                chat_id = chat_id,
+                message_id = downloading.id
+            )
+            os.remove(Config.DOWNLOAD_DIR+'/'+tg_filename)
 
 @Client.on_message(filters.command('video') & filters.private)
 async def save_video(bot, message, cb=False):
