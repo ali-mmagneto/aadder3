@@ -107,6 +107,7 @@ async def add_task(bot, message):
            await msg.edit('Ses aac yapılırken Bir Hata Oluştu!')
            return False
         time.sleep(2)
+        new_file=output_filepath
         if new_file:
             await msg.edit("`Yükleniyor`")
             await handle_upload(bot, new_file, message, msg, random)
