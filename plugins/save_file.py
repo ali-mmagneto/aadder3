@@ -35,7 +35,7 @@ async def confirm_dwnld(client, message):
 async def save_doc(bot, message, cb=False):
     if not message.from_user:
         return await message.reply_text("`Kim olduğunu bilmiyorum :')`")
-    if (not m.reply_to_message) or (not m.reply_to_message.media) or (not get_file_attr(m.reply_to_message)):
+    if (not message.reply_to_message) or (not message.reply_to_message.media) or (not get_file_attr(message.reply_to_message)):
         return await message.reply_text("`Lütfen Bir Dosya Yanıtla 😡!`", quote=True)
     else:
         me = await bot.get_me()
@@ -121,7 +121,7 @@ async def save_doc(bot, message, cb=False):
 async def save_video(bot, message, cb=False):
     if not message.from_user:
         return await message.reply_text("`Kim olduğunu bilmiyorum :')`")
-    if (not message.reply_to_message) or (not message.reply_to_message.media) or (not get_file_attr(m.reply_to_message)):
+    if (not message.reply_to_message) or (not message.reply_to_message.media) or (not get_file_attr(message.reply_to_message)):
         return await message.reply_text("`Lütfen Bir Dosya Yanıtla 😡!`", quote=True)
     else:
         me = await bot.get_me()
