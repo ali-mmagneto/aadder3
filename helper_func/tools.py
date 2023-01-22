@@ -8,6 +8,19 @@ import string
 import shutil
 import random
 
+
+def get_file_attr(message: Message):
+
+    """
+    Combine audio or video or document
+    """
+
+    media = message.audio or \
+            message.video or \
+            message.document
+
+    return media
+
 async def katbin_paste(text: str) -> str:
     """
 	paste the text in katb.in website.
