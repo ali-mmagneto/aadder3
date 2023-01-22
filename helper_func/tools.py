@@ -9,7 +9,7 @@ import shutil
 import random
 
 
-def get_file_attr(message: Message):
+def get_file_attr(message):
 
     """
     Combine audio or video or document
