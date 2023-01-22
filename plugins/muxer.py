@@ -32,8 +32,8 @@ async def sesekle(bot, message, cb=False):
         return
 
     final_filename = db.get_filename(chat_id)
-    os.rename(Config.DOWNLOAD_DIR+'/'+softmux_filename,Config.DOWNLOAD_DIR+'/'+final_filename + '@disneyplustur' + '.mp4')
-    video = os.path.join(Config.DOWNLOAD_DIR, final_filename + '@disneyplustur' + '.mp4')
+    os.rename(Config.DOWNLOAD_DIR+'/'+softmux_filename,Config.DOWNLOAD_DIR+'/'+final_filename + '.@disneyplustur' + '.mp4')
+    video = os.path.join(Config.DOWNLOAD_DIR, final_filename + '.@disneyplustur' + '.mp4')
     start_time = time.time()
     duration = get_duration(video)
     thumb_image_path = os.path.join(
@@ -65,7 +65,7 @@ async def sesekle(bot, message, cb=False):
                 height = height,
                 supports_streaming=True,
                 video = video,
-                caption = final_filename  + '.mp4'
+                caption = final_filename  + '.@disneyplustur' + '.mp4'
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
         await sent_msg.edit(text)
@@ -88,7 +88,7 @@ async def sesekle(bot, message, cb=False):
                 height = height,
                 supports_streaming=True,
                 video = video,
-                caption = final_filename + '@disneyplustur' + '.mp4'
+                caption = final_filename + '.@disneyplustur' + '.mp4'
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
         await sent_msg.edit(text)
