@@ -101,6 +101,7 @@ async def add_task(bot, message):
                 read_stdera(start, msg, proc),
                 proc.wait(),
            ])  
+        await proc.communicate()
         if proc.returncode == 0:
             await msg.edit('Ses aac yapma Tamamlandı!\n\nGeçen Süre : {} saniye'.format(round(start-time.time())))
         else:
