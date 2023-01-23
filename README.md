@@ -42,3 +42,7 @@ OWNER_ID - Botun Sahibinin Telegram kullanıcı adı @ olmadan.
 /restart - botu tekrar başlatır.
 
 /log - log dosyası gönderir. 
+
+Foto gönderince oto thumb olarak alır. 
+
+/delthumb - thumbı siler. 
