@@ -25,20 +25,20 @@ OWNER_ID - Botun Sahibinin Telegram kullanıcı adı @ olmadan.
 
 /help, /start cart curt
 
-/extract Videodan Ses veya Alt Yazı ayıklar.
+/extract - Videodan Ses veya Alt Yazı ayıklar.
 
-/mediainfo Video veya Sesten Mediainfo alır ve hem txt olarak atar hemde Katbin'e yazdırır.
+/mediainfo - Video veya Sesten Mediainfo alır ve hem txt olarak atar hemde Katbin'e yazdırır.
 
-/ses Videoya eklenecek sesi indirir.
+/ses - Videoya eklenecek sesi indirir.
 
-/video ses eklenecek videoyu indirir. 
+/video - ses eklenecek videoyu indirir. 
 
-/sesekle ses ekleme işlemini başlatır.
+/sesekle - ses ekleme işlemini başlatır.
 
-/aac Video Sesinizi aac'ye çevirir.
+/aac - Video Sesinizi aac'ye çevirir.
 
-/status bot durumunu gösterir.
+/status - bot durumunu gösterir.
 
-/restart botu tekrar başlatır.
+/restart - botu tekrar başlatır.
 
-/log log dosyası gönderir. 
+/log - log dosyası gönderir. 
