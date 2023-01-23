@@ -50,7 +50,7 @@ async def sesekle(bot, message, cb=False):
     if file_size > 2093796556:
         get_chat = await bot.get_chat(chat_id=Config.PRE_LOG)
         print(get_chat)
-        await bot.send_message(Config.PRE_LOG, "2 gb üstüVideo Geliyor.")
+        await bot.send_message(Config.PRE_LOG, "2 gb üstü Video Geliyor.")
         copy = await Config.userbot.send_video(
                 chat_id = Config.PRE_LOG, 
                 progress = progress_bar, 
@@ -65,7 +65,7 @@ async def sesekle(bot, message, cb=False):
                 height = height,
                 supports_streaming=True,
                 video = video,
-                caption = final_filename  + '.@disneyplustur' + '.mp4'
+                caption = final_filename  + '.mp4'
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
         await sent_msg.edit(text)
@@ -88,7 +88,7 @@ async def sesekle(bot, message, cb=False):
                 height = height,
                 supports_streaming=True,
                 video = video,
-                caption = final_filename + '.@disneyplustur' + '.mp4'
+                caption = final_filename + '.mp4'
                 )
         text = 'Dosyan Başarı İle Yüklendi!\nGeçen Toplam Zaman : {} saniye'.format(round(time.time()-start_time))
         await sent_msg.edit(text)
