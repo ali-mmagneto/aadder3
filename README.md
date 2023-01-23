@@ -3,7 +3,7 @@
 Sunucu yok valla bir yere kur
 
 ## Colab
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ali-mmagneto/aadder/bloob/main/audiobot.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ali-mmagneto/aadder/blob/main/audiobot.ipynb)
 
       
 
