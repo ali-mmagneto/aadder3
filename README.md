@@ -2,7 +2,9 @@
 
 Sunucu yok valla bir yere kur
 
-("<a href=\"https://colab.research.google.com/github/ali-mmagneto/aadder/blob/master/audiobot.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>")
+## Colab
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ali-mmagneto/aadder/VideoSesDonustur.ipynb)
+
       
 
 Powered by :d
