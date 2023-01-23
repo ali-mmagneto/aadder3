@@ -1,4 +1,4 @@
-# Basit Bir Ses Video birleștirici bot
+# Basit Bir Ses Video birleștirici, Videodan Ses ve Alt Yazı ayıklayıcı, Ses aac dönüştürücü, Video veya Sesten Mediainfo çıkartıcı Bot
 
 Sunucu yok valla bir yere kur
 
@@ -17,6 +17,28 @@ STRING_SESSION - Bir Telegram Premium Hesabın bilgileri ile [Șuradan](https://
 
 PRE_LOG - Botu ve Premium Hesabını yönetici yaptığın kanalın idsi bașına -100 koy.
 
-OWNER_ID - Botun Sahibinin Telegram Idsi.
+OWNER_ID - Botun Sahibinin Telegram kullanıcı adı @ olmadan. 
 
 #iyi Kullanimlar :d
+
+#Commands
+
+/help, /start cart curt
+
+/extract Videodan Ses veya Alt Yazı ayıklar.
+
+/mediainfo Video veya Sesten Mediainfo alır ve hem txt olarak atar hemde Katbin'e yazdırır.
+
+/ses Videoya eklenecek sesi indirir.
+
+/video ses eklenecek videoyu indirir. 
+
+/sesekle ses ekleme işlemini başlatır.
+
+/aac Video Sesinizi aac'ye çevirir.
+
+/status bot durumunu gösterir.
+
+/restart botu tekrar başlatır.
+
+/log log dosyası gönderir. 
