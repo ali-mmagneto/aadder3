@@ -21,7 +21,7 @@ OWNER_ID - Botun Sahibinin Telegram kullanıcı adı @ olmadan.
 
 #iyi Kullanimlar :d
 
-#Commands
+# Commands
 
 /help, /start cart curt
 
