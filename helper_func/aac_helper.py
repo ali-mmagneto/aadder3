@@ -198,7 +198,7 @@ async def encode(msg, filepath):
         Config.ENCODE_DIR,
         file_name
     )
-    output_filepath = encode_dir + 'Dublaj' + '.mp4'
+    output_filepath = encode_dir + '.Dublaj' + '.mp4'
     assert (output_filepath != filepath)
     if os.path.isfile(output_filepath):
         print('"{}" Atlanıyor: dosya zaten var'.format(output_filepath))
