@@ -28,7 +28,7 @@ OWNER_ID - Botun Sahibinin Telegram kullanıcı adı @ olmadan.
 
 # Commands
 
-/help, /start cart curt
+/help, /start
 
 /extract - Videodan Ses veya Alt Yazı ayıklar.
 
