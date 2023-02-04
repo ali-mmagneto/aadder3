@@ -46,6 +46,7 @@ async def add_task(bot, message):
         user_id = str(message.from_user.id)
         c_time = time.time()
         random = str(c_time)
+        caption = message.reply_to_message.caption
 
         if message.reply_to_message.video:
              file_name = message.reply_to_message.video.file_name
@@ -121,8 +122,8 @@ async def handle_upload(bot, new_file, message, msg, random):
     caption_str += filename
     caption_str += "</code>"
 
-    if message.caption is not None:
-        caption = message.caption
+    if message.reply_to_message.caption is not None:
+        caption = message.reply_to_message.caption
     else:
         caption = caption_str
     
@@ -198,7 +199,7 @@ async def encode(msg, filepath):
         Config.ENCODE_DIR,
         file_name
     )
-    output_filepath = encode_dir + '.[TR]' + '.mp4'
+    output_filepath = encode_dir + '[TR]' + '.mp4'
     assert (output_filepath != filepath)
     if os.path.isfile(output_filepath):
         print('"{}" Atlanıyor: dosya zaten var'.format(output_filepath))
