@@ -4,11 +4,11 @@ import os
 
 
 @Client.on_message(filters.command('get'))
-async def get_directory(client, message):
+async def get_directory(bot, message):
     try:
         mes = unidecode(message.text).split()
         if len(mes) < 3:
-            await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/hava İstanbul Avcılar`") 
+            await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/get downloads`") 
             return
         directory = ev[1]
         if 1 == 1:
