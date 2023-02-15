@@ -7,7 +7,7 @@ import os
 async def get_directory(bot, message):
     try:
         mes = unidecode(message.text).split()
-        if len(mes) < 3:
+        if len(mes) < 2:
             await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/get downloads`") 
             return
         directory = ev[1]
