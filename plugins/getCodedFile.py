@@ -43,7 +43,7 @@ async def get_file(bot, message):
     try:
         mes = unidecode(message.text).split()
         if len(mes) < 2:
-            await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/get downloads`") 
+            await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/getfile downloads/1676486384.mp4`") 
             return
         video = mes[1]
         sent_msg = await message.reply_text("`Dosyayı Getirmeye Çalışıyorum...`")
