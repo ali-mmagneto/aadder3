@@ -31,7 +31,7 @@ async def get_directory(bot, message):
                 say = 0
                 for files in os.listdir(directory):
                     say += 1
-                    dsy = dsy + "  " + str(say) + "-) " + f"{directory}/{files}" + '\n'
+                    dsy = dsy + "  " + str(say) + "-) " + f"`{directory}/{files}`" + '\n'
                 await message.reply_text(
                     f"{directory} Klasöründeki Dosyalar." + "\n\n" + dsy + "\n" + str(
                         say) + " Tane Dosya Var.")
