@@ -10,10 +10,10 @@ async def get_directory(bot, message):
         if len(mes) < 2:
             await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/get downloads`") 
             return
-        directory = ev[1]
+        directory = mes[1]
         if 1 == 1:
             if not os.listdir(directory):
-                await message.reply("Combo klasörünüz boş")
+                await message.reply(f"{directory} klasörünüz boş")
             else:
                 for files in os.listdir(directory):
                     say = say + 1
