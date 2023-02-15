@@ -15,8 +15,9 @@ async def get_directory(bot, message):
             if not os.listdir(directory):
                 await message.reply(f"{directory} klasörünüz boş")
             else:
+                say = 0
                 for files in os.listdir(directory):
-                    say = say + 1
+                    say += 1
                     dsy = dsy + "  " + str(say) + "-) " + files + '\n'
                 await message.reply_text(
                     f"{directory} Klasöründeki Dosyalar." + "\n\n" + dsy + "\n" + str(
