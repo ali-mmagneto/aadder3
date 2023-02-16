@@ -17,17 +17,16 @@ async def extract_audio(client, message, data):
         if rcode != 0:
             await message.edit_text("**Hata Oldu.**")
             print(err)
-            await clean_up(dwld_loc, out_loc)
+            await clean_up(out_loc)
             return
     else:
         out, err, rcode, pid = await execute(f"ffmpeg -i '{dwld_loc}' -map 0:{data['map']} '{out_loc}' -y")
         if rcode != 0:
             await message.edit_text("**Error Occured. See Logs for more info.**")
             print(err)
-            await clean_up(dwld_loc, out_loc)
+            await clean_up(out_loc)
             return
 
-    await clean_up(dwld_loc)
     await upload_audio(client, message, out_loc)
 
 
@@ -42,9 +41,8 @@ async def extract_subtitle(client, message, data):
     if rcode != 0:
         await message.edit_text("**Error Occured. See Logs for more info.**")
         print(err)
-        await clean_up(dwld_loc, out_loc)
+        await clean_up(out_loc)
         return
 
-    await clean_up(dwld_loc)  
     await upload_subtitle(client, message, out_loc)
     
