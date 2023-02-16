@@ -1,4 +1,4 @@
-# Basit Bir Ses Video birleștirici, Videodan Ses ve Alt Yazı ayıklayıcı, Ses aac dönüştürücü, Video veya Sesten Mediainfo çıkartıcı Bot
+# Basit Bir Ses Video birleștirici, Videodan Ses ve Alt Yazı ayıklayıcı, Ses aac dönüştürücü, Video veya Sesten Mediainfo çıkartıcı, Renamer Bot
 
 Sunucu yok valla bir yere kur
 
@@ -55,3 +55,5 @@ Foto gönderince oto thumb olarak alır.
 /get <dizin> - Bir dizindeki dosyaları sıralar. 
 
 /getfile <dizin/dosya adı> - Belirtilen dosyayı getirir.
+
+/rename <Yeni İsim> - Videoya yeni isim koyar. 
