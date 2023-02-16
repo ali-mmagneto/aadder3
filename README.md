@@ -1,4 +1,10 @@
-# Basit Bir Ses Video birleștirici, Videodan Ses ve Alt Yazı ayıklayıcı, Ses aac dönüştürücü, Video veya Sesten Mediainfo çıkartıcı, Renamer Bot
+# Bot Özellikleri:
+
+- Ses Video birleștirir.
+- Videodan Ses ve Alt Yazı ayıklar.
+- Video Sesini aac'ye dönüştürür. 
+- Video veya Sesten Mediainfo çıkartır. 
+- Renamer Yapar. 
 
 Sunucu yok valla bir yere kur
 
