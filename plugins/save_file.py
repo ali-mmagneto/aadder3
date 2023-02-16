@@ -128,16 +128,24 @@ async def save_video(bot, message, cb=False):
         chat_id = message.from_user.id
         start_time = time.time()
         downloading = await bot.send_message(chat_id, '`İndiriliyor..`')
-        download_location = await bot.download_media(
-            message = message.reply_to_message,
-            file_name = Config.DOWNLOAD_DIR+'/',
-            progress = progress_bar,
-            progress_args = (
-                'Başlatılıyor',
-                downloading,
-                start_time
+        if message.reply_to_message.video:
+            message_name = message.reply_to_message.video.file_name
+        elif message.reply_to_message.document:
+            message_name = message.reply_to_message.document.file_name
+        print(message_name)
+        if message_name in os.listdir(Config.DOWNLOAD_DIR):
+            download_location = f"{Config.DOWNLOAD_DIR}/{message_name}"
+        else:
+            download_location = await bot.download_media(
+                message = message.reply_to_message,
+                file_name = Config.DOWNLOAD_DIR+'/',
+                progress = progress_bar,
+                progress_args = (
+                    'Başlatılıyor',
+                    downloading,
+                    start_time
+                )
             )
-        )
 
         if download_location is None:
             return bot.edit_message_text(
