@@ -24,6 +24,7 @@ async def download_file(client, message):
 
     download_location = await client.download_media(
         message=media,
+        file_name=Config.DOWNLOAD_DIR+'/', 
         progress=progress_bar,
         progress_args=(
             "`Indiriliyor`",
