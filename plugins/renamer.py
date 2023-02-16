@@ -27,7 +27,7 @@ async def rename(bot, message):
         message_name = message.reply_to_message.document.file_name
     print(message_name)
     if message_name in os.listdir(Config.DOWNLOAD_DIR):
-        media = f"{Config.DOWNLOAD_DIR}/{message_name}"
+        media = f"/{Config.DOWNLOAD_DIR}/{message_name}"
     else:
         media = await bot.download_media(
                     message = message.reply_to_message,
