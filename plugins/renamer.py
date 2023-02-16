@@ -145,4 +145,3 @@ async def rename(bot, message):
             )
         )
         await msg.edit("`Başarıyla Tamamlandı`")
-    os.remove(video)
