@@ -24,7 +24,7 @@ PRE_LOG - Botu ve Premium Hesabını yönetici yaptığın kanalın idsi bașın
 
 OWNER_ID - Botun Sahibinin Telegram kullanıcı adı @ olmadan. 
 
-#iyi Kullanimlar :d
+# iyi Kullanimlar :d
 
 # Commands
 
