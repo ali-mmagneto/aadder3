@@ -18,11 +18,11 @@ LOGGER = logging.getLogger(__name__)
 @Client.on_message(filters.command('get'))
 async def get_directory(bot, message):
     try:
-        mes = unidecode(message.text).split()
-        if len(mes) < 2:
+        text = message.text.split(" ", 1)
+        if len(text) < 2:
             await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/get downloads`") 
             return
-        directory = mes[1]
+        directory = text[1]
         if 1 == 1:
             if not os.listdir(directory):
                 await message.reply(f"{directory} klasörünüz boş")
@@ -41,11 +41,11 @@ async def get_directory(bot, message):
 @Client.on_message(filters.command('getfile'))
 async def get_file(bot, message):
     try:
-        mes = unidecode(message.text).split()
-        if len(mes) < 2:
+        text = message.text.split(" ", 1)
+        if len(text) < 2:
             await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/getfile downloads/1676486384.mp4`") 
             return
-        video = mes[1]
+        video = text[1]
         sent_msg = await message.reply_text("`Dosyayı Getirmeye Çalışıyorum...`")
         start_time = time.time()
         try:
