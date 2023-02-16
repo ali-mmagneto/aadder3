@@ -54,4 +54,4 @@ Foto gönderince oto thumb olarak alır.
 
 /get <dizin> - Bir dizindeki dosyaları sıralar. 
 
-/getfile <dizin><dosya adı> - Belirtilen dosyayı getirir.
+/getfile <dizin/dosya adı> - Belirtilen dosyayı getirir.
