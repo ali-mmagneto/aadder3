@@ -21,11 +21,19 @@ async def rename(bot, message):
     msg = await message.reply_text(
         text="`İşlem Başlatıldı...`")
     await msg.edit("`Indiriliyor..`")
-    media = await bot.download_media(
-                message = message.reply_to_message,
-                file_name = f"{file_name}",
-                progress=progress_bar,
-                progress_args=("`İndiriliyor...`", msg, start_time))
+    if message.reply_to_message.video:
+        message_name = message.reply_to_message.video.file_name
+    elif message.reply_to_message.document:
+        message_name = message.reply_to_message.document.file_name
+    print(message_name)
+    if message_name in os.listdir(Config.DOWNLOAD_DIR):
+        media = f"{Config.DOWNLOAD_DIR}/{message_name}"
+    else:
+        media = await bot.download_media(
+                    message = message.reply_to_message,
+                    file_name = f"{file_name}",
+                    progress=progress_bar,
+                    progress_args=("`İndiriliyor...`", msg, start_time))
     splitpath = media.split("/downloads/")
     dow_file_name = splitpath[1]
     old_file_name =f"downloads/{dow_file_name}"
