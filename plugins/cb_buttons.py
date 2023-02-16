@@ -45,8 +45,7 @@ async def cb_handler(client, query):
     elif query.data.startswith('cancel'):
         try:
             query_type, mapping, keyword = query.data.split('_')
-            data = DATA[keyword][int(mapping)] 
-            await clean_up(data['location'])  
+            data = DATA[keyword][int(mapping)]   
             await query.message.edit_text("**Iptal Edildi...**")
             await query.answer(
                 "Iptal Ediliyor...",
