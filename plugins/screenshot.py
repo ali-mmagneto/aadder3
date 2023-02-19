@@ -10,6 +10,7 @@ import shlex
 import json
 import random
 import re
+from pyrogram.types import InputMediaPhoto, InlineKeyboardMarkup, InlineKeyboardButton
 import os
 import string
 import shutil
@@ -76,7 +77,11 @@ async def slowpics_collection(client, message, file_name, path):
             disable_web_page_preview=True)
         for files in os.listdir(path):
             ssler = []
-            ssler.append(f"{path}/{files}")
+            ssler.append(
+                InputMediaPhoto(
+                    media=files
+                )
+            )
         await message.reply_media_group(
             media=ssler)
         for remover in os.listdir(path):
