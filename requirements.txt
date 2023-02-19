@@ -1,6 +1,6 @@
 pyrogram
-tgcrypto==1.2.2
-requests==2.24.0
+TgCrypto
+requests
 aiofiles
 hachoir
 ffmpeg-python
@@ -13,3 +13,4 @@ git+https://github.com/ali-mmagneto/gerek02
 bs4
 httpx
 unidecode
+requests_toolbelt
