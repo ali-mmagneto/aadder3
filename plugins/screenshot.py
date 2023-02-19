@@ -79,7 +79,7 @@ async def slowpics_collection(client, message, file_name, path):
             ssler = []
             ssler.append(
                 InputMediaPhoto(
-                    media=files
+                    media=f"{path}/{files}"
                 )
             )
         await message.reply_media_group(
