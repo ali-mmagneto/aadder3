@@ -75,8 +75,8 @@ async def slowpics_collection(client, message, file_name, path):
         await msg.edit(
             f"Dosya Adı: `{unquote(file_name)}`\n\nScreenshotlar: https://slow.pics/c/{response.text}",
             disable_web_page_preview=True)
+        ssler = [] 
         for files in os.listdir(path):
-            ssler = []
             ssler.append(
                 InputMediaPhoto(
                     media=f"{path}/{files}"
