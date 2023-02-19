@@ -75,8 +75,7 @@ async def slowpics_collection(client, message, file_name, path):
             f"Dosya Adı: `{unquote(file_name)}`\n\nScreenshotlar: https://slow.pics/c/{response.text}",
             disable_web_page_preview=True)
         for files in os.listdir(path):
-            await client.send_photo(
-                chat_id=message.chat.id, 
+            await message.reply_photo(
                 photo=files)
         for remover in os.listdir(path):
             os.remove(remover)
