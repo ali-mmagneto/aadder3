@@ -84,8 +84,6 @@ async def slowpics_collection(client, message, file_name, path):
             )
         await message.reply_media_group(
             media=ssler)
-        for remover in os.listdir(path):
-            os.remove(remover)
         
 async def generate_ss_from_file(
         client,
