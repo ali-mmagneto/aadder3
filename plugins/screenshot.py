@@ -76,7 +76,7 @@ async def slowpics_collection(client, message, file_name, path):
             disable_web_page_preview=True)
         for files in os.listdir(path):
             await message.reply_photo(
-                photo=files)
+                photo=f"{path}/{files}")
         for remover in os.listdir(path):
             os.remove(remover)
         
