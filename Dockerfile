@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 
 
-RUN apt -qq install -y git wget curl busybox  python3 ffmpeg mediainfo python3-pip
+RUN apt -qq install -y git wget curl busybox  python3 ffmpeg mediainfo aria2 python3-pip
 
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
