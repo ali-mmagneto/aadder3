@@ -80,12 +80,12 @@ async def readlines(stream):
         data.extend(await stream.read(1024 * 1024))
 
 async def yt_dlp_call_back(bot, update):
-    cb_data = update.data
+    cb_data = update.reply_to_message.data
     tg_send_type, yt_dlp_format, yt_dlp_ext, random = cb_data.split("|")
 
     dtime = str(time.time())
     
-    message = update.message
+    message = update.reply_to_message.message
     current_user_id = message.reply_to_message.from_user.id
     user_id = update.from_user.id
     chat_id = message.chat.id
@@ -100,9 +100,9 @@ async def yt_dlp_call_back(bot, update):
         )
         return False, None
 
-    thumb_image_path = DOWNLOAD_LOCATION + \
+    thumb_image_path = Config.DOWNLOAD_LOCATION + \
                        "/" + str(user_id) + f'{random}' + ".jpg"
-    save_ytdl_json_path = DOWNLOAD_LOCATION + \
+    save_ytdl_json_path = Config.DOWNLOAD_LOCATION + \
                           "/" + str(user_id) + f'{random}' + ".json"
     LOGGER.info(save_ytdl_json_path)
 
@@ -121,7 +121,7 @@ async def yt_dlp_call_back(bot, update):
     # TODO: temporary limitations
     # LOGGER.info(response_json)
 
-    yt_dlp_url = message.reply_to_message.text
+    yt_dlp_url = message.text
 
     name = str(response_json.get("title")[:100]) + \
            "." + yt_dlp_ext
