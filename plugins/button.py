@@ -80,7 +80,7 @@ async def readlines(stream):
         data.extend(await stream.read(1024 * 1024))
 
 async def yt_dlp_call_back(bot, update):
-    cb_data = update.data
+    cb_data = update.reply_to_message.data
     LOGGER.info(cb_data) 
     tg_send_type, yt_dlp_format, yt_dlp_ext, random = cb_data.split("|")
 
