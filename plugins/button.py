@@ -81,6 +81,7 @@ async def readlines(stream):
 
 async def yt_dlp_call_back(bot, update):
     cb_data = update.data
+    LOGGER.info(cb_data) 
     tg_send_type, yt_dlp_format, yt_dlp_ext, random = cb_data.split("|")
 
     dtime = str(time.time())
