@@ -80,7 +80,7 @@ async def readlines(stream):
         data.extend(await stream.read(1024 * 1024))
 
 async def yt_dlp_call_back(bot, update):
-    cb_data = update.reply_to_message.reply_to_message.data
+    cb_data = update.data
     LOGGER.info(cb_data) 
     tg_send_type, yt_dlp_format, yt_dlp_ext, random = cb_data.split("|")
 
@@ -121,9 +121,9 @@ async def yt_dlp_call_back(bot, update):
     response_json = response_json[0]
     # TODO: temporary limitations
     # LOGGER.info(response_json)
-
-    yt_dlp_url = message.text
-
+    ynt = message.reply_to_message 
+    yt_dlp_url = ynt.reply_to_message.text
+    LOGGER.info(yt_dlp_url)
     name = str(response_json.get("title")[:100]) + \
            "." + yt_dlp_ext
 
