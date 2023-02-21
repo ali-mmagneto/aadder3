@@ -8,7 +8,7 @@ LOGGER = logging.getLogger(__name__)
 import os
 import time
 import requests
-from functions.progress_bar import humanbytes
+from helper_func.progress_bar import humanbytes
 
 
 def DetectFileSize(url):
