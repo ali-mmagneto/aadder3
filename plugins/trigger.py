@@ -337,7 +337,7 @@ async def echo(bot, update):
         thumbnail_image,
         Config.DOWNLOAD_LOCATION + "/" +
         str(update.from_user.id) + random + ".webp",
-        CHUNK_SIZE,
+        Config.CHUNK_SIZE,
         None,  # bot,
         Translation.DOWNLOAD_START,
         message_id,
