@@ -20,7 +20,7 @@ from translation import Translation
 
 from pyrogram.types import InputMediaPhoto, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, MessageNotModified
-from helper_func.progress_bar import progress_for_pyrogram, humanbytes
+from helper_func.progress_bar import progress_bar, humanbytes
 from helper_func.ffmpeg import generate_screen_shots, VideoThumb, VideoMetaData, VMMetaData, DocumentThumb, \
     AudioMetaData
 from helper_func.utils import remove_urls, remove_emoji
@@ -194,7 +194,7 @@ async def yt_dlp_call_back(bot, update):
     )
 
     tmp_directory_for_each_user = os.path.join(
-        DOWNLOAD_LOCATION,
+        Config.DOWNLOAD_LOCATION,
         str(user_id),
         dtime
     )
@@ -206,7 +206,7 @@ async def yt_dlp_call_back(bot, update):
         command_to_exec = [
             "yt-dlp",
             "-c",
-            "--max-filesize", str(TG_MAX_FILE_SIZE),
+            "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
             "--prefer-ffmpeg",
             "--extract-audio",
             "--audio-format", yt_dlp_ext,
@@ -237,7 +237,7 @@ async def yt_dlp_call_back(bot, update):
             command_to_exec = [
                 "yt-dlp",
                 "-c",
-                "--max-filesize", str(TG_MAX_FILE_SIZE),
+                "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
                 yt_dlp_url, "-o", download_directory
             ]
 
@@ -318,7 +318,7 @@ async def yt_dlp_call_back(bot, update):
         time_taken_for_download = (end_one - start).seconds
 
         #
-        file_size = TG_MAX_FILE_SIZE + 1
+        file_size = Config.TG_MAX_FILE_SIZE + 1
         #
         LOGGER.info(tmp_directory_for_each_user)
         user = await bot.get_me()
@@ -364,7 +364,7 @@ async def yt_dlp_call_back(bot, update):
                     path,
                     tmp_directory_for_each_user,
                     is_w_f,
-                    DEF_WATER_MARK_FILE,
+                    Config.DEF_WATER_MARK_FILE,
                     300,
                     9
                 )
@@ -385,7 +385,7 @@ async def yt_dlp_call_back(bot, update):
                         thumbnail = await DocumentThumb(bot, update)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_AUDIO)
                         copy = await userbot.send_audio(
-                            chat_id=PRE_LOG,
+                            chat_id=Config.PRE_LOG,
                             audio=path,
                             caption=caption,
                             duration=duration,
@@ -404,7 +404,7 @@ async def yt_dlp_call_back(bot, update):
                             try:
                                 await bot.copy_message(
                                     chat_id=chat_id, 
-                                    from_chat_id=PRE_LOG, 
+                                    from_chat_id=Config.PRE_LOG, 
                                     message_id=copy.id)
                             except Exception as f:
                                 LOGGER.info(f)
@@ -414,7 +414,7 @@ async def yt_dlp_call_back(bot, update):
                         thumbnail = await VideoThumb(bot, update, duration, path, random)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_VIDEO_NOTE)
                         copy = await userbot.send_video_note(
-                            chat_id=PRE_LOG,
+                            chat_id=Config.PRE_LOG,
                             video_note=path,
                             duration=duration,
                             length=width,
@@ -433,14 +433,14 @@ async def yt_dlp_call_back(bot, update):
                             try:
                                 await bot.copy_message(
                                     chat_id=chat_id, 
-                                    from_chat_id=PRE_LOG, 
+                                    from_chat_id=Config.PRE_LOG, 
                                     message_id=copy.id)
                             except Exception as f:
                                 LOGGER.info(f)
 
                     elif tg_send_type == "file":
                         copy = await userbot.send_document(
-                            chat_id=PRE_LOG,
+                            chat_id=Config.PRE_LOG,
                             document=path,
                             caption=caption,
                             reply_to_message_id=message.reply_to_message.id,
@@ -457,7 +457,7 @@ async def yt_dlp_call_back(bot, update):
                             try:
                                 await bot.copy_message(
                                     chat_id=chat_id, 
-                                    from_chat_id=PRE_LOG, 
+                                    from_chat_id=Config.PRE_LOG, 
                                     message_id=copy.id)
                             except Exception as f:
                                 LOGGER.info(f)
@@ -466,7 +466,7 @@ async def yt_dlp_call_back(bot, update):
                         thumbnail = await DocumentThumb(bot, update)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_DOCUMENT)
                         copy = await userbot.send_document(
-                            chat_id=PRE_LOG, 
+                            chat_id=Config.PRE_LOG, 
                             document=path,
                             thumb=thumbnail,
                             caption=caption,
@@ -484,7 +484,7 @@ async def yt_dlp_call_back(bot, update):
                             try:
                                 await bot.copy_message(
                                     chat_id=chat_id, 
-                                    from_chat_id=PRE_LOG, 
+                                    from_chat_id=Config.PRE_LOG, 
                                     message_id=copy.id)
                             except Exception as f:
                                 LOGGER.info(f)
@@ -494,7 +494,7 @@ async def yt_dlp_call_back(bot, update):
                         thumb_image_path = await VideoThumb(bot, update, duration, path, random)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_VIDEO)
                         copy = await userbot.send_video(
-                            chat_id=PRE_LOG,
+                            chat_id=Config.PRE_LOG,
                             video=path,
                             caption=caption,
                             duration=duration,
@@ -516,12 +516,10 @@ async def yt_dlp_call_back(bot, update):
                             try:
                                 await bot.copy_message(
                                     chat_id=chat_id, 
-                                    from_chat_id=PRE_LOG, 
+                                    from_chat_id=Config.PRE_LOG, 
                                     message_id=copy.id)
                             except Exception as f:
                                 bot.send_message(OWNER_ID, "{f}")
-                    if LOG_CHANNEL:
-                        await copy.copy(LOG_CHANNEL)
                 except FloodWait as e:
                     print(f"Sleep of {e.value} required by FloodWait ...")
                     time.sleep(e.value)
@@ -570,7 +568,7 @@ async def yt_dlp_call_back(bot, update):
                         thumbnail = await DocumentThumb(bot, update)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_AUDIO)
                         copy = await bot.send_audio(
-                            chat_id=PRE_LOG,
+                            chat_id=chat_id,
                             audio=path,
                             caption=caption,
                             duration=duration,
@@ -656,8 +654,6 @@ async def yt_dlp_call_back(bot, update):
                                 start_time
                             )
                         )
-                    if LOG_CHANNEL:
-                        await copy.copy(LOG_CHANNEL)
                 except FloodWait as e:
                     print(f"Sleep of {e.value} required by FloodWait ...")
                     time.sleep(e.value)
