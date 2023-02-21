@@ -329,8 +329,8 @@ async def echo(bot, update):
         inline_keyboard.append([InlineKeyboardButton("♨ İptal et", callback_data='close')])
         reply_markup = InlineKeyboardMarkup(inline_keyboard)
         # LOGGER.info(reply_markup)
-    thumbnail = DEF_THUMB_NAIL_VID_S
-    thumbnail_image = DEF_THUMB_NAIL_VID_S
+    thumbnail = Config.DEF_THUMB_NAIL_VID_S
+    thumbnail_image = Config.DEF_THUMB_NAIL_VID_S
 
     if "thumbnail" in current_r_json:
         if current_r_json["thumbnail"] is not None:
@@ -338,7 +338,7 @@ async def echo(bot, update):
             thumbnail_image = current_r_json["thumbnail"]
     thumb_image_path = DownLoadFile(
         thumbnail_image,
-        DOWNLOAD_LOCATION + "/" +
+        Config.DOWNLOAD_LOCATION + "/" +
         str(update.from_user.id) + random + ".webp",
         CHUNK_SIZE,
         None,  # bot,
