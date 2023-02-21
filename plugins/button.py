@@ -20,10 +20,10 @@ from translation import Translation
 
 from pyrogram.types import InputMediaPhoto, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, MessageNotModified
-from functions.progress import progress_for_pyrogram, humanbytes
-from functions.ffmpeg import generate_screen_shots, VideoThumb, VideoMetaData, VMMetaData, DocumentThumb, \
+from helper_func.progress_bar import progress_for_pyrogram, humanbytes
+from helper_func.ffmpeg import generate_screen_shots, VideoThumb, VideoMetaData, VMMetaData, DocumentThumb, \
     AudioMetaData
-from functions.utils import remove_urls, remove_emoji
+from helper_func.utils import remove_urls, remove_emoji
 
 import logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
