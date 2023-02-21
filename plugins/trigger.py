@@ -12,8 +12,8 @@ from translation import Translation
 from pyrogram import Client, filters
 from pyrogram.enums import MessageEntityType, ChatAction
 from config import Config
-from functions.progress import humanbytes
-from functions.aiohttp import DownLoadFile
+from helper_func.progress_bar import humanbytes
+from helper_func.aiohttp import DownLoadFile
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from database.database import db
 
