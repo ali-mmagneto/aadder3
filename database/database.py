@@ -117,4 +117,4 @@ class Database:
         await self.col.update_one({'id': id}, {'$set': {'blocked_exts': blocked_exts}})
 
 
-db = Db().setup()
+db = Database(Config.DATABASE_URL, Config.SESSION_NAME)
