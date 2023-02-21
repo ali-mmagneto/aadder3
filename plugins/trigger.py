@@ -116,7 +116,7 @@ async def echo(bot, update):
                 o = entity.offset
                 l = entity.length
                 url = url[o:o + l]
-    if HTTP_PROXY != "":
+    if Config.HTTP_PROXY != "":
         command_to_exec = [
             "yt-dlp",
             "--no-warnings",
@@ -205,7 +205,7 @@ async def echo(bot, update):
             response_json.append(json.loads(x_reponse))
         # response_json = json.loads(x_reponse)
         save_ytdl_json_path = os.path.join(
-            DOWNLOAD_LOCATION,
+            Config.DOWNLOAD_LOCATION,
             str(update.from_user.id) + random + ".json"
         )
         with open(save_ytdl_json_path, "w", encoding="utf8") as outfile:
