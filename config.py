@@ -15,7 +15,7 @@ class Config:
     APP_ID = os.environ.get("APP_ID", None)
     API_HASH = os.environ.get("API_HASH", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
-   
+    CHUNK_SIZE = int(os.environ.get("CHUNK_SIZE", 128))
     DOWNLOAD_LOCATION = 'downloads'
     DOWNLOAD_DIR = 'downloads'
     OWNER_ID = os.environ.get("OWNER_ID", '1276627253') 
