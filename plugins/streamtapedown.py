@@ -58,8 +58,8 @@ async def loader(bot, update):
         if 'content="' in istek.text:
             text = istek.text.split('content="')[1]
             caption = text.split('"')[0]
-        else:
-            caption = update.reply_to_message.text
+    else:
+        caption = update.reply_to_message.text
     start_dl = time.time()
     await pablo.edit_text("`Yüklüyorum...`")
     chat_id = str(update.chat.id)
