@@ -377,14 +377,10 @@ async def yt_dlp_call_back(bot, update):
                             )
                         )
                         LOGGER.info(str(copy)) 
-                        if BOT_PM:
-                            try:
-                                await bot.copy_message(
-                                    chat_id=chat_id, 
-                                    from_chat_id=Config.PRE_LOG, 
-                                    message_id=copy.id)
-                            except Exception as f:
-                                LOGGER.info(f)
+                        await bot.copy_message(
+                            chat_id=chat_id, 
+                            from_chat_id=Config.PRE_LOG, 
+                            message_id=copy.id)
 
                     elif tg_send_type == "vm":
                         width, duration = await VMMetaData(path)
@@ -406,14 +402,10 @@ async def yt_dlp_call_back(bot, update):
                             )
                         )
                         LOGGER.info(str(copy)) 
-                        if BOT_PM:
-                            try:
-                                await bot.copy_message(
-                                    chat_id=chat_id, 
-                                    from_chat_id=Config.PRE_LOG, 
-                                    message_id=copy.id)
-                            except Exception as f:
-                                LOGGER.info(f)
+                        await bot.copy_message(
+                            chat_id=chat_id, 
+                            from_chat_id=Config.PRE_LOG, 
+                            message_id=copy.id)
 
                     elif tg_send_type == "file":
                         copy = await userbot.send_document(
@@ -430,14 +422,10 @@ async def yt_dlp_call_back(bot, update):
                             )
                         )
                         LOGGER.info(str(copy)) 
-                        if BOT_PM:
-                            try:
-                                await bot.copy_message(
-                                    chat_id=chat_id, 
-                                    from_chat_id=Config.PRE_LOG, 
-                                    message_id=copy.id)
-                            except Exception as f:
-                                LOGGER.info(f)
+                        await bot.copy_message(
+                            chat_id=chat_id, 
+                            from_chat_id=Config.PRE_LOG, 
+                            message_id=copy.id)
 
                     elif (await db.get_upload_as_doc(user_id)) is True:
                         thumbnail = await DocumentThumb(bot, update)
@@ -461,8 +449,6 @@ async def yt_dlp_call_back(bot, update):
                             chat_id=chat_id, 
                             from_chat_id=Config.PRE_LOG, 
                             message_id=copy.id)
-                    except Exception as f:
-                        LOGGER.info(f)
 
                     else:
                         width, height, duration = await VideoMetaData(path)
@@ -491,8 +477,6 @@ async def yt_dlp_call_back(bot, update):
                             chat_id=chat_id, 
                             from_chat_id=Config.PRE_LOG, 
                             message_id=copy.id)
-                    except Exception as f:
-                        bot.send_message(OWNER_ID, "{f}")
                 except FloodWait as e:
                     print(f"Sleep of {e.value} required by FloodWait ...")
                     time.sleep(e.value)
