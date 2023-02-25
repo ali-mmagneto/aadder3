@@ -91,7 +91,6 @@ async def videotrimleyici(msg, trimtemp, baslangic, bitis, bot, message):
             process.wait(),
         ])
 
-    os.remove(trimtemp)
     if process.returncode == 0:
         await msg.edit('Video Başarıyla Kesildi!\n\nGeçen Süre : {} saniye'.format(round(start-time.time())))
     else:
