@@ -309,14 +309,7 @@ async def yt_dlp_call_back(bot, update):
         BotMention = user.mention
         UserMention = update.from_user.mention
 
-        if PROMO:
-            caption += Translation.UPLOADER.format(UserMention, BotMention)
-            btn = [[
-                InlineKeyboardButton(f"Uploaded By {user.first_name}", url=f"tg://user?id={user.id}")
-            ]]
-            reply_markup = InlineKeyboardMarkup(btn)
-        else:
-            reply_markup = False
+        reply_markup = False
 
         if os.path.isdir(tmp_directory_for_each_user):
             directory_contents = os.listdir(tmp_directory_for_each_user)
