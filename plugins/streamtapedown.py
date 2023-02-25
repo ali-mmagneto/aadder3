@@ -34,7 +34,7 @@ async def loader(bot, update):
     if not os.path.isdir(dirs):
         os.mkdir(dirs)
     if not 'streamtape.com' in update.reply_to_message.text:
-        await update.reply_text("`git bir Streamtape urlsi at bana`") 
+        await bot.send_message(update.chat.id, "`git bir Streamtape urlsi at bana`") 
     link = update.reply_to_message.text
     if '/' in link:
         links = link.split('/')
@@ -55,7 +55,6 @@ async def loader(bot, update):
     result, dl_path = download_file(url, dirs)
     if result == True: 
         istek = requests.get(update.reply_to_message.text)
-        print(istek.text)
         if 'name="og:title" content="' in istek.text:
             text = istek.text.split('name="og:title" content="')[1]
             caption = text.split('"')[0]
