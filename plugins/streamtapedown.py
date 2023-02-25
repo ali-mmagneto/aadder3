@@ -66,7 +66,7 @@ async def loader(bot, update):
         thumb = thumb_image_path
     else:
         thumb = get_thumbnail(dl_path, './' + Config.DOWNLOAD_DIR, duration / 4)
-    width, height = get_width_height(video)
+    width, height = get_width_height(dl_path)
     try:
         await update.reply_video(
             video=dl_path,
