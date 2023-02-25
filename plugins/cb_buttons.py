@@ -63,9 +63,8 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
             await db.set_generate_sample_video(user_id, True)
         await Settings(message)
     elif "uptostreamtape" in cb.data:
-        downloadi = cb.message.reply_to_message
-        downloadit = downloadi.message.reply_to_message
-        a = await cb.message.edit("Downloading to my Server ...", parse_mode=ParseMode.MARKDOWN,
+        downloadit = cb.message.reply_to_message
+        a = await cb.message.edit("İndiriyorum...", parse_mode=ParseMode.MARKDOWN,
                                     disable_web_page_preview=True)
         dl_loc = Config.DOWNLOAD_DIR + "/" + str(cb.from_user.id) + "/"
         if not os.path.isdir(dl_loc):
@@ -74,9 +73,9 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
         the_media = await bot.download_media(
             message=downloadit,
             file_name=dl_loc,
-            progress=progress_for_pyrogram,
+            progress=progress_bar,
             progress_args=(
-                "Download kortasi ...",
+                "Indiriliyor...",
                 a,
                 c_time
             )
