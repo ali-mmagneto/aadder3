@@ -33,6 +33,12 @@ PRE_LOG - Botu ve Premium Hesabını yönetici yaptığın kanalın idsi bașın
 
 OWNER_ID - Botun Sahibinin Telegram kullanıcı adı @ olmadan. 
 
+STREAMTAPE_API_PASS - Streamtape Şifren. 
+
+STREAMTAPE_API_USERNAME - Streamtape Username. 
+
+DEPO - Kopyalanan Kanalların gideceği Kanal. 
+
 # iyi Kullanimlar :d
 
 # Commands
@@ -74,3 +80,7 @@ Foto gönderince oto thumb olarak alır.
 /syukle - Streamtape'e yanıtladığınız videoyu yükler.
 
 /sindir - Streamtape'den Video indirir.
+
+/film {kanal id-username} {kopyalancak ilk mesaj id} {kopyalanacak son mesaj id} - Bot Üzerinden Kanal Kopyalar.
+
+/gizlifilm {kanal id-username} {kopyalancak ilk mesaj id} {kopyalanacak son mesaj id} - User Üzerinden kanal kopyalar.
