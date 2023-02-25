@@ -57,6 +57,8 @@ OWNER_ID - Botun Sahibinin Telegram kullanıcı adı @ olmadan.
 
 /log - log dosyası gönderir. 
 
+/speedtest - Sunucu Hızını Getirir.
+
 Foto gönderince oto thumb olarak alır. 
 
 /delthumb - thumbı siler. 
