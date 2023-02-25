@@ -70,7 +70,7 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
         if not os.path.isdir(dl_loc):
             os.makedirs(dl_loc)
         c_time = time.time()
-        the_media = await bot.download_media(
+        the_media = await c.download_media(
             message=downloadit,
             file_name=dl_loc,
             progress=progress_bar,
@@ -115,7 +115,7 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
                     )
                 )
                 forwarded_msg = await cb.message.reply_to_message.forward(Config.LOG_CHANNEL)
-                await bot.send_message(chat_id=Config.LOG_CHANNEL,
+                await c.send_message(chat_id=Config.LOG_CHANNEL,
                                        text=f"#STREAMTAPE_UPLOAD:\n\n[{cb.from_user.first_name}](tg://user?id={data.from_user.id}) Uploaded to Streamtape !!\n\n**URL:** {download_link}",
                                        reply_to_message_id=forwarded_msg.message_id, parse_mode=ParseMode.MARKDOWN,
                                        disable_web_page_preview=True)
@@ -131,19 +131,11 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
             status = json_data['msg']
             if status == "OK":
                 await cb.message.edit(f"File Deleted using `{token}` !!")
-                await bot.send_message(chat_id=Config.LOG_CHANNEL,
+                await c.send_message(chat_id=cb.chat.id,
                                        text=f"#STREAMTAPE_DELETE:\n\n[{cb.from_user.first_name}](tg://user?id={data.from_user.id}) Deleted {data_revive}",
                                        parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
             else:
                 await cb.message.edit("File not Found!")
-    elif "showcreds" in cb.data:
-        if int(cb.from_user.id) == Config.BOT_OWNER:
-            await cb.message.edit(
-                f"Here are your Configs:\n\n`API_ID` - `{str(Config.API_ID)}`\n`API_HASH` - `{Config.API_HASH}`\n`BOT_TOKEN` - `{Config.BOT_TOKEN}`\n`BOT_OWNER` - `{str(Config.BOT_OWNER)}`\n`LOG_CHANNEL` - `{str(Config.LOG_CHANNEL)}`\n`STREAMTAPE_API_USERNAME` - `{Config.STREAMTAPE_API_USERNAME}`\n`STREAMTAPE_API_PASS` - `{Config.STREAMTAPE_API_PASS}`",
-                parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-        else:
-            await cb.message.edit("Only My Admin Can View That!")
-
 
     elif cb.data == "close": 
         await cb.message.delete()  
