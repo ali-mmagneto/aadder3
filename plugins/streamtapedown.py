@@ -90,7 +90,7 @@ async def loader(bot, update):
                 start_dl
             )
         )
-        pablo.edit("`Başarıyla İndirildi..`")
+        await pablo.edit("`Başarıyla İndirildi..`")
         os.remove(dl_path)
         os.remove(thumb)
     except Exception as e:
