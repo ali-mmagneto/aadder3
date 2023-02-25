@@ -125,7 +125,7 @@ async def trimmes(bot, message):
     splitpath = media.split("/downloads/")
     dow_file_name = splitpath[1]
     gercekad = f"downloads/{dow_file_name}"
-    trimtemp = f"downloads/{dow_file_name}""
+    trimtemp = f"downloads/{dow_file_name}"
     trimolmus = await videotrimleyici(msg, trimtemp, baslangic, bitis, bot, message)
     os.rename(trimolmus, gercekad)
     
