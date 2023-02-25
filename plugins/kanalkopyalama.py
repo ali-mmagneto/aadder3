@@ -54,7 +54,7 @@ async def gizlicopy(bot, message, id, son_id, kanal_id, text1, sayi):
                 
                 if msg.video:
                     caption = msg.caption
-                    video = await userbot.download_media(
+                    video = await Config.userbot.download_media(
                         message = msg,
                         progress=progress_bar,
                         progress_args=("`İndiriliyor...`", text1, start_time))
@@ -106,7 +106,7 @@ async def gizlicopy(bot, message, id, son_id, kanal_id, text1, sayi):
                         await filmdongug(bot, message, id, son_id, kanal_id, text1, sayi)
                 elif msg.document:
                     caption = msg.caption
-                    video = await userbot.download_media(
+                    video = await Config.userbot.download_media(
                         message = msg,
                         progress=progress_bar,
                         progress_args=("`İndiriliyor...`", text1, start_time))
@@ -125,13 +125,13 @@ async def gizlicopy(bot, message, id, son_id, kanal_id, text1, sayi):
                         await filmdongug(bot, message, id, son_id, kanal_id, text1, sayi)
                 elif msg.text:
                     text = msg.text
-                    await userbot.send_message(
+                    await Config.userbot.send_message(
                         chat_id = Config.DEPO, 
                         text = text) 
                     await filmdongug(bot, message, id, son_id, kanal_id, text1, sayi)
                 elif msg.photo:
                     caption = msg.caption
-                    photo = await userbot.download_media(
+                    photo = await Config.userbot.download_media(
                                 message = msg)
                     await userbot.send_photo(
                         chat_id = Config.DEPO, 
