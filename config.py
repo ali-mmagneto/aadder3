@@ -19,7 +19,7 @@ class Config:
     DOWNLOAD_LOCATION = 'downloads'
     DOWNLOAD_DIR = 'downloads'
     OWNER_ID = os.environ.get("OWNER_ID", '1276627253') 
-    
+    DEPO = os.environ.get("DEPO", None)
     SESSION_NAME = os.environ.get("SESSION_NAME", "")
 
     # database uri (mongodb)
