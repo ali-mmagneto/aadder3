@@ -9,20 +9,6 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
 
-# Configs
-
-# Buttons
-START_BUTTONS=[
-    [
-        InlineKeyboardButton("Rate Me 🌟", url="https://t.me/tlgrmcbot?start=DowntoStreamtape_Bot-review"),
-        InlineKeyboardButton("Update Channel", url="https://t.me/BlueWhaleBots"),
-    ],
-    [InlineKeyboardButton("Author", url="https://t.me/SarfarazStark")],
-]
-
-# Helpers
-
-# https://github.com/SpEcHiDe/AnyDLBot
 
 
 # https://github.com/viperadnan-git/google-drive-telegram-bot/blob/main/bot/helpers/downloader.py
@@ -47,7 +33,7 @@ async def loader(bot, update):
     dirs = './downloads/'
     if not os.path.isdir(dirs):
         os.mkdir(dirs)
-    if not 'streamtape.com' in update.text:
+    if not 'streamtape.com' in update.reply_to_message.text:
         await update.reply_text("`git bir Streamtape urlsi at bana`") 
     link = update.reply_to_message.text
     if '/' in link:
@@ -69,11 +55,25 @@ async def loader(bot, update):
     result, dl_path = download_file(url, dirs)
     start_dl = time.time()
     await pablo.edit_text("`Yüklüyorum...`")
+    chat_id = str(update.chat.id)
+    duration = get_duration(dl_path)
+    thumb_image_path = os.path.join(
+        Config.DOWNLOAD_DIR,
+        chat_id,
+        chat_id + ".jpg"
+    )
+    if os.path.exists(thumb_image_path):
+        thumb = thumb_image_path
+    else:
+        thumb = get_thumbnail(dl_path, './' + Config.DOWNLOAD_DIR, duration / 4)
+    width, height = get_width_height(video)
     try:
         await update.reply_video(
             video=dl_path,
             quote=True,
             thumb=thumb,
+            width=width, 
+            height=height,
             duration=duration,
             progress=progress_bar,
             progress_args=(
