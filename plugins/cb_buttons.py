@@ -75,7 +75,7 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
         try:
             stream_type, mapping, keyword = cb.data.split('_')
             data = DATA[keyword][int(mapping)]
-            await extract_audio(client, cb.message, data)
+            await extract_audio(c, cb.message, data)
         except:
             await cb.message.edit_text("Hata Oldu")   
 
@@ -85,7 +85,7 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
         try:
             stream_type, mapping, keyword = cb.data.split('_')
             data = DATA[keyword][int(mapping)]
-            await extract_subtitle(client, cb.message, data)
+            await extract_subtitle(c, cb.message, data)
         except:
             await cb.message.edit_text("**Hata Oldu**")  
 
