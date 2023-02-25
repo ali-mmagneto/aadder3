@@ -67,7 +67,7 @@ async def gizlicopy(bot, message, id, son_id, kanal_id, text1, sayi):
                     if os.path.exists(thumb_image_path):
                         thumb = thumb_image_path
                     else:
-                        thumb = get_thumbnail(video, './' + DOWNLOAD_DIR, duration / 4)
+                        thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
                     width, height = get_width_height(video)
                     file_size = os.stat(video).st_size
                     if file_size > 2093796556:
