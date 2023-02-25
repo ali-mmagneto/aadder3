@@ -81,7 +81,7 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
                 c_time
             )
         )
-        await a.delete(True)
+        await a.edit("`Yükleniyor...`")
         async with aiohttp.ClientSession() as session:
             Main_API = "https://api.streamtape.com/file/ul?login={}&key={}"
             hit_api = await session.get(Main_API.format(Config.STREAMTAPE_API_USERNAME, Config.STREAMTAPE_API_PASS))
@@ -100,26 +100,22 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
 
             if not int(status) == 200:
                 await cb.message.reply_to_message.reply_text(
-                    "Something Went Wrong!\n\n**Error:** Server Didn't Accept My Request!", parse_mode=ParseMode.MARKDOWN,
+                    "Hata Oluştu!!!", parse_mode=ParseMode.MARKDOWN,
                     disable_web_page_preview=True)
                 return
             else:
                 await cb.message.reply_to_message.reply_text(
-                    f"**File Name:** `{filename}`\n\n**Download Link:** `{download_link}`",
+                    f"**Dosya Adı:** `{filename}`\n\n**İndirme Linki:** `{download_link}`",
                     parse_mode=ParseMode.MARKDOWN,
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup(
                         [
-                            [InlineKeyboardButton("Open Link", url=download_link)],
-                            [InlineKeyboardButton("Delete File", callback_data="deletestream")]
+                            [InlineKeyboardButton("Link'i Aç", url=download_link)],
+                            [InlineKeyboardButton("Dosyayı Sil", callback_data="deletestream")]
                         ]
                     )
                 )
-                forwarded_msg = await cb.message.reply_to_message.forward(Config.LOG_CHANNEL)
-                await c.send_message(chat_id=Config.LOG_CHANNEL,
-                                       text=f"#STREAMTAPE_UPLOAD:\n\n[{cb.from_user.first_name}](tg://user?id={data.from_user.id}) Uploaded to Streamtape !!\n\n**URL:** {download_link}",
-                                       reply_to_message_id=forwarded_msg.message_id, parse_mode=ParseMode.MARKDOWN,
-                                       disable_web_page_preview=True)
+                await a.delete(True)
 
     elif "deletestream" in cb.data:
         data_revive = cb.message.text.split("Link: ", 1)[1]
