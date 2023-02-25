@@ -122,8 +122,10 @@ async def trimmes(bot, message):
                 message = message.reply_to_message,
                 progress=progress_bar,
                 progress_args=("`İndiriliyor...`", msg, start_time))
-    gercekad = f"downloads/{media}"
-    trimtemp = f"downloads/{media}"
+    splitpath = media.split("/downloads/")
+    dow_file_name = splitpath[1]
+    gercekad = f"downloads/{dow_file_name}"
+    trimtemp = f"downloads/{dow_file_name}""
     trimolmus = await videotrimleyici(msg, trimtemp, baslangic, bitis, bot, message)
     os.rename(trimolmus, gercekad)
     
