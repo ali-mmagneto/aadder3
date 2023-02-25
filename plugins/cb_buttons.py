@@ -13,7 +13,6 @@ from helper_func.ffmpeg import extract_audio, extract_subtitle
 from database.database import db
 from pyrogram import Client, types
 from translation import Translation
-from plugins.dl_button import ddl_call_back
 from plugins.ytdlp_button import yt_dlp_call_back
 from pyrogram.enums import ParseMode
 
