@@ -7,8 +7,8 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from PIL import Image
-
+from helper_func.thumb import get_thumbnail, get_duration, get_width_height
+from helper_func.progress_bar import progress_bar
 
 
 # https://github.com/viperadnan-git/google-drive-telegram-bot/blob/main/bot/helpers/downloader.py
