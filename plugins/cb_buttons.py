@@ -62,6 +62,90 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
         else:
             await db.set_generate_sample_video(user_id, True)
         await Settings(message)
+    elif "uptostreamtape" in cb.data:
+        downloadi = cb.message.reply_to_message
+        downloadit = downloadi.message.reply_to_message
+        a = await cb.message.edit("Downloading to my Server ...", parse_mode=ParseMode.MARKDOWN,
+                                    disable_web_page_preview=True)
+        dl_loc = Config.DOWNLOAD_DIR + "/" + str(cb.from_user.id) + "/"
+        if not os.path.isdir(dl_loc):
+            os.makedirs(dl_loc)
+        c_time = time.time()
+        the_media = await bot.download_media(
+            message=downloadit,
+            file_name=dl_loc,
+            progress=progress_for_pyrogram,
+            progress_args=(
+                "Download kortasi ...",
+                a,
+                c_time
+            )
+        )
+        await a.delete(True)
+        async with aiohttp.ClientSession() as session:
+            Main_API = "https://api.streamtape.com/file/ul?login={}&key={}"
+            hit_api = await session.get(Main_API.format(Config.STREAMTAPE_API_USERNAME, Config.STREAMTAPE_API_PASS))
+            json_data = await hit_api.json()
+            temp_api = json_data["result"]["url"]
+            files = {'file1': open(the_media, 'rb')}
+            response = await session.post(temp_api, data=files)
+            data_f = await response.json(content_type=None)
+            status = data_f["status"]
+            download_link = data_f["result"]["url"]
+            filename = the_media.split("/")[-1].replace("_", " ")
+            try:
+                os.remove(the_media)
+            except:
+                pass
+
+            if not int(status) == 200:
+                await cb.message.reply_to_message.reply_text(
+                    "Something Went Wrong!\n\n**Error:** Server Didn't Accept My Request!", parse_mode=ParseMode.MARKDOWN,
+                    disable_web_page_preview=True)
+                return
+            else:
+                await cb.message.reply_to_message.reply_text(
+                    f"**File Name:** `{filename}`\n\n**Download Link:** `{download_link}`",
+                    parse_mode=ParseMode.MARKDOWN,
+                    disable_web_page_preview=True,
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [InlineKeyboardButton("Open Link", url=download_link)],
+                            [InlineKeyboardButton("Delete File", callback_data="deletestream")]
+                        ]
+                    )
+                )
+                forwarded_msg = await cb.message.reply_to_message.forward(Config.LOG_CHANNEL)
+                await bot.send_message(chat_id=Config.LOG_CHANNEL,
+                                       text=f"#STREAMTAPE_UPLOAD:\n\n[{cb.from_user.first_name}](tg://user?id={data.from_user.id}) Uploaded to Streamtape !!\n\n**URL:** {download_link}",
+                                       reply_to_message_id=forwarded_msg.message_id, parse_mode=ParseMode.MARKDOWN,
+                                       disable_web_page_preview=True)
+
+    elif "deletestream" in cb.data:
+        data_revive = cb.message.text.split("Link: ", 1)[1]
+        token = data_revive.split("/")[4]
+        async with aiohttp.ClientSession() as session:
+            del_api = "https://api.streamtape.com/file/delete?login={}&key={}&file={}"
+            data_f = await session.get(
+                del_api.format(Config.STREAMTAPE_API_USERNAME, Config.STREAMTAPE_API_PASS, token))
+            json_data = await data_f.json()
+            status = json_data['msg']
+            if status == "OK":
+                await cb.message.edit(f"File Deleted using `{token}` !!")
+                await bot.send_message(chat_id=Config.LOG_CHANNEL,
+                                       text=f"#STREAMTAPE_DELETE:\n\n[{cb.from_user.first_name}](tg://user?id={data.from_user.id}) Deleted {data_revive}",
+                                       parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+            else:
+                await cb.message.edit("File not Found!")
+    elif "showcreds" in cb.data:
+        if int(cb.from_user.id) == Config.BOT_OWNER:
+            await cb.message.edit(
+                f"Here are your Configs:\n\n`API_ID` - `{str(Config.API_ID)}`\n`API_HASH` - `{Config.API_HASH}`\n`BOT_TOKEN` - `{Config.BOT_TOKEN}`\n`BOT_OWNER` - `{str(Config.BOT_OWNER)}`\n`LOG_CHANNEL` - `{str(Config.LOG_CHANNEL)}`\n`STREAMTAPE_API_USERNAME` - `{Config.STREAMTAPE_API_USERNAME}`\n`STREAMTAPE_API_PASS` - `{Config.STREAMTAPE_API_PASS}`",
+                parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+        else:
+            await cb.message.edit("Only My Admin Can View That!")
+
+
     elif cb.data == "close": 
         await cb.message.delete()  
         await cb.answer(
