@@ -23,10 +23,10 @@ from helper_func.progress_bar import progress_bar, humanbytes
 async def copy(bot, message, id, son_id, kanal_id, text1):
     try:
         if int(id) > int(son_id):
-            await text1.edit(message.chat.id, "`İşlem Tamamlandı`")
+            await text1.edit("`İşlem Tamamlandı`")
         else:
             film_kanal = await bot.get_chat(chat_id=kanal_id)
-            print(film_kanal)
+            print(film_kanal.title)
             await bot.copy_message(
                 chat_id=Config.DEPO, 
                 from_chat_id=kanal_id, 
