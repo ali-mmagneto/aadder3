@@ -13,8 +13,7 @@ async def _main(_, message):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                        [[InlineKeyboardButton("Streamtape'e Yükle", callback_data="uptostreamtape")],
-                        [InlineKeyboardButton("Developer", url="https://t.me/linux_repo")]]))
+                        [[InlineKeyboardButton("Streamtape'e Yükle", callback_data="uptostreamtape")]]))
         
     else:
         await message.reply_text("`Bir Video Yanıtla..`")
