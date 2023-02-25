@@ -234,12 +234,6 @@ async def yt_dlp_call_back(bot, update):
                 yt_dlp_url, "-o", download_directory
             ]
 
-    if await db.get_aria2(user_id) is True:
-        command_to_exec.append("--external-downloader")
-        command_to_exec.append("aria2c")
-        command_to_exec.append("--external-downloader-args")
-        command_to_exec.append("-x 16 -s 16 -k 1M")
-
     #
     command_to_exec.append("--no-warnings")
     # command_to_exec.append("--quiet")
