@@ -42,14 +42,14 @@ async def gizlicopy(bot, message, id, son_id, kanal_id, text1, sayi):
             await sayi.edit("`İşlem Tamamlandı..`")
         else:
             await sayi.edit(f"`{id}. Mesaj Kopyalanıyor...`")
-            film_kanal = await userbot.get_chat(chat_id=kanal_id)
+            film_kanal = await Config.userbot.get_chat(chat_id=kanal_id)
             koruma = film_kanal.has_protected_content
             print(film_kanal.has_protected_content)
             if film_kanal.has_protected_content == True:
                 chat_id = str(message.chat.id)
-                film_kanal = await userbot.get_chat(chat_id=kanal_id)
+                film_kanal = await Config.userbot.get_chat(chat_id=kanal_id)
                 print(film_kanal)
-                msg = await userbot.get_messages(kanal_id, id)
+                msg = await Config.userbot.get_messages(kanal_id, id)
                 start_time = time.time()
                 
                 if msg.video:
@@ -133,7 +133,7 @@ async def gizlicopy(bot, message, id, son_id, kanal_id, text1, sayi):
                     caption = msg.caption
                     photo = await Config.userbot.download_media(
                                 message = msg)
-                    await userbot.send_photo(
+                    await Config.userbot.send_photo(
                         chat_id = Config.DEPO, 
                         photo = photo, 
                         caption = caption) 
@@ -142,8 +142,8 @@ async def gizlicopy(bot, message, id, son_id, kanal_id, text1, sayi):
                     await bot.send_message(message.chat.id, f"`{id}. Mesajın ne tür olduğunu bilmiyorum özür dilerim 😭😭`")
                     await filmdongug(bot, message, id, son_id, kanal_id, text1, sayi)
             else:
-                film_kanal = await userbot.get_chat(chat_id=kanal_id)
-                print(film_kanal)
+                film_kanal = await Config.userbot.get_chat(chat_id=kanal_id)
+                print(film_kanal.title)
                 await Config.userbot.copy_message(
                     chat_id=Config.DEPO, 
                     from_chat_id=kanal_id, 
