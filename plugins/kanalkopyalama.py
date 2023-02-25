@@ -7,6 +7,7 @@ import math
 PRGRS = {}
 import os
 import time
+from config import Config
 import ffmpeg
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -22,7 +23,7 @@ from helper_func.progress_bar import progress_bar, humanbytes
 async def copy(bot, message, id, son_id, kanal_id, text1):
     try:
         if int(id) > int(son_id):
-            await bot.send_message(message.chat.id, "`İşlem Tamamlandı`")
+            await text1.edit(message.chat.id, "`İşlem Tamamlandı`")
         else:
             film_kanal = await bot.get_chat(chat_id=kanal_id)
             print(film_kanal)
