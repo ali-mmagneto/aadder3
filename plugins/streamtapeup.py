@@ -8,15 +8,12 @@ from pyrogram.enums.parse_mode import ParseMode
 @Client.on_message(filters.command('syukle'))
 async def _main(_, message):
     if message.reply_to_message:
-        button = [
-            InlineKeyboardButton("Streamtape'e Yükle", callback_data="uptostreamtape")
-            ]
+        button = InlineKeyboardButton("Streamtape'e Yükle", callback_data="uptostreamtape")
         await message.reply_text(
             "Aşağıdaki Butona Tıkla! ",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(button),
-            quote=True
         )
     else:
         await message.reply_text("`Bir Video Yanıtla..`")
