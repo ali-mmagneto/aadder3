@@ -53,8 +53,13 @@ async def loader(bot, update):
     url = bypasser.bypass_url(link)
     pablo = await update.reply_text("`İndiriliyor...`", True)
     result, dl_path = download_file(url, dirs)
-    istek = requests.get(update.reply_to_message.text)
-    print(istek.text)
+    if istek == True: 
+        istek = requests.get(update.reply_to_message.text)
+        if 'content="' in istek.text:
+            text = istek.text.split('content="')[1]
+            caption = text.split('"')[0]
+        else:
+            caption = update.reply_to_message.text
     start_dl = time.time()
     await pablo.edit_text("`Yüklüyorum...`")
     chat_id = str(update.chat.id)
@@ -73,6 +78,7 @@ async def loader(bot, update):
         await update.reply_video(
             video=dl_path,
             quote=True,
+            caption=caption, 
             thumb=thumb,
             width=width, 
             height=height,
