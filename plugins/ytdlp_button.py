@@ -361,7 +361,7 @@ async def yt_dlp_call_back(bot, update):
                     if tg_send_type == "audio":
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_AUDIO)
                         duration = get_duration(path)
-                        width, height = await get_width_height(path)
+                        width, height = get_width_height(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
                                                chat_id,
@@ -392,7 +392,7 @@ async def yt_dlp_call_back(bot, update):
 
                     elif tg_send_type == "vm":
                         duration = get_duration(path)
-                        width, height = await get_width_height(path)
+                        width, height = get_width_height(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
                                                chat_id,
@@ -446,7 +446,7 @@ async def yt_dlp_call_back(bot, update):
                         print("1 0'a eşit olmuş aq")
                     else:
                         duration = get_duration(path)
-                        width, height = await get_width_height(path)
+                        width, height = get_width_height(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
                                                chat_id,
@@ -550,7 +550,7 @@ async def yt_dlp_call_back(bot, update):
                         )
                     elif tg_send_type == "vm":
                         duration = get_duration(path)
-                        width, height = await get_width_height(path)
+                        width, height = get_width_height(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
                                                chat_id,
@@ -615,7 +615,7 @@ async def yt_dlp_call_back(bot, update):
                         )
                     else:
                         duration = get_duration(path)
-                        width, height = await get_width_height(path)
+                        width, height = get_width_height(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
                                                chat_id,
