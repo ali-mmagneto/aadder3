@@ -71,7 +71,7 @@ async def gizlicopy(bot, message, id, son_id, kanal_id, text1, sayi):
                     width, height = get_width_height(video)
                     file_size = os.stat(video).st_size
                     if file_size > 2093796556:
-                        await userbot.send_video(
+                        await Config.userbot.send_video(
                             chat_id = Config.DEPO,
                             progress = progress_bar, 
                             progress_args = (
@@ -112,7 +112,7 @@ async def gizlicopy(bot, message, id, son_id, kanal_id, text1, sayi):
                         progress_args=("`İndiriliyor...`", text1, start_time))
                     file_size = os.stat(video).st_size
                     if file_size > 2093796556:
-                        await userbot.send_document(
+                        await Config.userbot.send_document(
                             chat_id = Config.DEPO, 
                             document = video, 
                             caption = caption)
@@ -144,7 +144,7 @@ async def gizlicopy(bot, message, id, son_id, kanal_id, text1, sayi):
             else:
                 film_kanal = await userbot.get_chat(chat_id=kanal_id)
                 print(film_kanal)
-                await userbot.copy_message(
+                await Config.userbot.copy_message(
                     chat_id=Config.DEPO, 
                     from_chat_id=kanal_id, 
                     message_id=int(id))
