@@ -147,6 +147,9 @@ async def echo(bot, update):
     if ".mubicdn.net" in url:
         command_to_exec.append("--referer")
         command_to_exec.append("https://mubi.com/")
+    if "https://streamtape.com/" in url:
+        command_to_exec.append("--referer")
+        command_to_exec.append("https://streamtape.com/")
     if ".space" in url:
         command_to_exec.append("--referer")
         command_to_exec.append("https://vidmoly.to/")
