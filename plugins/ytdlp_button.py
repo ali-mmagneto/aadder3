@@ -358,15 +358,22 @@ async def yt_dlp_call_back(bot, update):
 
                 try:
                     if tg_send_type == "audio":
-                        duration = await AudioMetaData(path)
-                        thumbnail = await DocumentThumb(bot, update)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_AUDIO)
+                        duration = await get_duration(path)
+                        width, height = await get_width_height(path)
+                        thumb_image_path = os.path.join(
+                                               Config.DOWNLOAD_DIR,
+                                               chat_id,
+                                               chat_id + ".jpg")
+                        if os.path.exists(thumb_image_path):
+                            thumb = thumb_image_path
+                        else:
+                            thumb = None
                         copy = await userbot.send_audio(
                             chat_id=Config.PRE_LOG,
                             audio=path,
                             caption=caption,
-                            duration=duration,
-                            thumb=thumbnail,
+                            thumb=thumb,
                             reply_to_message_id=message.reply_to_message.id,
                             reply_markup=reply_markup,
                             progress=progress_for_pyrogram,
@@ -383,15 +390,23 @@ async def yt_dlp_call_back(bot, update):
                             message_id=copy.id)
 
                     elif tg_send_type == "vm":
-                        width, duration = await VMMetaData(path)
-                        thumbnail = await VideoThumb(bot, update, duration, path, random)
+                        duration = await get_duration(path)
+                        width, height = await get_width_height(path)
+                        thumb_image_path = os.path.join(
+                                               Config.DOWNLOAD_DIR,
+                                               chat_id,
+                                               chat_id + ".jpg")
+                        if os.path.exists(thumb_image_path):
+                            thumb = thumb_image_path
+                        else:
+                            thumb = get_thumbnail(path, './' + Config.DOWNLOAD_DIR, duration / 4)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_VIDEO_NOTE)
                         copy = await userbot.send_video_note(
                             chat_id=Config.PRE_LOG,
                             video_note=path,
                             duration=duration,
                             length=width,
-                            thumb=thumbnail,
+                            thumb=thumb,
                             reply_to_message_id=message.reply_to_message.id,
                             reply_markup=reply_markup,
                             progress=progress_for_pyrogram,
@@ -414,7 +429,7 @@ async def yt_dlp_call_back(bot, update):
                             caption=caption,
                             reply_to_message_id=message.reply_to_message.id,
                             reply_markup=reply_markup,
-                            progress=progress_for_pyrogram,
+                            progress=progress_bar,
                             progress_args=(
                                 Translation.UPLOAD_START,
                                 message,
@@ -429,8 +444,16 @@ async def yt_dlp_call_back(bot, update):
                     if 1 == 0:
                         print("1 0'a eşit olmuş aq")
                     else:
-                        width, height, duration = await VideoMetaData(path)
-                        thumb_image_path = await VideoThumb(bot, update, duration, path, random)
+                        duration = await get_duration(path)
+                        width, height = await get_width_height(path)
+                        thumb_image_path = os.path.join(
+                                               Config.DOWNLOAD_DIR,
+                                               chat_id,
+                                               chat_id + ".jpg")
+                        if os.path.exists(thumb_image_path):
+                            thumb = thumb_image_path
+                        else:
+                            thumb = get_thumbnail(path, './' + Config.DOWNLOAD_DIR, duration / 4)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_VIDEO)
                         copy = await userbot.send_video(
                             chat_id=Config.PRE_LOG,
@@ -441,9 +464,9 @@ async def yt_dlp_call_back(bot, update):
                             height=height,
                             supports_streaming=True,
                             reply_markup=reply_markup,
-                            thumb=thumb_image_path,
+                            thumb=thumb,
                             reply_to_message_id=message.reply_to_message.id,
-                            progress=progress_for_pyrogram,
+                            progress=progress_bar,
                             progress_args=(
                                 Translation.UPLOAD_START,
                                 message,
@@ -499,18 +522,25 @@ async def yt_dlp_call_back(bot, update):
 
                 try:
                     if tg_send_type == "audio":
-                        duration = await AudioMetaData(path)
-                        thumbnail = await DocumentThumb(bot, update)
+                        duration = await get_duration(path)
+                        thumb_image_path = os.path.join(
+                                               Config.DOWNLOAD_DIR,
+                                               chat_id,
+                                               chat_id + ".jpg")
+                        if os.path.exists(thumb_image_path):
+                            thumb = thumb_image_path
+                        else:
+                            thumb = get_thumbnail(path, './' + Config.DOWNLOAD_DIR, duration / 4)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_AUDIO)
                         copy = await bot.send_audio(
                             chat_id=chat_id,
                             audio=path,
                             caption=caption,
                             duration=duration,
-                            thumb=thumbnail,
+                            thumb=thumb,
                             reply_to_message_id=message.reply_to_message.id,
                             reply_markup=reply_markup,
-                            progress=progress_for_pyrogram,
+                            progress=progress_bar,
                             progress_args=(
                                 Translation.UPLOAD_START,
                                 message,
@@ -518,18 +548,26 @@ async def yt_dlp_call_back(bot, update):
                             )
                         )
                     elif tg_send_type == "vm":
-                        width, duration = await VMMetaData(path)
-                        thumbnail = await VideoThumb(bot, update, duration, path, random)
+                        duration = await get_duration(path)
+                        width, height = await get_width_height(path)
+                        thumb_image_path = os.path.join(
+                                               Config.DOWNLOAD_DIR,
+                                               chat_id,
+                                               chat_id + ".jpg")
+                        if os.path.exists(thumb_image_path):
+                            thumb = thumb_image_path
+                        else:
+                            thumb = get_thumbnail(path, './' + Config.DOWNLOAD_DIR, duration / 4)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_VIDEO_NOTE)
                         copy = await bot.send_video_note(
                             chat_id=chat_id,
                             video_note=path,
                             duration=duration,
                             length=width,
-                            thumb=thumbnail,
+                            thumb=thumb,
                             reply_to_message_id=message.reply_to_message.id,
                             reply_markup=reply_markup,
-                            progress=progress_for_pyrogram,
+                            progress=progress_bar,
                             progress_args=(
                                 Translation.UPLOAD_START,
                                 message,
@@ -543,7 +581,7 @@ async def yt_dlp_call_back(bot, update):
                             caption=caption,
                             reply_to_message_id=message.reply_to_message.id,
                             reply_markup=reply_markup,
-                            progress=progress_for_pyrogram,
+                            progress=progress_bar,
                             progress_args=(
                                 Translation.UPLOAD_START,
                                 message,
@@ -551,16 +589,23 @@ async def yt_dlp_call_back(bot, update):
                             )
                         )
                     elif 1 == 0:
-                        thumbnail = await DocumentThumb(bot, update)
+                        thumb_image_path = os.path.join(
+                                               Config.DOWNLOAD_DIR,
+                                               chat_id,
+                                               chat_id + ".jpg")
+                        if os.path.exists(thumb_image_path):
+                            thumb = thumb_image_path
+                        else:
+                            thumb = get_thumbnail(path, './' + Config.DOWNLOAD_DIR, duration / 4)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_DOCUMENT)
                         copy = await bot.send_document(
                             chat_id=chat_id, 
                             document=path,
-                            thumb=thumbnail,
+                            thumb=thumb,
                             caption=caption,
                             reply_to_message_id=message.reply_to_message.id,
                             reply_markup=reply_markup,
-                            progress=progress_for_pyrogram,
+                            progress=progress_bar,
                             progress_args=(
                                 Translation.UPLOAD_START,
                                 message,
@@ -568,8 +613,16 @@ async def yt_dlp_call_back(bot, update):
                             )
                         )
                     else:
-                        width, height, duration = await VideoMetaData(path)
-                        thumb_image_path = await VideoThumb(bot, update, duration, path, random)
+                        duration = await get_duration(path)
+                        width, height = await get_width_height(path)
+                        thumb_image_path = os.path.join(
+                                               Config.DOWNLOAD_DIR,
+                                               chat_id,
+                                               chat_id + ".jpg")
+                        if os.path.exists(thumb_image_path):
+                            thumb = thumb_image_path
+                        else:
+                            thumb = get_thumbnail(path, './' + Config.DOWNLOAD_DIR, duration / 4)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_VIDEO)
                         copy = await bot.send_video(
                             chat_id=chat_id,
@@ -580,9 +633,9 @@ async def yt_dlp_call_back(bot, update):
                             height=height,
                             supports_streaming=True,
                             reply_markup=reply_markup,
-                            thumb=thumb_image_path,
+                            thumb=thumb,
                             reply_to_message_id=message.reply_to_message.id,
-                            progress=progress_for_pyrogram,
+                            progress=progress_bar,
                             progress_args=(
                                 Translation.UPLOAD_START,
                                 message,
