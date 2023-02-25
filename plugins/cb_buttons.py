@@ -62,6 +62,47 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
         else:
             await db.set_generate_sample_video(user_id, True)
         await Settings(message)
+    elif cb.data == "close": 
+        await cb.message.delete()  
+        await cb.answer(
+                "Cancelled...",
+                show_alert=True
+            ) 
+
+
+    elif cb.data.startswith('audio'):
+        await cb.answer()
+        try:
+            stream_type, mapping, keyword = cb.data.split('_')
+            data = DATA[keyword][int(mapping)]
+            await extract_audio(client, cb.message, data)
+        except:
+            await cb.message.edit_text("Hata Oldu")   
+
+
+    elif cb.data.startswith('subtitle'):
+        await cb.answer()
+        try:
+            stream_type, mapping, keyword = cb.data.split('_')
+            data = DATA[keyword][int(mapping)]
+            await extract_subtitle(client, cb.message, data)
+        except:
+            await cb.message.edit_text("**Hata Oldu**")  
+
+
+    elif cb.data.startswith('cancel'):
+        try:
+            cb_type, mapping, keyword = cb.data.split('_')
+            data = DATA[keyword][int(mapping)]   
+            await cb.message.edit_text("**Iptal Edildi...**")
+            await cb.answer(
+                "Iptal Ediliyor...",
+                show_alert=True
+            ) 
+        except:
+            await cb.answer() 
+            await cb.message.edit_text("**Hata Oldu**")        
+
     elif cb.data == "setCaption":
         await cb.answer()
         caption = await db.get_caption(user_id)
@@ -127,45 +168,5 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
     else:
         await message.delete(True)
 
-@Client.on_callback_query()
-async def cb_handler(client, query):
-    if query.data == "close": 
-        await query.message.delete()  
-        await query.answer(
-                "Cancelled...",
-                show_alert=True
-            ) 
-
-
-    elif query.data.startswith('audio'):
-        await query.answer()
-        try:
-            stream_type, mapping, keyword = query.data.split('_')
-            data = DATA[keyword][int(mapping)]
-            await extract_audio(client, query.message, data)
-        except:
-            await query.message.edit_text("Hata Oldu")   
-
-
-    elif query.data.startswith('subtitle'):
-        await query.answer()
-        try:
-            stream_type, mapping, keyword = query.data.split('_')
-            data = DATA[keyword][int(mapping)]
-            await extract_subtitle(client, query.message, data)
-        except:
-            await query.message.edit_text("**Hata Oldu**")  
-
-
-    elif query.data.startswith('cancel'):
-        try:
-            query_type, mapping, keyword = query.data.split('_')
-            data = DATA[keyword][int(mapping)]   
-            await query.message.edit_text("**Iptal Edildi...**")
-            await query.answer(
-                "Iptal Ediliyor...",
-                show_alert=True
-            ) 
-        except:
-            await query.answer() 
-            await query.message.edit_text("**Hata Oldu**")        
+    
+    
