@@ -5,6 +5,9 @@
 - Video Sesini aac'ye dönüştürür. 
 - Video veya Sesten Mediainfo çıkartır. 
 - Renamer Yapar. 
+- Streamtape'e video yükler. 
+- Streamtape'den video indirir. 
+- yetedelepe destekleyen urlleri indirir ve Telegrama Yükler. 
 
 Sunucu yok valla bir yere kur
 
@@ -63,3 +66,9 @@ Foto gönderince oto thumb olarak alır.
 /getfile <dizin/dosya adı> - Belirtilen dosyayı getirir.
 
 /rename <Yeni İsim> - Videoya yeni isim koyar. 
+
+/indir - yanıtladığınız urlyi yetedelepe ile indirir.
+
+/syukle - Streamtape'e yanıtladığınız videoyu yükler.
+
+/sindir - Streamtape'den Video indirir.
