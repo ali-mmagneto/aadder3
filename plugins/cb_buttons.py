@@ -5,7 +5,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from config import Config
 from script import Script
-
+import aiohttp
 from helper_func.progress_bar import PRGRS
 from helper_func.tools import clean_up
 from helper_func.download import download_file, DATA
