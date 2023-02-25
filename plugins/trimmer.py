@@ -65,14 +65,19 @@ async def videotrimleyici(msg, trimtemp, baslangic, bitis, bot, message):
     output = "KesilmisVideo.mp4"
     out_location = f"downloads/{output}"
     command = [
-            'ffmpeg',
-            '-i','trimtemp',
-            '-ss',str(baslangic),
-            '-to',str(bitis),
-            '-async','1',
-            '-strict','-2',
-            '-o','out_location'
-            ]
+        "ffmpeg",
+        "-i",
+        trimtemp,
+        "-ss",
+        str(baslangic),
+        "-to",
+        str(bitis),
+        "-async",
+        "1",
+        "-strict",
+        "-2",
+        out_location
+    ]
     
     process = await asyncio.create_subprocess_exec(
             *command,
