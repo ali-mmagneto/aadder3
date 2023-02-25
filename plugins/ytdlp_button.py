@@ -550,7 +550,7 @@ async def yt_dlp_call_back(bot, update):
                                 start_time
                             )
                         )
-                    elif (await db.get_upload_as_doc(user_id)) is True:
+                    elif 1 == 0:
                         thumbnail = await DocumentThumb(bot, update)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_DOCUMENT)
                         copy = await bot.send_document(
@@ -611,34 +611,7 @@ async def yt_dlp_call_back(bot, update):
 
                 end_two = datetime.now()
                 time_taken_for_upload = (end_two - end_one).seconds
-                media_album_p = []
-                if (await db.get_generate_ss(user_id)) is True:
-                    if images is not None:
-                        i = 0
-                        caption = BotMention
-                        for image in images:
-                            if os.path.exists(str(image)):
-                                if i == 0:
-                                    media_album_p.append(
-                                        InputMediaPhoto(
-                                            media=image,
-                                            caption=caption
-                                        )
-                                    )
-                                else:
-                                    media_album_p.append(
-                                        InputMediaPhoto(
-                                            media=image
-                                        )
-                                    )
-                                i = i + 1
-                    await bot.send_media_group(
-                        chat_id=chat_id,
-                        disable_notification=True,
-                        reply_to_message_id=message_id,
-                        media=media_album_p
-                    )
-            #
+                
     try:
         os.remove(thumb_image_path)
     except:
