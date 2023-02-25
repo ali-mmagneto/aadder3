@@ -53,7 +53,7 @@ async def loader(bot, update):
     url = bypasser.bypass_url(link)
     pablo = await update.reply_text("`İndiriliyor...`", True)
     result, dl_path = download_file(url, dirs)
-    if istek == True: 
+    if result == True: 
         istek = requests.get(update.reply_to_message.text)
         if 'content="' in istek.text:
             text = istek.text.split('content="')[1]
