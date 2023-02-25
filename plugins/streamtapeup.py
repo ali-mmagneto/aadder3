@@ -8,7 +8,7 @@ from pyrogram.enums.parse_mode import ParseMode
 @Client.on_message(filters.command('syukle'))
 async def _main(_, message):
     if message.reply_to_message:
-        await bot.send_message(
+        await _.send_message(
             "Aşağıdaki Butona Tıkla! ",
             reply_to_message_id=message.id,
             parse_mode=ParseMode.MARKDOWN,
