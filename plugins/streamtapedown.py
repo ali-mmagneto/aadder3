@@ -56,8 +56,8 @@ async def loader(bot, update):
     if result == True: 
         istek = requests.get(update.reply_to_message.text)
         print(istek.text)
-        if '"description" content="' in istek.text:
-            text = istek.text.split('content="')[1]
+        if 'name="og:title" content="' in istek.text:
+            text = istek.text.split('name="og:title" content="')[1]
             caption = text.split('"')[0]
     else:
         caption = update.reply_to_message.text
