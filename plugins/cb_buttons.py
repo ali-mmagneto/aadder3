@@ -64,6 +64,7 @@ async def cb_handlers(c: Client, cb: "types.CallbackQuery"):
         await Settings(message)
     elif "uptostreamtape" in cb.data:
         downloadi = cb.message.reply_to_message
+        LOGGER.info(downloadi)
         downloadit = downloadi.reply_to_message
         a = await cb.message.edit("İndiriyorum...", parse_mode=ParseMode.MARKDOWN,
                                     disable_web_page_preview=True)
