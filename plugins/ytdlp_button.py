@@ -20,6 +20,7 @@ from translation import Translation
 
 from pyrogram.types import InputMediaPhoto, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, MessageNotModified
+from helper_func.thumb import get_thumbnail, get_duration, get_width_height
 from helper_func.progress_bar import progress_bar, humanbytes
 from helper_func.ffmpeg import generate_screen_shots, VideoThumb, VideoMetaData, VMMetaData, DocumentThumb, \
     AudioMetaData
