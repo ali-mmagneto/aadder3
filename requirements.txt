@@ -17,4 +17,3 @@ unidecode
 requests_toolbelt
 pySmartDL
 lk21
-urllib
