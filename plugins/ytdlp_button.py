@@ -360,7 +360,7 @@ async def yt_dlp_call_back(bot, update):
                 try:
                     if tg_send_type == "audio":
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_AUDIO)
-                        duration = await get_duration(path)
+                        duration = get_duration(path)
                         width, height = await get_width_height(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
@@ -391,7 +391,7 @@ async def yt_dlp_call_back(bot, update):
                             message_id=copy.id)
 
                     elif tg_send_type == "vm":
-                        duration = await get_duration(path)
+                        duration = get_duration(path)
                         width, height = await get_width_height(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
@@ -445,7 +445,7 @@ async def yt_dlp_call_back(bot, update):
                     if 1 == 0:
                         print("1 0'a eşit olmuş aq")
                     else:
-                        duration = await get_duration(path)
+                        duration = get_duration(path)
                         width, height = await get_width_height(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
@@ -523,7 +523,7 @@ async def yt_dlp_call_back(bot, update):
 
                 try:
                     if tg_send_type == "audio":
-                        duration = await get_duration(path)
+                        duration = get_duration(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
                                                chat_id,
@@ -549,7 +549,7 @@ async def yt_dlp_call_back(bot, update):
                             )
                         )
                     elif tg_send_type == "vm":
-                        duration = await get_duration(path)
+                        duration = get_duration(path)
                         width, height = await get_width_height(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
@@ -614,7 +614,7 @@ async def yt_dlp_call_back(bot, update):
                             )
                         )
                     else:
-                        duration = await get_duration(path)
+                        duration = get_duration(path)
                         width, height = await get_width_height(path)
                         thumb_image_path = os.path.join(
                                                Config.DOWNLOAD_DIR,
