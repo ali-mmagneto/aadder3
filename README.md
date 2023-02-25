@@ -57,6 +57,8 @@ DEPO - Kopyalanan Kanalların gideceği Kanal.
 
 /aac - Video Sesinizi aac'ye çevirir.
 
+/ss - Yanıtladığınız Dosyadan Screenshot alır.
+
 /status - bot durumunu gösterir.
 
 /restart - botu tekrar başlatır.
