@@ -170,6 +170,7 @@ async def yt_dlp_call_back(bot, update):
         LOGGER.info(yt_dlp_url)
         LOGGER.info(custom_file_name)
     else:
+        title = response_json["fulltitle"][0:100]
         caption = title
         for entity in message.reply_to_message.entities:
             if entity.type == MessageEntityType.TEXT_LINK:
