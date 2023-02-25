@@ -9,7 +9,8 @@ from pyrogram.enums.parse_mode import ParseMode
 async def _main(_, message):
     if message.reply_to_message:
         await _.send_message(
-            "Aşağıdaki Butona Tıkla! ",
+            chat_id=message.chat.id,
+            text="Aşağıdaki Butona Tıkla! ",
             reply_to_message_id=message.id,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
