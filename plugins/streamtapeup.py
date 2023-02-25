@@ -14,8 +14,7 @@ async def _main(_, message):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                         [[InlineKeyboardButton("Streamtape'e Yükle", callback_data="uptostreamtape")],
-                        [InlineKeyboardButton("Developer", url="https://t.me/linux_repo")]]
-                    )))
+                        [InlineKeyboardButton("Developer", url="https://t.me/linux_repo")]]))
         
     else:
         await message.reply_text("`Bir Video Yanıtla..`")
