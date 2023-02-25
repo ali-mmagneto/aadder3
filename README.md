@@ -14,30 +14,7 @@ Sunucu yok valla bir yere kur
 ## Colab
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ali-mmagneto/aadder/blob/main/audiobot.ipynb)
 
-      
-
-Powered by :d
-
-
-# Env Variables
-
-APP_ID - my.telegram.org'da bir uygulama olușturup al sadece sayılardan olușur.
-
-API_HASH - my.telegram.org'da bir uygulama olușturup al.
-
-BOT_TOKEN - @BotFather'dan bir bot oluşturup al.
-
-STRING_SESSION - Bir Telegram Premium Hesabın bilgileri ile [Șuradan](https://replit.com/@dashezup/generate-pyrogram-session-string) al.
-
-PRE_LOG - Botu ve Premium Hesabını yönetici yaptığın kanalın idsi bașına -100 koy.
-
-OWNER_ID - Botun Sahibinin Telegram kullanıcı adı @ olmadan. 
-
-STREAMTAPE_API_PASS - Streamtape Şifren. 
-
-STREAMTAPE_API_USERNAME - Streamtape Username. 
-
-DEPO - Kopyalanan Kanalların gideceği Kanal. 
+# Powered by :d
 
 # iyi Kullanimlar :d
 
@@ -86,3 +63,25 @@ Foto gönderince oto thumb olarak alır.
 /film {kanal id-username} {kopyalancak ilk mesaj id} {kopyalanacak son mesaj id} - Bot Üzerinden Kanal Kopyalar.
 
 /gizlifilm {kanal id-username} {kopyalancak ilk mesaj id} {kopyalanacak son mesaj id} - User Üzerinden kanal kopyalar.
+
+
+# Env Variables
+
+APP_ID - my.telegram.org'da bir uygulama olușturup al sadece sayılardan olușur.
+
+API_HASH - my.telegram.org'da bir uygulama olușturup al.
+
+BOT_TOKEN - @BotFather'dan bir bot oluşturup al.
+
+STRING_SESSION - Bir Telegram Premium Hesabın bilgileri ile [Șuradan](https://replit.com/@dashezup/generate-pyrogram-session-string) al.
+
+PRE_LOG - Botu ve Premium Hesabını yönetici yaptığın kanalın idsi bașına -100 koy.
+
+OWNER_ID - Botun Sahibinin Telegram kullanıcı adı @ olmadan. 
+
+STREAMTAPE_API_PASS - Streamtape Şifren. 
+
+STREAMTAPE_API_USERNAME - Streamtape Username. 
+
+DEPO - Kopyalanan Kanalların gideceği Kanal. 
+ 
