@@ -54,7 +54,7 @@ async def loader(bot, update):
     pablo = await update.reply_text("`İndiriliyor...`", True)
     result, dl_path = download_file(url, dirs)
     istek = requests.get(update.reply_to_message.text)
-    print(istek)
+    print(istek.text)
     start_dl = time.time()
     await pablo.edit_text("`Yüklüyorum...`")
     chat_id = str(update.chat.id)
