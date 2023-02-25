@@ -10,7 +10,7 @@ from pyrogram import Client, enums
 botStartTime2 = time.time()
 
 class Config:
-
+    DEF_WATER_MARK_FILE = ""
     ENCODE_DIR = 'encodes'
     APP_ID = os.environ.get("APP_ID", None)
     API_HASH = os.environ.get("API_HASH", None)
