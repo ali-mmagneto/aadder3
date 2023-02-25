@@ -239,9 +239,6 @@ async def yt_dlp_call_back(bot, update):
     # command_to_exec.append("--quiet")
     command_to_exec.append("--restrict-filenames")
     #
-    if HTTP_PROXY != "":
-        command_to_exec.append("--proxy")
-        command_to_exec.append(HTTP_PROXY)
     if ".cloud" in yt_dlp_url:
         command_to_exec.append("--referer")
         command_to_exec.append("https://vidmoly.to/")
