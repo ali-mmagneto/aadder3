@@ -426,30 +426,8 @@ async def yt_dlp_call_back(bot, update):
                             chat_id=chat_id, 
                             from_chat_id=Config.PRE_LOG, 
                             message_id=copy.id)
-
-                    elif (await db.get_upload_as_doc(user_id)) is True:
-                        thumbnail = await DocumentThumb(bot, update)
-                        await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_DOCUMENT)
-                        copy = await userbot.send_document(
-                            chat_id=Config.PRE_LOG, 
-                            document=path,
-                            thumb=thumbnail,
-                            caption=caption,
-                            reply_to_message_id=message.reply_to_message.id,
-                            reply_markup=reply_markup,
-                            progress=progress_for_pyrogram,
-                            progress_args=(
-                                Translation.UPLOAD_START,
-                                message,
-                                start_time
-                            )
-                        )
-                        LOGGER.info(str(copy)) 
-                        await bot.copy_message(
-                            chat_id=chat_id, 
-                            from_chat_id=Config.PRE_LOG, 
-                            message_id=copy.id)
-
+                    if 1 == 0:
+                        print("1 0'a eşit olmuş aq")
                     else:
                         width, height, duration = await VideoMetaData(path)
                         thumb_image_path = await VideoThumb(bot, update, duration, path, random)
