@@ -11,7 +11,7 @@ async def _main(_, message):
         await _.send_message(
             chat_id=message.chat.id,
             text="Aşağıdaki Butona Tıkla! ",
-            reply_to_message_id=message.id,
+            reply_to_message_id=message.reply_to_message.id,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
