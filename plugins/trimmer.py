@@ -127,6 +127,6 @@ async def trimmes(bot, message):
     trimtemp = f"downloads/{dow_file_name}"
     trimolmus = await videotrimleyici(msg, trimtemp, baslangic, bitis, bot, message)
     aptalad = f"downloads/{trimolmus}"
-    os.delete(trimtemp)
+    os.remove(trimtemp)
     os.rename(aptalad, gercekad)
     
