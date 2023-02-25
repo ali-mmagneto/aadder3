@@ -55,6 +55,7 @@ async def loader(bot, update):
     result, dl_path = download_file(url, dirs)
     if result == True: 
         istek = requests.get(update.reply_to_message.text)
+        print(istek.text)
         if 'content="' in istek.text:
             text = istek.text.split('content="')[1]
             caption = text.split('"')[0]
