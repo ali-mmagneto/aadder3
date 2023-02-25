@@ -14,7 +14,7 @@ from config import Config
 # https://github.com/viperadnan-git/google-drive-telegram-bot/blob/main/bot/helpers/downloader.py
 def download_file(url, dl_path):
   try:
-    dl = SmartDL(url, dl_path, progress_bar=False)
+    dl = SmartDL(url, dl_path, progress_bar=True)
     dl.start()
     filename = dl.get_dest()
     if '+' in filename:
