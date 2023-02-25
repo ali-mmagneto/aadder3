@@ -123,10 +123,39 @@ async def trimmes(bot, message):
                 progress_args=("`İndiriliyor...`", msg, start_time))
     splitpath = media.split("/downloads/")
     dow_file_name = splitpath[1]
-    gercekad = f"downloads/{dow_file_name}"
+    video = f"downloads/{dow_file_name}"
     trimtemp = f"downloads/{dow_file_name}"
     trimolmus = await videotrimleyici(msg, trimtemp, baslangic, bitis, bot, message)
     aptalad = f"downloads/{trimolmus}"
     os.remove(trimtemp)
-    os.rename(aptalad, gercekad)
-    
+    os.rename(aptalad, video)
+    start_time = time.time()
+    caption = message.reply_to_message.caption
+    duration = get_duration(video)
+    thumb_image_path = os.path.join(
+        Config.DOWNLOAD_DIR,
+        chat_id,
+        chat_id + ".jpg"
+    )
+    if os.path.exists(thumb_image_path):
+        thumb = thumb_image_path
+    else:
+        thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
+    width, height = get_width_height(video)
+    file_size = os.stat(video).st_size
+    await bot.send_video(
+        chat_id = message.chat.id,
+        progress = progress_bar, 
+        progress_args = (
+            'Dosyan Yükleniyor!',
+            msg,
+            start_time
+            ),
+        video = video,
+        caption = caption,
+        duration = duration,
+        thumb = thumb,
+        width = width,
+        height = height,
+        supports_streaming=True) 
+    await msg.edit("`Başarı ile Tamamlandı...`")
