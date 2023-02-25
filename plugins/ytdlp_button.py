@@ -170,16 +170,7 @@ async def yt_dlp_call_back(bot, update):
         LOGGER.info(yt_dlp_url)
         LOGGER.info(custom_file_name)
     else:
-        if "fulltitle" in response_json:
-            title = response_json["fulltitle"][0:100]
-            if (await db.get_caption(user_id)) is True:
-                if "description" in response_json:
-                    description = response_json["description"][0:821]
-                    caption = title + "\n\n" + description
-                else:
-                    caption = title
-            else:
-                caption = title
+        caption = title
         for entity in message.reply_to_message.entities:
             if entity.type == MessageEntityType.TEXT_LINK:
                 yt_dlp_url = entity.url
