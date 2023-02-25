@@ -21,7 +21,8 @@ class Config:
     OWNER_ID = os.environ.get("OWNER_ID", '1276627253') 
     DEPO = os.environ.get("DEPO", None)
     SESSION_NAME = os.environ.get("SESSION_NAME", "")
-
+    STREAMTAPE_API_PASS = os.environ.get("STREAMTAPE_API_PASS") 
+    STREAMTAPE_API_USERNAME = os.environ.get("STREAMTAPE_API_USERNAME")
     # database uri (mongodb)
     DATABASE_URL = os.environ.get("DATABASE_URL", "")
 
