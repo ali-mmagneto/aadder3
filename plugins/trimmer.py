@@ -101,6 +101,7 @@ async def videotrimleyici(msg, trimtemp, baslangic, bitis, bot, message):
 
 @Client.on_message(filters.command('trim'))
 async def trimmes(bot, message):
+    chat_id = str(message.chat.id) 
     if not message.reply_to_message:
        await message.reply_text("`Bir Video Yanıtla..`")
        return
