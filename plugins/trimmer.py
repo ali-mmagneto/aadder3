@@ -123,5 +123,9 @@ async def trimmes(bot, message):
                 file_name = f"downloads/trimolcakvideo.mp4",
                 progress=progress_bar,
                 progress_args=("`İndiriliyor...`", msg, start_time))
+    dosyaadi = message.reply_to_message.file_name
+    gercekad = f"downloads/{dosyaadi}"
     trimtemp = f"downloads/trimolcakvideo.mp4"
     trimolmus = await videotrimleyici(msg, trimtemp, baslangic, bitis, bot, message)
+    os.rename(trimolmus, gercekad)
+    
