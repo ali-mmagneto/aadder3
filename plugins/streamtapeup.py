@@ -8,7 +8,7 @@ from pyrogram.enums.parse_mode import ParseMode
 @Client.on_message(filters.command('syukle'))
 async def _main(_, message):
     if message.reply_to_message:
-        button = InlineKeyboardButton("Streamtape'e Yükle", callback_data="uptostreamtape")
+        button = [InlineKeyboardButton("Streamtape'e Yükle", callback_data="uptostreamtape")]
         await message.reply_text(
             "Aşağıdaki Butona Tıkla! ",
             parse_mode=ParseMode.MARKDOWN,
