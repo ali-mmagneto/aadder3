@@ -90,7 +90,7 @@ async def yt_dlp_call_back(bot, update):
     message = update.message
     current_user_id = message.reply_to_message.from_user.id
     user_id = update.from_user.id
-    chat_id = message.chat.id
+    chat_id = str(message.chat.id)
     message_id = message.id
     
     if current_user_id != user_id:
