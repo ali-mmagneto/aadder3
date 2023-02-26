@@ -119,5 +119,6 @@ async def mergevideosu(bot, message):
         videolocu = f"downloads/{dow_file_name}"
         videolarr.append(videolocu)
         print(videolarr)
-        await msg.edit(f"len({videolarid}. Video Kaydedildi Diğer videoları yanıtla.")
+        sayi = len(videolarr)
+        await msg.edit(f"{sayi}. Video Kaydedildi Diğer videoları yanıtla.")
         
