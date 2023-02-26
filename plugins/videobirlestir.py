@@ -176,5 +176,6 @@ async def videobirlesislemi(bot, message):
             height = height,
             supports_streaming=True) 
         await msg.edit("`Başarı ile Tamamlandı...`")
+        videolarr = []
     except Exception as e:
         await message.reply_text(e)
