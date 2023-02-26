@@ -123,7 +123,7 @@ async def mergevideosu(bot, message):
                         progress_args=("`İndiriliyor...`", msg, start_time))
             splitpath = video.split("/downloads/")
             dow_file_name = splitpath[1]
-            videolocu = f"downloads/{dow_file_name}"
+            videolocu = f"{dow_file_name}"
             videolarr.append(f"file '{videolocu}'")
             print(videolarr)
             sayi = len(videolarr)
