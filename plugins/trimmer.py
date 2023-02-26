@@ -160,3 +160,4 @@ async def trimmes(bot, message):
         height = height,
         supports_streaming=True) 
     await msg.edit("`Başarı ile Tamamlandı...`")
+    os.remove(video)
