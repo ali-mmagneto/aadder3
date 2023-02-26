@@ -109,15 +109,18 @@ async def mergevideosu(bot, message):
         if media.file_name.rsplit(".", 1)[-1].lower() not in ["mp4", "mkv", "webm"]:
             await message.reply_text("Bu Video formatı desteklenmiyor\nSadece mp4 mkv webm gönder.", quote=True)
             return
-        msg = await message.reply_text("`İşleme Başlıyorum..`")
-        video = await bot.download_media(
-                    message = message.reply_to_message,
-                    progress=progress_bar,
-                    progress_args=("`İndiriliyor...`", msg, start_time))
-        splitpath = video.split("/downloads/")
-        dow_file_name = splitpath[1]
-        videolocu = f"downloads/{dow_file_name}"
-        videolarr.append(videolocu)
-        print(videolarr)
-        sayi = len(videolarr)
-        await msg.edit(f"{sayi}. Video Kaydedildi Diğer videoları yanıtla.")
+        try:
+            msg = await message.reply_text("`İşleme Başlıyorum..`")
+            video = await bot.download_media(
+                        message = message.reply_to_message,
+                        progress=progress_bar,
+                        progress_args=("`İndiriliyor...`", msg, start_time))
+            splitpath = video.split("/downloads/")
+            dow_file_name = splitpath[1]
+            videolocu = f"downloads/{dow_file_name}"
+            videolarr.append(videolocu)
+            print(videolarr)
+            sayi = len(videolarr)
+            await msg.edit(f"{sayi}. Video Kaydedildi Diğer videoları yanıtla.")
+        except Exception as e:
+            await message.reply_text(e) 
