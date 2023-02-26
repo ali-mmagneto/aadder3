@@ -15,6 +15,19 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
 
+
+@Client.on_message(filters.command('del'))
+async def deldirectory(bot, message):
+    try:
+        msg = await message.reply_text("`Siliyorum..`") 
+        text = message.text.split(" ", 1)
+        if len(text) < 2:
+            await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/del downloads`") 
+            return
+        for files in os.listdir(text[1])
+            os.remove(f"{text[1]}/{files}")
+        await msg.edit("`{text[1]} Klasörü Başarıyla Silindi..`")
+
 @Client.on_message(filters.command('get'))
 async def get_directory(bot, message):
     try:
@@ -37,6 +50,17 @@ async def get_directory(bot, message):
                         say) + " Tane Dosya Var.")
     except Exception as e:
         await message.reply_text(e)
+
+@Client.on_message(filters.command('delfile'))
+async def delfile(bot, message):
+    try:
+        msg = await message.reply_text("`Siliyorum..`") 
+        text = message.text.split(" ", 1)
+        if len(text) < 2:
+            await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/del downloads/RTE Twerk Yapıyor.mp4`") 
+            return
+        os.remove(f"{text[1]}")
+        await msg.edit("`{text[1]} Dosyası Başarıyla Silindi..`")
 
 @Client.on_message(filters.command('getfile'))
 async def get_file(bot, message):
