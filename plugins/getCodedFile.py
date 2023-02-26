@@ -19,11 +19,11 @@ LOGGER = logging.getLogger(__name__)
 @Client.on_message(filters.command('del'))
 async def deldirectory(bot, message):
     try:
-        msg = await message.reply_text("`Siliyorum..`") 
         text = message.text.split(" ", 1)
         if len(text) < 2:
             await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/del downloads`") 
             return
+        msg = await message.reply_text("`Siliyorum..`") 
         for files in os.listdir(text[1]):
             os.remove(f"{text[1]}/{files}")
         await msg.edit(f"`{text[1]} Klasörü Başarıyla Silindi..`")
@@ -56,11 +56,11 @@ async def get_directory(bot, message):
 @Client.on_message(filters.command('delfile'))
 async def delfile(bot, message):
     try:
-        msg = await message.reply_text("`Siliyorum..`") 
         text = message.text.split(" ", 1)
         if len(text) < 2:
             await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/del downloads/RTE Twerk Yapıyor.mp4`") 
             return
+        msg = await message.reply_text("`Siliyorum..`") 
         os.remove(f"{text[1]}")
         await msg.edit(f"`{text[1]} Dosyası Başarıyla Silindi..`")
     except Exception as e:
