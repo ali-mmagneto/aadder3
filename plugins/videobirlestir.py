@@ -91,8 +91,12 @@ async def videobirlestirici(msg, input_file, bot, message):
                 read_stderr(start, msg, process),
                 process.wait(),
             ])
-    except Exception as e:
-        await message.reply_text(e)
+    except NotImplementedError:
+        await message.reply_text(
+            text="Unable to Execute FFmpeg Command! Got `NotImplementedError` ...\n\nPlease run bot in a Linux/Unix Environment."
+        )
+        await asyncio.sleep(10)
+        return None
 
     if process.returncode == 0:
         await msg.edit('Video Başarıyla Kesildi!\n\nGeçen Süre : {} saniye'.format(round(start-time.time())))
