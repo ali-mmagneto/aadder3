@@ -87,16 +87,16 @@ async def videobirlestirici(msg, input_file, bot, message):
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
-        await asyncio.wait([
-                read_stderr(start, msg, process),
-                process.wait(),
-            ])
     except NotImplementedError:
         await msg.edit(
             text="Yapamıyorum..."
         )
         await asyncio.sleep(10)
         return None
+    await asyncio.wait([
+            read_stderr(start, msg, process),
+            process.wait(),
+         ])
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
@@ -149,8 +149,9 @@ async def videobirlesislemi(bot, message):
             document = input_file)
         video = await videobirlestirici(msg, input_file, bot, message)
         start_time = time.time()
-        caption = message.reply_to_message.caption
+        caption = f"{video}"
         duration = get_duration(video)
+        chat_id = str(message.chat.id) 
         thumb_image_path = os.path.join(
             Config.DOWNLOAD_DIR,
             chat_id,
