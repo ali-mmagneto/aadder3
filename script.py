@@ -19,45 +19,47 @@ class Script(object):
 
   HELP_USER = """/extract - Videodan Ses veya Alt Yazı ayıklar.
 
-/mediainfo - Video veya Sesten Mediainfo alır ve hem txt olarak atar hemde Katbin'e yazdırır.
+`/mediainfo` - Video veya Sesten Mediainfo alır ve hem txt olarak atar hemde Katbin'e yazdırır.
 
-/ses - Videoya eklenecek sesi indirir.
+`/ses` - Videoya eklenecek sesi indirir.
 
-/video - ses eklenecek videoyu indirir. 
+`/video` - ses eklenecek videoyu indirir. 
 
-/sesekle - ses ekleme işlemini başlatır.
+`/sesekle` - ses ekleme işlemini başlatır.
 
-/aac - Video Sesinizi aac'ye çevirir.
+`/aac` - Video Sesinizi aac'ye çevirir.
 
-/ss - Yanıtladığınız Dosyadan Screenshot alır.
+`/ss` - Yanıtladığınız Dosyadan Screenshot alır.
 
-/status - bot durumunu gösterir.
+`/status` - bot durumunu gösterir.
 
-/restart - botu tekrar başlatır.
+`/restart` - botu tekrar başlatır.
 
-/log - log dosyası gönderir. 
+`/log` - log dosyası gönderir. 
 
-/speedtest - Sunucu Hızını Getirir.
+`/speedtest` - Sunucu Hızını Getirir.
 
 Foto gönderince oto thumb olarak alır. 
 
-/delthumb - thumbı siler. 
+`/delthumb` - thumbı siler. 
 
-/get <dizin> - Bir dizindeki dosyaları sıralar. 
+`/get <dizin>` - Bir dizindeki dosyaları sıralar. 
 
-/getfile <dizin/dosya adı> - Belirtilen dosyayı getirir.
+`/getfile <dizin/dosya adı>` - Belirtilen dosyayı getirir.
 
-/rename <Yeni İsim> - Videoya yeni isim koyar. 
+`/rename <Yeni İsim>` - Videoya yeni isim koyar. 
 
-/indir - yanıtladığınız urlyi yetedelepe ile indirir.
+`/indir` - yanıtladığınız urlyi yetedelepe ile indirir.
 
-/syukle - Streamtape'e yanıtladığınız videoyu yükler.
+`/syukle` - Streamtape'e yanıtladığınız videoyu yükler.
 
-/sindir - Streamtape'den Video indirir.
+`/sindir` - Streamtape'den Video indirir.
 
-/film {kanal id-username} {kopyalancak ilk mesaj id} {kopyalanacak son mesaj id} - Bot Üzerinden Kanal Kopyalar.
+`/film {kanal id-username} {kopyalancak ilk mesaj id} {kopyalanacak son mesaj id}` - Bot Üzerinden Kanal Kopyalar.
 
-/gizlifilm {kanal id-username} {kopyalancak ilk mesaj id} {kopyalanacak son mesaj id} - User Üzerinden kanal kopyalar.
+`/gizlifilm {kanal id-username} {kopyalancak ilk mesaj id} {kopyalanacak son mesaj id}` - User Üzerinden kanal kopyalar.
+
+`/trim 00:00:50 00:02:00` - Yanıtladığın Videoyu 50. Saniyeden 2. Dakikaya kadar kesip gönderir.
 """
 
   START_TEXT = """
