@@ -176,7 +176,6 @@ async def videobirlesislemi(bot, message):
             height = height,
             supports_streaming=True) 
         await msg.edit("`Başarı ile Tamamlandı...`")
-        videolarr = []
         for files in os.listdir("downloads"):
             os.remove(f"downloads/{files}")
     except Exception as e:
