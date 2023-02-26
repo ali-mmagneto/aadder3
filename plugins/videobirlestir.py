@@ -93,10 +93,6 @@ async def videobirlestirici(msg, input_file, bot, message):
         )
         await asyncio.sleep(10)
         return None
-    await asyncio.wait([
-            read_stderr(start, msg, process),
-            process.wait(),
-         ])
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
