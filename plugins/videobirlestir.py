@@ -112,7 +112,7 @@ async def mergevideosu(bot, message):
         try:
             msg = await message.reply_text("`İşleme Başlıyorum..`")
             video = await bot.download_media(
-                        message = message.reply_to_message,
+                        message=message.reply_to_message,
                         progress=progress_bar,
                         progress_args=("`İndiriliyor...`", msg, start_time))
             splitpath = video.split("/downloads/")
