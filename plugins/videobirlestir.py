@@ -14,8 +14,8 @@ import time
 import re
 import asyncio
 from unidecode import unidecode
-videolar = []
-videolarid = [] 
+videolarr = []
+videolar = [] 
 
 progress_pattern = re.compile(
     r'(frame|fps|size|time|bitrate|speed)\s*\=\s*(\S+)'
@@ -109,7 +109,15 @@ async def mergevideosu(bot, message):
         if media.file_name.rsplit(".", 1)[-1].lower() not in ["mp4", "mkv", "webm"]:
             await message.reply_text("Bu Video formatı desteklenmiyor\nSadece mp4 mkv webm gönder.", quote=True)
             return
-        msg = await message.reply_text("`İşleme Başlıyorum..`") 
-        videolarid.append(message.reply_to_message.id)
+        msg = await message.reply_text("`İşleme Başlıyorum..`")
+        video = await bot.download_media(
+                    message = message.reply_to_message,
+                    progress=progress_bar,
+                    progress_args=("`İndiriliyor...`", msg, start_time))
+        splitpath = video.split("/downloads/")
+        dow_file_name = splitpath[1]
+        videolocu = f"downloads/{dow_file_name}"
+        videolarr.append(videolocu)
+        print(videolarr)
         await msg.edit(f"len({videolarid}. Video Kaydedildi Diğer videoları yanıtla :) ve işleme başlamak için /birlestir komutunu kullan.")
-        print(videolarid)
+        
