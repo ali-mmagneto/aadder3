@@ -73,7 +73,7 @@ async def videobirlestirici(msg, input_file, bot, message):
         "-safe",
         "0",
         "-i",
-        input_file,
+        str(input_file),
         "-c",
         "copy",
         out_location
