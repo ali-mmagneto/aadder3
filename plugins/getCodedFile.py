@@ -27,6 +27,8 @@ async def deldirectory(bot, message):
         for files in os.listdir(text[1]):
             os.remove(f"{text[1]}/{files}")
         await msg.edit("`{text[1]} Klasörü Başarıyla Silindi..`")
+    except Exception as e:
+        await message.reply_text(e) 
 
 @Client.on_message(filters.command('get'))
 async def get_directory(bot, message):
@@ -61,6 +63,8 @@ async def delfile(bot, message):
             return
         os.remove(f"{text[1]}")
         await msg.edit("`{text[1]} Dosyası Başarıyla Silindi..`")
+    except Exception as e:
+        await message.reply_text(e) 
 
 @Client.on_message(filters.command('getfile'))
 async def get_file(bot, message):
