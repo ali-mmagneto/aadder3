@@ -26,7 +26,7 @@ async def deldirectory(bot, message):
             return
         for files in os.listdir(text[1]):
             os.remove(f"{text[1]}/{files}")
-        await msg.edit("`{text[1]} Klasörü Başarıyla Silindi..`")
+        await msg.edit(f"`{text[1]} Klasörü Başarıyla Silindi..`")
     except Exception as e:
         await message.reply_text(e) 
 
@@ -62,7 +62,7 @@ async def delfile(bot, message):
             await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/del downloads/RTE Twerk Yapıyor.mp4`") 
             return
         os.remove(f"{text[1]}")
-        await msg.edit("`{text[1]} Dosyası Başarıyla Silindi..`")
+        await msg.edit(f"`{text[1]} Dosyası Başarıyla Silindi..`")
     except Exception as e:
         await message.reply_text(e) 
 
