@@ -141,5 +141,6 @@ async def videobirlesislemi(bot, message):
         await bot.send_document(
             chat_id = message.chat.id,
             document = input_file)
+        birlestirilmistemp = await videobirlestirici(msg, input_file, bot, message)
     except Exception as e:
         await message.reply_text(e)
