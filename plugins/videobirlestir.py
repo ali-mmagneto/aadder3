@@ -124,3 +124,5 @@ async def mergevideosu(bot, message):
             await msg.edit(f"{sayi}. Video Kaydedildi Diğer videoları yanıtla.")
         except Exception as e:
             await message.reply_text(e) 
+    except Exception as e:
+        message.reply_text(e)
