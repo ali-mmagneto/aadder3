@@ -73,23 +73,26 @@ async def videobirlestirici(msg, input_file, bot, message):
         "-safe",
         "0",
         "-i",
-        f"downloads/{message.chat.id}.txt",
+        input_file,
         "-c",
         "copy",
         out_location
     ]
     
-    process = await asyncio.create_subprocess_exec(
-            *command,
-            # stdout must a pipe to be accessible as process.stdout
-            stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.PIPE,
-            )
+    try:
+        process = await asyncio.create_subprocess_exec(
+                *command,
+                # stdout must a pipe to be accessible as process.stdout
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+                )
 
-    await asyncio.wait([
-            read_stderr(start, msg, process),
-            process.wait(),
-        ])
+        await asyncio.wait([
+                read_stderr(start, msg, process),
+                process.wait(),
+            ])
+    except Exception as e:
+        await message.reply_text(e)
 
     if process.returncode == 0:
         await msg.edit('Video Başarıyla Kesildi!\n\nGeçen Süre : {} saniye'.format(round(start-time.time())))
