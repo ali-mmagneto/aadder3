@@ -125,4 +125,4 @@ async def mergevideosu(bot, message):
         except Exception as e:
             await message.reply_text(e) 
     except Exception as e:
-        message.reply_text(e)
+        await message.reply_text(e)
