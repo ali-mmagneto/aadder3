@@ -87,18 +87,19 @@ async def videobirlestirici(msg, input_file, bot, message):
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
+        await asyncio.wait([
+                read_stderr(start, msg, process),
+                process.wait(),
+            ])
     except NotImplementedError:
         await msg.edit(
-            text="Unable to Execute FFmpeg Command! Got `NotImplementedError` ...\n\nPlease run bot in a Linux/Unix Environment."
+            text="Yapamıyorum..."
         )
         await asyncio.sleep(10)
         return None
-    await msg.edit("Merging Video Now ...\n\nPlease Keep Patience ...")
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
-    print(e_response)
-    print(t_response)
     if os.path.lexists(output_vid):
         return output_vid
     else:
