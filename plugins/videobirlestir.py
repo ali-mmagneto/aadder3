@@ -100,7 +100,7 @@ async def videobirlestirici(msg, input_file, bot, message):
     return output
 
 @Client.on_message(filters.command('videolar'))
-async def mergevideosu(bot, message)
+async def mergevideosu(bot, message):
     try:
         media = message.video or message.document
         if media.file_name is None:
