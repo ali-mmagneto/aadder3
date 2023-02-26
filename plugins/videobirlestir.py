@@ -121,4 +121,3 @@ async def mergevideosu(bot, message):
         print(videolarr)
         sayi = len(videolarr)
         await msg.edit(f"{sayi}. Video Kaydedildi Diğer videoları yanıtla.")
-        
