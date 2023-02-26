@@ -110,6 +110,7 @@ async def mergevideosu(bot, message):
             await message.reply_text("Bu Video formatı desteklenmiyor\nSadece mp4 mkv webm gönder.", quote=True)
             return
         try:
+            start_time = time.time()
             msg = await message.reply_text("`İşleme Başlıyorum..`")
             video = await bot.download_media(
                         message=message.reply_to_message,
