@@ -102,7 +102,7 @@ async def videobirlestirici(msg, input_file, bot, message):
 @Client.on_message(filters.command('videolar'))
 async def mergevideosu(bot, message):
     try:
-        media = message.video or message.document
+        media = message.reply_to_message.video or message.reply_to_message.document
         if media.file_name is None:
             await message.reply_text("Bu Videonun Adı Yok!")
             return
