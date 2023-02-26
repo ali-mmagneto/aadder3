@@ -65,8 +65,8 @@ async def read_stderr(start, msg, process):
 async def videobirlestirici(msg, input_file, bot, message):
     start = time.time()
     output = "BirleştirilmişVideo.mp4"
-    out_location = f"downloads/{output}"
-    command = [
+    output_vid = f"downloads/{output}"
+    file_generator_command = [
         "ffmpeg",
         "-f",
         "concat",
@@ -74,37 +74,35 @@ async def videobirlestirici(msg, input_file, bot, message):
         "0",
         "-i",
         input_file,
+        "-map",
+        "0",
         "-c",
         "copy",
-        out_location
+        output_vid,
     ]
-    
+    process = None
     try:
         process = await asyncio.create_subprocess_exec(
-                *command,
-                # stdout must a pipe to be accessible as process.stdout
-                stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.PIPE,
-                )
-
-        await asyncio.wait([
-                read_stderr(start, msg, process),
-                process.wait(),
-            ])
+            *file_generator_command,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
     except NotImplementedError:
-        await message.reply_text(
+        await message.edit(
             text="Unable to Execute FFmpeg Command! Got `NotImplementedError` ...\n\nPlease run bot in a Linux/Unix Environment."
         )
         await asyncio.sleep(10)
         return None
-
-    if process.returncode == 0:
-        await msg.edit('Video Başarıyla Kesildi!\n\nGeçen Süre : {} saniye'.format(round(start-time.time())))
+    await message.edit("Merging Video Now ...\n\nPlease Keep Patience ...")
+    stdout, stderr = await process.communicate()
+    e_response = stderr.decode().strip()
+    t_response = stdout.decode().strip()
+    LOGGER.info(e_response)
+    LOGGER.info(t_response)
+    if os.path.lexists(output_vid):
+        return output_vid
     else:
-        await msg.edit('Video kesilirken Bir Hata Oluştu!')
-        return False
-    time.sleep(2)
-    return output
+        return None
 
 @Client.on_message(filters.command('videolar'))
 async def mergevideosu(bot, message):
