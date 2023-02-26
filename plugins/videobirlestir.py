@@ -147,6 +147,36 @@ async def videobirlesislemi(bot, message):
         await bot.send_document(
             chat_id = message.chat.id,
             document = input_file)
-        birlestirilmistemp = await videobirlestirici(msg, input_file, bot, message)
+        video = await videobirlestirici(msg, input_file, bot, message)
+        start_time = time.time()
+        caption = message.reply_to_message.caption
+        duration = get_duration(video)
+        thumb_image_path = os.path.join(
+            Config.DOWNLOAD_DIR,
+            chat_id,
+            chat_id + ".jpg"
+        )
+        if os.path.exists(thumb_image_path):
+            thumb = thumb_image_path
+        else:
+            thumb = get_thumbnail(video, './' + Config.DOWNLOAD_DIR, duration / 4)
+        width, height = get_width_height(video)
+        file_size = os.stat(video).st_size
+        await bot.send_video(
+            chat_id = message.chat.id,
+            progress = progress_bar, 
+            progress_args = (
+                'Dosyan Yükleniyor!',
+                msg,
+                start_time
+                ),
+            video = video,
+            caption = caption,
+            duration = duration,
+            thumb = thumb,
+            width = width,
+            height = height,
+            supports_streaming=True) 
+        await msg.edit("`Başarı ile Tamamlandı...`")
     except Exception as e:
         await message.reply_text(e)
