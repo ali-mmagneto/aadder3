@@ -97,8 +97,8 @@ async def videobirlestirici(msg, input_file, bot, message):
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
-    LOGGER.info(e_response)
-    LOGGER.info(t_response)
+    print(e_response)
+    print(t_response)
     if os.path.lexists(output_vid):
         return output_vid
     else:
