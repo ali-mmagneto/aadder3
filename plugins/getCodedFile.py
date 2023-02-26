@@ -24,7 +24,7 @@ async def deldirectory(bot, message):
         if len(text) < 2:
             await bot.send_message(message.chat.id, "Hatalı Kullanım :/ Doğru Kullanım Şu Şekilde:\n\n`/del downloads`") 
             return
-        for files in os.listdir(text[1])
+        for files in os.listdir(text[1]):
             os.remove(f"{text[1]}/{files}")
         await msg.edit("`{text[1]} Klasörü Başarıyla Silindi..`")
 
