@@ -122,8 +122,24 @@ async def mergevideosu(bot, message):
             videolarr.append(videolocu)
             print(videolarr)
             sayi = len(videolarr)
-            await msg.edit(f"{sayi}. Video Kaydedildi Diğer videoları yanıtla.")
+            await msg.edit(f"`{sayi}. Video Kaydedildi Diğer videoları yanıtla.`")
         except Exception as e:
             await message.reply_text(e) 
+    except Exception as e:
+        await message.reply_text(e)
+
+@Client.on_message(filters.command('birlestir'))
+async def videobirlesislemi(bot, message):
+    try:
+        if len(videolarr) == 1:
+            await message.reply_text("`Yeterli Sayıda Video Kaydetmemişsin 😡`") 
+            return
+        msg = await message.reply_text("`İşleme Başlıyorum`") 
+        input_file = f"downloads/{message.chat.id}.txt"
+        with open(input_file, 'w') as _list:
+            _list.write("\n".join(videolarr))
+        await bot.send_document(
+            chat_id = message.chat.id,
+            document = input_file)
     except Exception as e:
         await message.reply_text(e)
