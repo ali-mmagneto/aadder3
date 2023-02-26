@@ -119,7 +119,7 @@ async def mergevideosu(bot, message):
             splitpath = video.split("/downloads/")
             dow_file_name = splitpath[1]
             videolocu = f"downloads/{dow_file_name}"
-            videolarr.append(videolocu)
+            videolarr.append(f"file '{videolocu}'")
             print(videolarr)
             sayi = len(videolarr)
             await msg.edit(f"`{sayi}. Video Kaydedildi Diğer videoları yanıtla.`")
