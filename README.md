@@ -42,7 +42,7 @@ Sunucu yok valla bir yere kur
 
 /log - log dosyası gönderir. 
 
-/speedtest - Sunucu Hızını Getirir.
+/spaedtest - Sunucu Hızını Getirir a yerine komuta e koy.
 
 Foto gönderince oto thumb olarak alır. 
 
