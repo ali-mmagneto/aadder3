@@ -8,7 +8,7 @@
 - Streamtape'e video yükler. 
 - Streamtape'den video indirir. 
 - yetedelepe destekleyen urlleri indirir ve Telegrama Yükler. 
-
+- Video Keser. 
 Sunucu yok valla bir yere kur
 
 ## Colab
@@ -64,6 +64,7 @@ Foto gönderince oto thumb olarak alır.
 
 /gizlifilm {kanal id-username} {kopyalancak ilk mesaj id} {kopyalanacak son mesaj id} - User Üzerinden kanal kopyalar.
 
+/trim {baslangicsure} {bitissure} - Video'yu Keser. 
 
 # Env Variables
 
