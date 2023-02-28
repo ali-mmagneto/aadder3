@@ -4,6 +4,7 @@ from unidecode import unidecode
 import logging
 import os
 import subprocess
+import asyncio
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
