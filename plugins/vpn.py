@@ -16,7 +16,7 @@ async def connect(client, message):
     connect = await client.send_message(message.chat.id, "Vpn Bağlanıyor..")
     try:
         os.chmod("etc/openvpn/pass.txt", 600)
-        process = subprocess.Popen(['sudo', '-b', 'openvpn', "--config", "etc/openvpn/tr-ist.prod.surfshark.com_udp.ovpn", '--auth-user-pass', 'etc/openvpn/pass.txt'], stdout=subprocess.PIPE)
+        process = subprocess.Popen(['openvpn', "--config", "etc/openvpn/tr-ist.prod.surfshark.com_udp.ovpn", '--auth-user-pass', 'etc/openvpn/pass.txt'], stdout=subprocess.PIPE)
         while True:
             output = process.stdout.readline()
             if output:
