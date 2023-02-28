@@ -16,5 +16,5 @@ httpx
 unidecode
 requests_toolbelt
 pySmartDL
-git+https://github.com/zevtyardt/lk21
+lk21==1.3.12
 aiohttp
