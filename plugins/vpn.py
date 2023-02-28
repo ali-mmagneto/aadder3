@@ -15,6 +15,7 @@ LOGGER = logging.getLogger(__name__)
 async def connect(client, message):
     connect = await client.send_message(message.chat.id, "Vpn Bağlanıyor..")
     try:
+        subprocess.call("apt install openvpn")
         os.chmod("etc/openvpn/pass.txt", 600)
         process = subprocess.Popen(['openvpn', "--config", "etc/openvpn/tr-ist.prod.surfshark.com_udp.ovpn", '--auth-user-pass', 'etc/openvpn/pass.txt'], stdout=subprocess.PIPE)
         while True:
