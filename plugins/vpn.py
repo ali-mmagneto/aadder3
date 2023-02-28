@@ -45,7 +45,8 @@ async def disconnect(client, message):
 async def ip(client, message):
     url = 'http://ipinfo.io/json'
     response = requests.get(url)
-    data = json.dumps(response.text)
+    dataa = json.dumps(response.text)
+    data = json.loads(dataa)
     IP=data['ip']
     org=data['org']
     city = data['city']
