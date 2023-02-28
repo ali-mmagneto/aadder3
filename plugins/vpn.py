@@ -10,7 +10,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
                     level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
-subprocess.call("apt install openvpn")
 
 @Client.on_message(filters.command('connect'))
 async def connect(client, message):
