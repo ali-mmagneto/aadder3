@@ -1,13 +1,75 @@
 import os
 import time
+import re
+import os
+from os import environ
+from dotenv import load_dotenv
+from pyrogram import Client, __version__
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram import Client, enums
+import string
+import random
+import re
+import os
+from os import environ
+from dotenv import load_dotenv
+import time, requests
+from pyrogram import __version__
+from platform import python_version
 
 from helper_func.dbhelper import Database as Db
 db = Db().setup()
 
 import pyrogram
 from pyrogram import Client, enums
+import logging
+import logging.config
+
+import logging
+
+logging.basicConfig(
+    format='%(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.FileHandler('log.txt'),
+              logging.StreamHandler()],
+    level=logging.INFO
+)
+
+LOGGER = logging
 
 botStartTime2 = time.time()
+if os.path.exists('config.env'):
+    load_dotenv('config.env')
+
+id_pattern = re.compile(r'^.\d+$') 
+
+def is_enabled(value:str):
+    return bool(str(value).lower() in ["true", "1", "e", "d"])
+
+def get_config_from_url():
+    CONFIG_FILE_URL = os.environ.get('CONFIG_FILE_URL', None)
+    try:
+        if len(CONFIG_FILE_URL) == 0: raise TypeError
+        try:
+            res = requests.get(CONFIG_FILE_URL)
+            if res.status_code == 200:
+                LOGGER.info("Config uzaktan alındı. Status 200.")
+                with open('config.env', 'wb+') as f:
+                    f.write(res.content)
+                    f.close()
+            else:
+                LOGGER.error(f"Failed to download config.env {res.status_code}")
+        except Exception as e:
+            LOGGER.error(f"CONFIG_FILE_URL: {e}")
+    except TypeError:
+        pass
+
+get_config_from_url()
+if os.path.exists('config.env'): load_dotenv('config.env')
+
+id_pattern = re.compile(r'^.\d+$')
+
+LOGGER.info("--- CONFIGS STARTS HERE ---")
+
 
 class Config:
     DEF_WATER_MARK_FILE = ""
