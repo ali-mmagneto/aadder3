@@ -5,8 +5,6 @@ import logging
 import os
 import subprocess
 import asyncio
-import urlopen
-import urllib.request
 import json
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
@@ -46,8 +44,8 @@ async def disconnect(client, message):
 @Client.on_message(filters.command('ip'))
 async def ip(client, message):
     url = 'http://ipinfo.io/json'
-    response = urllib.request.urlopen(url)
-    data = json.loads(response)
+    response = requests.get(url)
+    data = response.json()
     IP=data['ip']
     org=data['org']
     city = data['city']
