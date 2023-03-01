@@ -15,6 +15,10 @@ async def linkgetir(bot, message):
         link = text[1]
         veri = requests.get(link)
         veriler = veri.text
+        if '"contentUrl":"' in veriler:
+            m3u8url1 = veriler.split('"contentUrl":"')[1]
+            m3u8url = m3u8url1.split('"')[0]
+            await message.reply_text(m3u8url)
         LOGGER.info(veriler)
     except Exception as e:
         await message.reply_text(e)
