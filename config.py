@@ -94,7 +94,7 @@ class Config:
     MAX_FILE_SIZE = 50000000
     TG_MAX_FILE_SIZE = 4200000000
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
-    if STRING_SESSION != 0:
+    if len(STRING_SESSION) != 0:
         userbot = Client(name='userbot', api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION, parse_mode=enums.ParseMode.HTML)
         userbot.start()
         print("Userbot Başlatıldı 4 gb yükleme aktif")
