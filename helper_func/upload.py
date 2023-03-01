@@ -39,7 +39,7 @@ async def upload_audio(client, message, file_loc):
             chat_id=message.chat.id,
             audio=file_loc,
             thumb=thumb,
-            caption="**@dublajflix**",
+            caption="**@mmagneto**",
             title=title,
             performer=artist,
             duration=duration,
@@ -75,7 +75,7 @@ async def upload_subtitle(client, message, file_loc):
         await client.send_document(
             chat_id=message.chat.id,
             document=file_loc,
-            caption="**@dublajflix**",
+            caption="**@mmagneto**",
             progress=progress_bar,
             progress_args=(
                 "**Uploading extracted subtitle...**",
