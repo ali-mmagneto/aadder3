@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 import requests
 from unidecode import unidecode
-
+from bs4 import BeautifulSoup
 import logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
@@ -24,8 +24,9 @@ async def havaa(bot, message):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
         "Pragma": "no-cache",
         } 
-        res = session.get(url, headers=Hea) 
-        veri = res.text
+        istek = session.get(url, headers=Hea) 
+        corba = BeautifulSoup(istek.content, "lxml")
+        veri = corba.text
         LOGGER.info(veri) 
     except Exception as e:
         await message.reply_text(e)
