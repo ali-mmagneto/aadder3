@@ -7,18 +7,19 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
 
+session = requests.Session()
 
 @Client.on_message(filters.command('getlinks'))
 async def linkgetir(bot, message):
     try:
+        Hea={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
+        "Pragma": "no-cache",
+        } 
         text = unidecode(message.text).split()
         link = text[1]
-        veri = requests.get(link)
+        veri = session.get(link, headers=Hea)
         veriler = veri.text
-        if 'name="popcorn:stream" content="' in veriler:
-            m3u8url1 = veriler.split('name="popcorn:stream" content="')[1]
-            m3u8url = m3u8url1.split('"')[0]
-            await message.reply_text(m3u8url)
         LOGGER.info(veriler)
     except Exception as e:
         await message.reply_text(e)
