@@ -26,7 +26,8 @@ async def linkgetir(bot, message):
         if '"contentUrl":"' in veriler:
             m3u8url1 = veriler.split('"contentUrl":"')[1]
             m3u8url = m3u8url1.split('"')[0]
-            await message.reply_text(m3u8url)
+            url = m3u8url.replace("\/", "/")
+            await message.reply_text(url)
     except Exception as e:
         await message.reply_text(e)
         
