@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 import requests
 from unidecode import unidecode
 import logging
-import BeautifulSoup
+from bs4 import BeautifulSoup
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
