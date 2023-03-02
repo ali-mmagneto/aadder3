@@ -8,7 +8,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
 
-
+session = requests.Session()
 
 @Client.on_message(filters.command('eczane'))
 async def havaa(bot, message):
@@ -20,7 +20,11 @@ async def havaa(bot, message):
         il = ev[1]
         ilce = ev[2]
         url = f"https://www.eczaneler.gen.tr/nobetci-{il}-{ilce}"
-        res = requests.get(url) 
+        Hea={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
+        "Pragma": "no-cache",
+        } 
+        res = session.get(url, headers=Hea) 
         veri = res.text
         LOGGER.info(veri) 
     except Exception as e:
