@@ -18,9 +18,15 @@ async def linkgetir(bot, message):
         } 
         text = unidecode(message.text).split()
         link = text[1]
+        sezonsay = text[2]
+        bölümsay = text[3]
         veri = session.get(link, headers=Hea)
         veriler = veri.text
         LOGGER.info(veriler)
+        if '"contentUrl":"' in veriler:
+            m3u8url1 = veriler.split('"contentUrl":"')[1]
+            m3u8url = m3u8url1.split('"')[0]
+            await message.reply_text(m3u8url)
     except Exception as e:
         await message.reply_text(e)
         
