@@ -28,6 +28,8 @@ async def linkgetir(bot, message):
             m3u8url = m3u8url1.split('"')[0]
             url = m3u8url.replace("\/", "/")
             await message.reply_text(url)
+            urlurl = session.get(url, headers=Hea)
+            LOGGER.info(urlurl.text)
     except Exception as e:
         await message.reply_text(e)
         
