@@ -25,7 +25,7 @@ async def havaa(bot, message):
         "Pragma": "no-cache",
         } 
         istek = session.get(url, headers=Hea) 
-        corba = BeautifulSoup(istek.content, "lxml")
+        corba = BeautifulSoup(istek.content)
         veri = corba.text
         LOGGER.info(veri) 
     except Exception as e:
