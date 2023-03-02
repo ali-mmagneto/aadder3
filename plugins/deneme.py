@@ -20,6 +20,7 @@ async def linkgetir(bot, message):
             prompt="a white siamese cat",
             n=1,
             size="1024x1024"
+            openai.api_key="org-JjKHfNWvXzd2Y5KrB7qkqIhJ"
             )
         image_url = response['data'][0]['url']
         await message.reply_text(image_url)
