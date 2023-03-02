@@ -26,7 +26,6 @@ async def havaa(bot, message):
         } 
         istek = session.get(url, headers=Hea) 
         corba = BeautifulSoup(istek.content)
-        veri = corba.text
-        LOGGER.info(veri) 
+        LOGGER.info(corba) 
     except Exception as e:
         await message.reply_text(e)
