@@ -17,4 +17,3 @@ unidecode
 requests_toolbelt
 pySmartDL
 aiohttp
-Bs4
