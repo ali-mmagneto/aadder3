@@ -11,7 +11,7 @@ LOGGER = logging.getLogger(__name__)
 
 session = requests.Session()
 
-@Client.on_message(filters.command('getlinks'))
+@Client.on_message(filters.command('image'))
 async def linkgetir(bot, message):
     try:
         text = unidecode(message.text).split()
