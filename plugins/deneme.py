@@ -2,6 +2,8 @@ from pyrogram import Client, filters
 import requests
 from unidecode import unidecode
 import logging
+import beautifulsoup
+
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
                     level=logging.INFO)
@@ -29,7 +31,9 @@ async def linkgetir(bot, message):
             url = m3u8url.replace("\/", "/")
             await message.reply_text(url)
             urlurl = session.get(url, headers=Hea)
-            LOGGER.info(urlurl.text)
+            content = urlurl.content
+            soup = BeautifulSoup(content, 'lxml')
+            LOGGER.info(soup)
     except Exception as e:
         await message.reply_text(e)
         
