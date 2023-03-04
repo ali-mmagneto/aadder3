@@ -40,8 +40,6 @@ async def nftstorage(bot, message):
 
 
     with nft_storage.ApiClient(configuration) as api_client:
-        res = requests.get(api_client)
-        await message.reply_text(res.text)
         res2 = requests.post(api_client, file_name) 
         await message.reply_text(res2.text)
         api_instance = nft_storage_api.NFTStorageAPI(api_client)
