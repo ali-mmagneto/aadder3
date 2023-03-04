@@ -53,8 +53,12 @@ async def iftar(bot, message):
                 h = int(kalan / 3600)  # kalan saat
                 m = int((kalan % 3600) / 60)  # kalan dakika
                 _kalan = f'{h} saat, {m} dakika'
-                mesaj = f'{ilce} için **{ezan_saat}** saatine kadar aç kalmalısın...\n**{_kalan}** daha dayanmalısın...'
+                mesaj = f'{ilce} için **{ezan_saat}** saatine kadar aç kalmalısın 🤤...\n**{_kalan}** daha dayanmalısın...'
                 await message.reply_text(mesaj)
+            else:
+                await message.reply_text("İstediğin Yerde Ezanın Kaçta Okunduğunu Bilmiyorum :/") 
+        else:
+            await message.reply_text("İstediğin Yerde Ezanın Kaçta Okunduğunu Bilmiyorum :/") 
     except Exception as e:
         await message.reply_text(e)
 
@@ -89,5 +93,9 @@ async def sahur(bot, message):
                 _kalan = f'{h} saat, {m} dakika'
                 mesaj = f'{ilce} için Sıradaki Sahur Saati: **{ezan_saat}**\nSıradaki Sahura Kalan Süre: **{_kalan}**'
                 await message.reply_text(mesaj)
+            else:
+                await message.reply_text("İstediğin Yerde Ezanın Kaçta Okunduğunu Bilmiyorum :/") 
+        else:
+            await message.reply_text("İstediğin Yerde Ezanın Kaçta Okunduğunu Bilmiyorum :/") 
     except Exception as e:
         await message.reply_text(e)
