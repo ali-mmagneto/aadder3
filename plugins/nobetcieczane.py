@@ -30,7 +30,7 @@ async def havaa(bot, message):
         if not bugun: 
             return
         tumu = []
-        text = f"`{il}/{ilce}` için Nöbetçi Eczaneler 👇\n\n" 
+        text = f"`{il}/{ilce}` için Nöbetçi Eczaneler 👇:\n\n" 
         for bak in bugun.findAll('tr')[1:]:
             ad = bak.find('span', class_='isim').text if bak.find('span', class_='isim') else None
             mah = (None if bak.find('div', class_='my-2') is None else bak.find('div', class_='my-2').text)
