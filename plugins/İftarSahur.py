@@ -13,13 +13,13 @@ async def get_data(ilceid: str):
     bugun = datetime.now(tz).strftime("%d.%m.%Y")
     yarin = (datetime.now(tz) + timedelta(days=1)).strftime("%d.%m.%Y")
     response = requests.get(f"http://namazvakitleri.diyanet.gov.tr/tr-TR/{ilceid}/ilce-icin-namaz-vakti")
-        data = response.text
-        response = data.split('<tbody>')[1].split('</tbody>')[0]
-        resp_bugun = response.split('<tr>')[1].split('</tr>')[0]
-        row_bugun = re.findall('<td>(.*?)</td>', resp_bugun)
-        resp_yarin = response.split('<tr>')[2].split('</tr>')[0]
-        row_yarin = re.findall('<td>(.*?)</td>', resp_yarin)
-        return {'bugun': [row_bugun[1], row_bugun[5]], 'yarin': [row_yarin[1], row_yarin[5]]}
+    data = response.text
+    response = data.split('<tbody>')[1].split('</tbody>')[0]
+    resp_bugun = response.split('<tr>')[1].split('</tr>')[0]
+    row_bugun = re.findall('<td>(.*?)</td>', resp_bugun)
+    resp_yarin = response.split('<tr>')[2].split('</tr>')[0]
+    row_yarin = re.findall('<td>(.*?)</td>', resp_yarin)
+    return {'bugun': [row_bugun[1], row_bugun[5]], 'yarin': [row_yarin[1], row_yarin[5]]}
 
 
 
