@@ -57,3 +57,37 @@ async def iftar(bot, message):
                 await message.reply_text(mesaj)
     except Exception as e:
         await message.reply_text(e)
+
+@Client.on_message(filters.command('sahur')) 
+async def iftar(bot, message):
+    try:
+        tmp = unidecode(message.text).upper().split()
+        if len(tmp) < 2:
+            await message.reply_text("Hatalı Kullanım!\nDoğru Kullanım: `/iftar İstanbul Avcılar`")
+            return
+        if len(tmp) == 2:
+            il = tmp[1]
+            ilce = tmp[1]
+        if len(tmp) > 2:
+            il = tmp[1]
+            ilce = tmp[2]
+        if il in idjson:  # girilen il, il listemizde varsa
+            if ilce in idjson[il]:  # girilen ilce, ilce listemizde varsa
+                bugun_t = datetime.now(tz).timestamp()  # şu anın timestamp'i (utc+3)
+                bugun = datetime.fromtimestamp(bugun_t, tz).strftime('%d.%m.%Y')
+                vakitler = await get_data(idjson[il][ilce])
+                ezan_saat = vakitler['bugun'][0]  # bugünün ezan vakti
+                ezan_t = datetime.strptime(f'{ezan_saat} {bugun} +0300', '%H:%M %d.%m.%Y %z').timestamp()  # bugünkü ezan saatinin timestamp'i
+                if ezan_t < bugun_t:  # ezan vakti geçmişse
+                    tmp_t = bugun_t + 24*60*60  # bir sonraki güne geçmek için
+                    yarin = datetime.fromtimestamp(tmp_t, tz).strftime('%d.%m.%Y')
+                    ezan_saat = vakitler['yarin'][0]  # yarının ezan vakti
+                    ezan_t = datetime.strptime(f'{ezan_saat} {yarin} +0300', '%H:%M %d.%m.%Y %z').timestamp()  # yarınki ezan saatinin timestamp'i
+                kalan = ezan_t - bugun_t  # kalan süreyi hesaplayalım
+                h = int(kalan / 3600)  # kalan saat
+                m = int((kalan % 3600) / 60)  # kalan dakika
+                _kalan = f'{h} saat, {m} dakika'
+                mesaj = f'{ilce} için Sıradaki Sahur Saati: **{ezan_saat}**\nSıradaki Sahura Kalan Süre: **{_kalan}**'
+                await message.reply_text(mesaj)
+    except Exception as e:
+        await message.reply_text(e)
