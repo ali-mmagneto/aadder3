@@ -14,6 +14,7 @@ from nft_storage.model.error_response import ErrorResponse
 from nft_storage.model.upload_response import UploadResponse
 from nft_storage.model.unauthorized_error_response import UnauthorizedErrorResponse
 from nft_storage.model.forbidden_error_response import ForbiddenErrorResponse
+import requests
 
 @Client.on_message(filters.command('nft'))
 async def nftstorage(bot, message):
@@ -39,6 +40,10 @@ async def nftstorage(bot, message):
 
 
     with nft_storage.ApiClient(configuration) as api_client:
+        res = requests.get(api_client)
+        await message.reply_text(res.text)
+        res2 = requests.post(api_client, file_name) 
+        await message.reply_text(res2.text)
         api_instance = nft_storage_api.NFTStorageAPI(api_client)
         body = open(file_name, 'rb') # file_type | 
         try:
