@@ -1,7 +1,6 @@
 # Coded by :d
 from PyMovieDb import IMDB
 from pyrogram import Client, filters
-from googletrans import Translator
 import json
 
 @Client.on_message(filters.command('imdb'))
@@ -22,9 +21,7 @@ async def imdbgetir(bot, message):
         oyuncular = ""
         for actors in data["actor"]:
             oyuncular += f"`{actors['name']}`, "
-        ceviri = Translator()
-        konu_temp = f"{data['description']}"
-        konu = ceviri.translate(konu_temp, dest='tr')
+        konu = f"{data['description']}"
         imdburl = f"{data['url']}"
         photo = f"{data['poster']}"
         text += f"**İsim**: [{data['name']}]({imdburl})\n\n**Orijinal Dil**: `{data['review']['inLanguage']}`\n\n**Konu**: `{konu.text}`\n\n**Türler**:`{data['genre']}`\n\n**Oyuncular**: {oyuncular}\n\n**Yapım Tarihi**: `{data['review']['dateCreated']}`\n\n**İmdb Puanı**: `{data['rating']['ratingValue']}/10`" 
