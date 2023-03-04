@@ -59,7 +59,7 @@ async def iftar(bot, message):
         await message.reply_text(e)
 
 @Client.on_message(filters.command('sahur')) 
-async def iftar(bot, message):
+async def sahur(bot, message):
     try:
         tmp = unidecode(message.text).upper().split()
         if len(tmp) < 2:
