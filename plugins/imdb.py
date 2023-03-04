@@ -3,6 +3,11 @@ from PyMovieDb import IMDB
 from pyrogram import Client, filters
 import json
 import requests
+import logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
+                    level=logging.INFO)
+LOGGER = logging.getLogger(__name__)
 
 @Client.on_message(filters.command('imdb'))
 async def imdbgetir(bot, message):
