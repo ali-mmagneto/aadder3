@@ -24,11 +24,11 @@ async def tmdbgetir(bot, message):
             poster = f"{i['poster_path']}"
             photo1 = f"https://image.tmdb.org/t/p/w1280{poster}"
             img = Image.open(requests.get(photo1, stream = True).raw)
-            img.save(f"{poster}")
+            img.save(f"downloads/photo.jpg")
             text += f"**İsim**: `{i['original_title']}`\n\n**Dil**: `{i['original_language']}`\n\n**Konu**: `{i['overview']}`\n\n**Tmdb Puanı**: `{i['vote_average']}`/10\n\n**Oylayan Sayısı**: `{i['vote_count']}`\n\n**Yayın Tarihi**: `{i['release_date']}`"
             await bot.send_photo(
                 chat_id = message.chat.id,
-                photo = poster,
+                photo = "downloads/photo.jpg",
                 caption = text)
             text = ""
             if int(say) == int(sayi):
