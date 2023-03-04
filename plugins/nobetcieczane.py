@@ -26,6 +26,28 @@ async def havaa(bot, message):
         } 
         istek = session.get(url, headers=Hea) 
         corba = BeautifulSoup(istek.content, "lxml")
+        bugun = corba.find('div', id='nav-bugun')
+        if not bugun: 
+            return
+        tumu = []
+        for bak in bugun.findAll('tr')[1:]:
+            text = ""
+            ad = bak.find('span', class_='isim').text if bak.find('span', class_='isim') else None
+            mah = (None if bak.find('div', class_='my-2') is None else bak.find('div', class_='my-2').text)
+            adres = bak.find('div', class_='col-lg-6').text if bak.find('div', class_='col-lg-6') else None
+            tarif = (None if bak.find('span', class_='text-secondary font-italic') is None else bak.find('span', class_='text-secondary font-italic').text)
+            telf = bak.find('div', class_='col-lg-3 py-lg-2').text if bak.find('div', class_='col-lg-3 py-lg-2') else None
+            if ad: 
+                text += f"**Eczane Adı**: {ad}\n"
+            if mah: 
+                text += f"**Mahallesi**: {mah}\n"
+            if adres:
+                text += f"**Adresi**: {adres}\n"
+            if tarif: 
+                text += f"**Tarif**: {tarif}\n"
+            if telf: 
+                text += f"**Telefon No**: {telf}"
+        await message.reply_text(text)
         LOGGER.info(corba) 
     except Exception as e:
         await message.reply_text(e)
