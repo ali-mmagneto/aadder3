@@ -1,6 +1,5 @@
 from pyrogram import Client, filters
 import requests
-import http.client
 from unidecode import unidecode
 from bs4 import BeautifulSoup
 import logging
