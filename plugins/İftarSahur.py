@@ -28,7 +28,7 @@ async def get_data(ilceid: str) -> Dict[str, List[str]]:
 
 
 @Client.on_message(filters.command('iftar')) 
-async def iftar(bot, message)
+async def iftar(bot, message):
     try:
         tmp = unidecode(message.text).upper().split()
         if len(tmp) < 2:
