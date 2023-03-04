@@ -9,7 +9,7 @@ idjson = {"ADANA":{"ADANA":"9146","ALADAG":"9147","CEYHAN":"9148","FEKE":"9149",
 
 tz = pytz.timezone("Europe/Istanbul")
 
-async def get_data(ilceid: str) -> Dict[str, List[str]]:
+async def get_data(ilceid: str):
     bugun = datetime.now(tz).strftime("%d.%m.%Y")
     yarin = (datetime.now(tz) + timedelta(days=1)).strftime("%d.%m.%Y")
     response = requests.get(f"http://namazvakitleri.diyanet.gov.tr/tr-TR/{ilceid}/ilce-icin-namaz-vakti")
