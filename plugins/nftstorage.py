@@ -15,8 +15,8 @@ from nft_storage.model.upload_response import UploadResponse
 from nft_storage.model.unauthorized_error_response import UnauthorizedErrorResponse
 from nft_storage.model.forbidden_error_response import ForbiddenErrorResponse
 
-@Client.on_message(filters.command('rename'))
-async def rename(bot, message):
+@Client.on_message(filters.command('nft'))
+async def nftstorage(bot, message):
     if message.reply_to_message.video:
         file_name = message.reply_to_message.video.file_name
     elif message.reply_to_message.document:
