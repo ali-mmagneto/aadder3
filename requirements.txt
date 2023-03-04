@@ -21,3 +21,4 @@ openai
 git+https://github.com/nftstorage/python-client.git
 PyMovieDb
 lxml
+googletrans==3.0.0
