@@ -53,7 +53,7 @@ async def iftar(bot, message):
                 h = int(kalan / 3600)  # kalan saat
                 m = int((kalan % 3600) / 60)  # kalan dakika
                 _kalan = f'{h} saat, {m} dakika'
-                mesaj = f'{ilce} için **{ezan_saat}** saatine kadar açsın\n{ilce} için **{_kalan}** daha dayan'
+                mesaj = f'{ilce} için **{ezan_saat}** saatine kadar aç kalmalısın...\n**{_kalan}** daha dayanmalısın...'
                 await message.reply_text(mesaj)
     except Exception as e:
         await message.reply_text(e)
