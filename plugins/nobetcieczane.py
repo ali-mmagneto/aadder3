@@ -11,7 +11,7 @@ LOGGER = logging.getLogger(__name__)
 session = requests.Session()
 
 @Client.on_message(filters.command('eczane'))
-async def havaa(bot, message):
+async def eczane(bot, message):
     try:
         ev = unidecode(message.text).split()
         if len(ev) < 3:
@@ -25,6 +25,7 @@ async def havaa(bot, message):
         "Pragma": "no-cache",
         } 
         istek = session.get(url, headers=Hea) 
+        LOGGER.info(istek.text)
         corba = BeautifulSoup(istek.content, "lxml")
         bugun = corba.find('div', id='nav-bugun')
         if not bugun: 
