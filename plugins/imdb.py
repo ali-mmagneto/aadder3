@@ -4,7 +4,6 @@ from pyrogram import Client, filters
 import json
 import requests
 import logging
-import googletrans
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
                     level=logging.INFO)
@@ -28,15 +27,13 @@ async def imdbgetir(bot, message):
         oyuncular = ""
         for actors in data["actor"]:
             oyuncular += f"`{actors['name']}`, "
-        ceviri = Translator()
-        konu_temp = f"{data['description']}"
-        konu = ceviri.translate(konu_temp, dest='tr')
+        konu = f"{data['description']}"
         imdburl = f"{data['url']}"
         photo = f"{data['poster']}"
         turler = ""
         for tur in data['genre']:
             turler += f"{tur} "
-        text += f"**İsim**: [{data['name']}]({imdburl})\n\n**Orijinal Dil**: `{data['review']['inLanguage']}`\n\n**Konu**: `{konu.text}`\n\n**Türler**: `{turler}`\n\n**Oyuncular**: {oyuncular}\n\n**Yapım Tarihi**: `{data['review']['dateCreated']}`\n\n**İmdb Puanı**: `{data['rating']['ratingValue']}/10`" 
+        text += f"**İsim**: [{data['name']}]({imdburl})\n\n**Orijinal Dil**: `{data['review']['inLanguage']}`\n\n**Konu**: `{konu}`\n\n**Türler**: `{turler}`\n\n**Oyuncular**: {oyuncular}\n\n**Yapım Tarihi**: `{data['review']['dateCreated']}`\n\n**İmdb Puanı**: `{data['rating']['ratingValue']}/10`" 
         await bot.send_photo(
             chat_id = message.chat.id, 
             photo = photo, 
