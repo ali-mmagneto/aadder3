@@ -38,15 +38,15 @@ async def havaa(bot, message):
             tarif = (None if bak.find('span', class_='text-secondary font-italic') is None else bak.find('span', class_='text-secondary font-italic').text)
             telf = bak.find('div', class_='col-lg-3 py-lg-2').text if bak.find('div', class_='col-lg-3 py-lg-2') else None
             if ad: 
-                text += f"**Eczane Adı**: {ad}\n"
+                text += f"**🏥 Eczane Adı**: {ad}\n"
             if mah: 
-                text += f"**Mahallesi**: {mah}\n"
+                text += f"**🚬 Mahallesi**: {mah}\n"
             if adres:
-                text += f"**Adresi**: {adres}\n"
+                text += f"**🧭 Adresi**: {adres}\n"
             if tarif: 
-                text += f"**Tarif**: {tarif}\n"
+                text += f"**🎯 Tarif**: {tarif}\n"
             if telf: 
-                text += f"**Telefon No**: {telf}\n\n"
+                text += f"**☎️ Telefon No**: {telf}\n\n"
         await message.reply_text(text)
         LOGGER.info(corba) 
     except Exception as e:
