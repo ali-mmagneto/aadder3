@@ -1,6 +1,5 @@
 from pyrogram import Client, filters
 import pytz
-from KekikSpatula import 
 import aiohttp 
 from unidecode import unidecode
 
