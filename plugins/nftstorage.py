@@ -17,25 +17,18 @@ from nft_storage.model.forbidden_error_response import ForbiddenErrorResponse
 
 @Client.on_message(filters.command('nft'))
 async def nftstorage(bot, message):
-    if message.reply_to_message.video:
-        file_name = message.reply_to_message.video.file_name
-    elif message.reply_to_message.document:
-        file_name = message.reply_to_message.document.file_name
-    else:
-        await message.reply_text("Bunu Yükleyemiyorum...") 
-        return
-    caption = f"<code>{file_name}</code>"
     start_time = time.time()
-    video = f"downloads/{file_name}"
     chat_id = str(message.from_user.id)
     msg = await message.reply_text(
         text="`İşlem Başlatıldı...`")
     await msg.edit("`Indiriliyor..`")
     media = await bot.download_media(
                 message = message.reply_to_message,
-                file_name = f"{file_name}",
                 progress=progress_bar,
                 progress_args=("`İndiriliyor...`", msg, start_time))
+    splitpath = media.split("/downloads/")
+    dow_file_name = splitpath[1]
+    file_name = f"downloads/{dow_file_name}"
     configuration = nft_storage.Configuration(
     host = "https://api.nft.storage"
     )
