@@ -46,7 +46,7 @@ async def havaa(bot, message):
             if tarif: 
                 text += f"**Tarif**: {tarif}\n"
             if telf: 
-                text += f"**Telefon No**: {telf}"
+                text += f"**Telefon No**: {telf}\n\n"
         await message.reply_text(text)
         LOGGER.info(corba) 
     except Exception as e:
