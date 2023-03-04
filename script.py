@@ -60,6 +60,16 @@ Foto gönderince oto thumb olarak alır.
 `/gizlifilm {kanal id-username} {kopyalancak ilk mesaj id} {kopyalanacak son mesaj id}` - User Üzerinden kanal kopyalar.
 
 `/trim 00:00:50 00:02:00` - Yanıtladığın Videoyu 50. Saniyeden 2. Dakikaya kadar kesip gönderir.
+
+`/imdb` - Film Bilgisi Getirir. 
+
+`/tmdb` - Film Bilgisi Getirir. 
+
+`/altin` - Altın Kuru Getirir.
+
+`/doviz` - Doviz Kuru Getirir. 
+
+`/bitcoin` - Bitcoin Bilgisi Getirir.
 """
 
   START_TEXT = """
