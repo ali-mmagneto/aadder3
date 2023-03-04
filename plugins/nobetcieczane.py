@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 import requests
+import http.client
 from unidecode import unidecode
 from bs4 import BeautifulSoup
 import logging
@@ -25,7 +26,7 @@ async def havaa(bot, message):
         "Pragma": "no-cache",
         } 
         istek = session.get(url, headers=Hea) 
-        corba = BeautifulSoup(istek.content)
+        corba = BeautifulSoup(istek.content, "lxml")
         LOGGER.info(corba) 
     except Exception as e:
         await message.reply_text(e)
