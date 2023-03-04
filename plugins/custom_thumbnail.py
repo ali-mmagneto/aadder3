@@ -12,7 +12,7 @@ from config import Config
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
-@Client.on_message(filters.incoming & filters.photo)
+@Client.on_message(filters.incoming & filters.photo & filters.private)
 async def save_photo(c, m):
     v = await m.reply_text("`Thumbnail Alıniyor..`", True)
     chat_id = str(m.from_user.id)
