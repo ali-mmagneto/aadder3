@@ -24,7 +24,7 @@ async def imdbgetir(bot, message):
         konu = f"{data['description']}"
         imdburl = f"{data['url']}"
         photo = f"{data['poster']}"
-        text += f"**İsim**: [{data['name']}]({imdburl})\n\n**Orijinal Dil**: `{data['review']['inLanguage']}`\n\n**Konu**: `{konu.text}`\n\n**Türler**:`{data['genre']}`\n\n**Oyuncular**: {oyuncular}\n\n**Yapım Tarihi**: `{data['review']['dateCreated']}`\n\n**İmdb Puanı**: `{data['rating']['ratingValue']}/10`" 
+        text += f"**İsim**: [{data['name']}]({imdburl})\n\n**Orijinal Dil**: `{data['review']['inLanguage']}`\n\n**Konu**: `{konu}`\n\n**Türler**:`{data['genre']}`\n\n**Oyuncular**: {oyuncular}\n\n**Yapım Tarihi**: `{data['review']['dateCreated']}`\n\n**İmdb Puanı**: `{data['rating']['ratingValue']}/10`" 
         await bot.send_photo(
             chat_id = message.chat.id, 
             photo = photo, 
