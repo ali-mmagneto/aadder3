@@ -35,7 +35,7 @@ async def iftar(bot, message):
         if len(tmp) < 2:
             await message.reply_text("Hatalı Kullanım!\nDoğru Kullanım: `/iftar İstanbul Avcılar`")
             return
-        if len(tmp) == 2
+        if len(tmp) == 2:
             il = tmp[1]
             ilce = tmp[1]
         if len(tmp) > 2:
