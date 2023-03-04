@@ -2,6 +2,7 @@
 from PyMovieDb import IMDB
 from pyrogram import Client, filters
 import json
+import requests
 
 @Client.on_message(filters.command('imdb'))
 async def imdbgetir(bot, message):
@@ -22,12 +23,15 @@ async def imdbgetir(bot, message):
         for actors in data["actor"]:
             oyuncular += f"`{actors['name']}`, "
         konu = f"{data['description']}"
+        ceviriurl = "https://translate.google.com/?hl=tr"
+        ceviritemp = requests.post(ceviriurl, konu)
+        LOGGER.info(ceviritemp.text)
         imdburl = f"{data['url']}"
         photo = f"{data['poster']}"
         turler = ""
         for tur in data['genre']:
             turler += f"{tur} "
-        text += f"**İsim**: [{data['name']}]({imdburl})\n\n**Orijinal Dil**: `{data['review']['inLanguage']}`\n\n**Konu**: `{konu}`\n\n**Türler**:`{turler}`\n\n**Oyuncular**: {oyuncular}\n\n**Yapım Tarihi**: `{data['review']['dateCreated']}`\n\n**İmdb Puanı**: `{data['rating']['ratingValue']}/10`" 
+        text += f"**İsim**: [{data['name']}]({imdburl})\n\n**Orijinal Dil**: `{data['review']['inLanguage']}`\n\n**Konu**: `{konu}`\n\n**Türler**: `{turler}`\n\n**Oyuncular**: {oyuncular}\n\n**Yapım Tarihi**: `{data['review']['dateCreated']}`\n\n**İmdb Puanı**: `{data['rating']['ratingValue']}/10`" 
         await bot.send_photo(
             chat_id = message.chat.id, 
             photo = photo, 
