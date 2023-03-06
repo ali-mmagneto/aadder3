@@ -97,11 +97,11 @@ class Config:
     TG_MAX_FILE_SIZE = 4200000000
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
-        class userbot(Client):
+        class ubot(Client):
 
             def __init__(self):
                 super().__init__(
-                    name='multivideobot',
+                    name='Userbot',
                     api_id=APP_ID,
                     api_hash=API_HASH,
                     session_name=STRING_SESSION,
@@ -132,5 +132,5 @@ class Config:
                 await super().stop()
                 LOGGER.info(msg="App Stopped.")
                 exit()
-
+            userbot = uBot() 
             userbot.run()
