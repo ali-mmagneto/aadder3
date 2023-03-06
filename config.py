@@ -132,5 +132,5 @@ class Config:
                 await super().stop()
                 LOGGER.info(msg="App Stopped.")
                 exit()
-
-        userbot.run()
+        ubot = userbot()
+        ubot.run()
