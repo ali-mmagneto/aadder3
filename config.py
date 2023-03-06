@@ -102,31 +102,31 @@ class Config:
             def __init__(self):
                 super().__init__(
                     name='Userbot',
-                    api_id=APP_ID,
-                    api_hash=API_HASH,
-                    session_name=STRING_SESSION,
+                    api_id=Config.APP_ID,
+                    api_hash=Config.API_HASH,
+                    session_name=Config.STRING_SESSION,
                     workers=343,
                     sleep_threshold=5
                 )
 
             async def start(self):
                 await super().start()
-                owner = await self.get_chat(OWNER_ID)
+                owner = await self.get_chat(Config.OWNER_ID)
                 me = await self.get_me()
                 self.username = '@' + me.username
                 LOGGER.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}. Premium {me.is_premium}.")
-                if OWNER_ID != 0:
+                if Config.OWNER_ID != 0:
                     try:
                         await self.send_message(text="userbot Karanlığın küllerinden yeniden doğdum.",
-                            chat_id=OWNER_ID)
+                            chat_id=Config.OWNER_ID)
                     except Exception as t:
                         LOGGER.error(str(t))
 
             async def stop(self, *args):
-                if OWNER_ID != 0:
-                    texto = f"Son nefesimi verdim.\nÖldüğümde yaşım: {ReadableTime(time.time() - botStartTime)}"
+                if Config.OWNER_ID != 0:
+                    texto = f"Son nefesimi verdim.\nÖldüğümde yaşım: (time.time() - botStartTime)"
                     try:
-                       await self.send_document(document='log.txt', caption=texto, chat_id=OWNER_ID)
+                       await self.send_document(document='log.txt', caption=texto, chat_id=Config.OWNER_ID)
                     except Exception as t:
                         LOGGER.warning(str(t))
                 await super().stop()
