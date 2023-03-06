@@ -98,14 +98,11 @@ class Config:
     TG_MAX_FILE_SIZE = 4200000000
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
-        if 1 == 1:
-            userbot = Client(
-                name='multivideobot',
-                api_id=APP_ID,
-                api_hash=API_HASH,
-                session_name=STRING_SESSION,
-                workers=343,
-                sleep_threshold=5
-            )
-            userbot.start()
-            userbot.send_message(OWNER_ID, "Userbot Bașlatıldı") 
+        userbot = Client(
+            name='userbot',
+            api_id=APP_ID,
+            api_hash=API_HASH,
+            session_name=STRING_SESSION,
+        )
+        userbot.start()
+        userbot.send_message(OWNER_ID, "Userbot Bașlatıldı") 
