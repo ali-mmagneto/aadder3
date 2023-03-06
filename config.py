@@ -108,4 +108,4 @@ class Config:
                 sleep_threshold=5
             )
             userbot.start()
-            await userbot.send_message(OWNER_ID, "Userbot Bașlatıldı") 
+            userbot.send_message(OWNER_ID, "Userbot Bașlatıldı") 
