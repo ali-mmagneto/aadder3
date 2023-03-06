@@ -99,12 +99,11 @@ class Config:
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
         if 1 == 1:
-            uBot = Client(
+            userbot = Client(
                 name='Userbot',
                 api_id=APP_ID,
                 api_hash=API_HASH,
                 session_string=STRING_SESSION,
-            )
-            uBot.send_message(OWNER_ID, "Userbot Bașlatıldı..") 
-            ubot = userbot()
-            ubot.start()
+            ) 
+            userbot.start()
+            userbot.send_message(OWNER_ID, "Userbot Bașlatıldı..")
