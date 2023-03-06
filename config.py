@@ -113,8 +113,9 @@ class Config:
                 )
 
             async def start(self):
+                OWNER_ID = os.environ.get("OWNER_ID", '1276627253')
                 await super().start()
-                owner = await self.get_chat(Config.OWNER_ID)
+                owner = await self.get_chat(OWNER_ID)
                 me = await self.get_me()
                 self.username = '@' + me.username
                 LOGGER.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}. Premium {me.is_premium}.")
@@ -126,6 +127,7 @@ class Config:
                         LOGGER.error(str(t))
 
             async def stop(self, *args):
+                OWNER_ID = os.environ.get("OWNER_ID", '1276627253')
                 if OWNER_ID != 0:
                     texto = f"Son nefesimi verdim.\nÖldüğümde yaşım: (time.time() - botStartTime)"
                     try:
