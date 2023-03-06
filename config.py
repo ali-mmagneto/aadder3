@@ -98,11 +98,11 @@ class Config:
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
         class userbot(Client):
-            STRING_SESSION = os.environ.get('STRING_SESSION', '')
-            APP_ID = os.environ.get("APP_ID", None)
-            API_HASH = os.environ.get("API_HASH", None)
-            OWNER_ID = os.environ.get("OWNER_ID", '1276627253') 
             def __init__(self):
+                STRING_SESSION = os.environ.get('STRING_SESSION', '')
+                APP_ID = os.environ.get("APP_ID", None)
+                API_HASH = os.environ.get("API_HASH", None)
+                OWNER_ID = os.environ.get("OWNER_ID", '1276627253')  
                 super().__init__(
                     name='Userbot',
                     api_id=APP_ID,
