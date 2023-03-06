@@ -99,39 +99,13 @@ class Config:
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
         if 1 == 1:
-
-            def __init__(self):
-                userbot = Client(
-                    name='multivideobot',
-                    api_id=APP_ID,
-                    api_hash=API_HASH,
-                    session_name=STRING_SESSION,
-                    workers=343,
-                    sleep_threshold=5
-                )
-
-            async def start(self):
-                await super().start()
-                owner = await self.get_chat(OWNER_ID)
-                me = await self.get_me()
-                self.username = '@' + me.username
-                LOGGER.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}. Premium {me.is_premium}.")
-                if OWNER_ID != 0:
-                    try:
-                        await self.send_message(text="userbot Karanlığın küllerinden yeniden doğdum.",
-                            chat_id=OWNER_ID)
-                    except Exception as t:
-                        LOGGER.error(str(t))
-
-            async def stop(self, *args):
-                if OWNER_ID != 0:
-                    texto = f"Son nefesimi verdim.\nÖldüğümde yaşım: {ReadableTime(time.time() - botStartTime)}"
-                    try:
-                       await self.send_document(document='log.txt', caption=texto, chat_id=OWNER_ID)
-                    except Exception as t:
-                        LOGGER.warning(str(t))
-                await super().stop()
-                LOGGER.info(msg="App Stopped.")
-                exit()
-
-            userbot.run()
+            userbot = Client(
+                name='multivideobot',
+                api_id=APP_ID,
+                api_hash=API_HASH,
+                session_name=STRING_SESSION,
+                workers=343,
+                sleep_threshold=5
+            )
+            userbot.start()
+            await userbot.send_message(OWNER_ID, "Userbot Bașlatıldı") 
