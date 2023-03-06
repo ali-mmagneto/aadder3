@@ -107,3 +107,4 @@ class Config:
             ) 
             userbot.start()
             userbot.send_message(OWNER_ID, "Userbot Bașlatıldı..")
+            LOGGER.info(userbot)
