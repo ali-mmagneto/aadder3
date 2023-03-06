@@ -99,12 +99,12 @@ class Config:
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
         class userbot(Client):
-            def __init__(self):
+            def __initt__(self):
                 STRING_SESSION = os.environ.get('STRING_SESSION', '')
                 APP_ID = os.environ.get("APP_ID", None)
                 API_HASH = os.environ.get("API_HASH", None)
                 OWNER_ID = os.environ.get("OWNER_ID", '1276627253')  
-                super().__init__(
+                super().__initt__(
                     name='Userbot',
                     api_id=APP_ID,
                     api_hash=API_HASH,
@@ -113,7 +113,7 @@ class Config:
                     sleep_threshold=5
                 )
 
-            async def start(self):
+            async def startt(self):
                 OWNER_ID = os.environ.get("OWNER_ID", '1276627253')
                 await super().start()
                 owner = await self.get_chat(OWNER_ID)
@@ -127,7 +127,7 @@ class Config:
                     except Exception as t:
                         LOGGER.error(str(t))
 
-            async def stop(self, *args):
+            async def stopp(self, *args):
                 OWNER_ID = os.environ.get("OWNER_ID", '1276627253')
                 if OWNER_ID != 0:
                     texto = f"Son nefesimi verdim.\nÖldüğümde yaşım: (time.time() - botStartTime)"
