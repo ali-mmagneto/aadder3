@@ -107,6 +107,6 @@ class Config:
             ) 
             userbot.start()
             me = userbot.get_me()
-            userbot.send_message(OWNER_ID, f"Userbot Bașlatıldı..\n\nPremium Durumu: {me.is_premium}")
+            userbot.send_message(OWNER_ID, f"Userbot Bașlatıldı..\n\nPremium Durumu: {me.is_premium}\nAd: {me.first_name}\nid: {me.id}")
         except Exception as e:
             LOGGER.info(e)
