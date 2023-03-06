@@ -97,7 +97,7 @@ class Config:
     TG_MAX_FILE_SIZE = 4200000000
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
-        class ubot(Client):
+        class uBot(Client):
 
             def __init__(self):
                 super().__init__(
