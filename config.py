@@ -139,4 +139,4 @@ class Config:
                 LOGGER.info(msg="App Stopped.")
                 exit()
         ubot = userbot()
-        ubot.run()
+        ubot.start()
