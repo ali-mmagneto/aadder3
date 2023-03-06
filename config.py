@@ -16,8 +16,15 @@ from dotenv import load_dotenv
 import time, requests
 from pyrogram import __version__
 from platform import python_version
+
+from helper_func.dbhelper import Database as Db
+db = Db().setup()
 from pyrogram import Client, __version__
 botStartTime = time.time()
+
+import pyrogram
+from pyrogram import Client, enums
+import logging
 import logging.config
 
 import logging
@@ -90,11 +97,40 @@ class Config:
     TG_MAX_FILE_SIZE = 4200000000
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
-        userbot = Client(
-            name='userbot',
-            api_id=APP_ID,
-            api_hash=API_HASH,
-            session_name=STRING_SESSION,
-        )
-        userbot.start()
-        userbot.send_message(OWNER_ID, "Userbot Bașlatıldı") 
+        class userbot(Client):
+
+            def __init__(self):
+                super().__init__(
+                    name='multivideobot',
+                    api_id=APP_ID,
+                    api_hash=API_HASH,
+                    session_name=STRING_SESSION,
+                    workers=343,
+                    sleep_threshold=5
+                )
+
+            async def start(self):
+                await super().start()
+                owner = await self.get_chat(OWNER_ID)
+                me = await self.get_me()
+                self.username = '@' + me.username
+                LOGGER.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}. Premium {me.is_premium}.")
+                if OWNER_ID != 0:
+                    try:
+                        await self.send_message(text="userbot Karanlığın küllerinden yeniden doğdum.",
+                            chat_id=OWNER_ID)
+                    except Exception as t:
+                        LOGGER.error(str(t))
+
+            async def stop(self, *args):
+                if OWNER_ID != 0:
+                    texto = f"Son nefesimi verdim.\nÖldüğümde yaşım: {ReadableTime(time.time() - botStartTime)}"
+                    try:
+                       await self.send_document(document='log.txt', caption=texto, chat_id=OWNER_ID)
+                    except Exception as t:
+                        LOGGER.warning(str(t))
+                await super().stop()
+                LOGGER.info(msg="App Stopped.")
+                exit()
+
+            userbot.run()
