@@ -19,6 +19,9 @@ from platform import python_version
 
 from helper_func.dbhelper import Database as Db
 db = Db().setup()
+from helper_func.thumb import ReadableTime
+from pyrogram import Client, __version__
+botStartTime = time.time()
 
 import pyrogram
 from pyrogram import Client, enums
@@ -95,7 +98,7 @@ class Config:
     TG_MAX_FILE_SIZE = 4200000000
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
-        class Bot(Client):
+        class userbot(Client):
 
             def __init__(self):
                 super().__init__(
@@ -108,29 +111,27 @@ class Config:
                 )
 
             async def start(self):
-                if not os.path.isdir(Config.DOWNLOAD_DIR): os.makedirs(Config.DOWNLOAD_DIR)
                 await super().start()
-                owner = await self.get_chat(Config.OWNER_ID)
+                owner = await self.get_chat(OWNER_ID)
                 me = await self.get_me()
                 self.username = '@' + me.username
                 LOGGER.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}. Premium {me.is_premium}.")
-                if Config.OWNER_ID != 0:
+                if OWNER_ID != 0:
                     try:
-                        await self.send_message(text="Karanlığın küllerinden yeniden doğdum.",
-                            chat_id=Config.OWNER_ID)
+                        await self.send_message(text="userbot Karanlığın küllerinden yeniden doğdum.",
+                            chat_id=OWNER_ID)
                     except Exception as t:
                         LOGGER.error(str(t))
 
             async def stop(self, *args):
-                if Config.OWNER_ID != 0:
+                if OWNER_ID != 0:
                     texto = f"Son nefesimi verdim.\nÖldüğümde yaşım: {ReadableTime(time.time() - botStartTime)}"
                     try:
-                       await self.send_document(document='log.txt', caption=texto, chat_id=Config.OWNER_ID)
+                       await self.send_document(document='log.txt', caption=texto, chat_id=OWNER_ID)
                     except Exception as t:
                         LOGGER.warning(str(t))
                 await super().stop()
                 LOGGER.info(msg="App Stopped.")
                 exit()
 
-            userbot = Bot()
             userbot.run()
