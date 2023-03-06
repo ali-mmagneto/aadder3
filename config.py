@@ -16,16 +16,9 @@ from dotenv import load_dotenv
 import time, requests
 from pyrogram import __version__
 from platform import python_version
-
-from helper_func.dbhelper import Database as Db
-db = Db().setup()
 from helper_func.thumb import ReadableTime
 from pyrogram import Client, __version__
 botStartTime = time.time()
-
-import pyrogram
-from pyrogram import Client, enums
-import logging
 import logging.config
 
 import logging
