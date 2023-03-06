@@ -107,7 +107,7 @@ class Config:
                     name='Userbot',
                     api_id=APP_ID,
                     api_hash=API_HASH,
-                    session_name=STRING_SESSION,
+                    session_string=STRING_SESSION,
                     workers=343,
                     sleep_threshold=5
                 )
