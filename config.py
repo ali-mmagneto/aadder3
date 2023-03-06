@@ -98,7 +98,7 @@ class Config:
     TG_MAX_FILE_SIZE = 4200000000
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "")
     if len(STRING_SESSION) != 0:
-        if 1 == 1:
+        try:
             userbot = Client(
                 name='Userbot',
                 api_id=APP_ID,
@@ -106,6 +106,7 @@ class Config:
                 session_string=STRING_SESSION,
             ) 
             userbot.start()
-            userbot.send_message(OWNER_ID, "Userbot Bașlatıldı..")
             me = userbot.get_me()
-            LOGGER.info(me)
+            userbot.send_message(OWNER_ID, f"Userbot Bașlatıldı..\n\nPremium Durumu: {me.is_premium}")
+        except Exception as e:
+            LOGGER.info(e)
