@@ -23,4 +23,3 @@ PyMovieDb
 lxml
 googletrans==3.0.0
 pytz
-git+https://github.com/zevtyardt/lk21.git
