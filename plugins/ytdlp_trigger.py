@@ -144,6 +144,9 @@ async def echo(bot, update):
     if ".cloud" in url:
         command_to_exec.append("--referer")
         command_to_exec.append("https://vidmoly.to/")
+    if ".lat" in url:
+        command_to_exec.append("--referer")
+        command_to_exec.append("https://vidmoly.to/")
     if ".mubicdn.net" in url:
         command_to_exec.append("--referer")
         command_to_exec.append("https://mubi.com/")
