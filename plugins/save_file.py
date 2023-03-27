@@ -21,7 +21,7 @@ from config import Config
 from script import Script
 equee = []
 
-@Client.on_message(filters.command('extract') & filters.private)
+@Client.on_message(filters.command('extract'))
 async def confirm_dwnld(client, message):
     media = message.reply_to_message
     filetype = media.document or media.video
