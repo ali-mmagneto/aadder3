@@ -5,6 +5,7 @@ import os
 from logging import getLogger, WARNING
 from os import remove as osremove, walk, path as ospath, rename as osrename
 from time import time, sleep
+import requests
 from pyrogram.errors import FloodWait, RPCError
 from PIL import Image
 from threading import RLock
