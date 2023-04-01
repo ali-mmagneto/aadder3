@@ -7,6 +7,17 @@ from pyrogram.errors import (
     PhoneCodeInvalid, PhoneCodeExpired
 )
 
+API_TEXT = """Hi, {}.
+This is Pyrogram's String Session Generator Bot. I will generate String Session of your Telegram Account.
+By @Discovery_Updates
+Now send your `API_ID` same as `APP_ID` to Start Generating Session."""
+HASH_TEXT = "Now send your `API_HASH`.\n\nPress /cancel to Cancel Task."
+PHONE_NUMBER_TEXT = (
+    "Now send your Telegram account's Phone number in International Format. \n"
+    "Including Country code. Example: **+14154566376**\n\n"
+    "Press /cancel to Cancel Task."
+)
+
 
 @Client.on_message(filters.private & filters.command("string"))
 async def genStr(bot, msg):
