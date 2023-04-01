@@ -8,7 +8,7 @@ from pyrogram.raw.all import layer
 import pyrogram
 from helper_func.thumb import ReadableTime
 from pyrogram import Client, __version__
-
+from pyromod import listen
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[logging.FileHandler('log.txt'), logging.StreamHandler()],
     level=logging.INFO)
