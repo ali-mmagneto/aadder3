@@ -25,8 +25,6 @@ async def genStr(bot, msg):
     api = await bot.ask(
         chat.id, API_TEXT.format(msg.from_user.mention)
     )
-    if await is_cancel(msg, api.text):
-        return
     try:
         check_api = int(api.text)
     except Exception:
@@ -34,8 +32,6 @@ async def genStr(bot, msg):
         return
     api_id = api.text
     hash = await bot.ask(chat.id, HASH_TEXT)
-    if await is_cancel(msg, hash.text):
-        return
     if not len(hash.text) >= 30:
         await msg.reply("`API_HASH` is Invalid.\nPress /start to Start again.")
         return
@@ -44,12 +40,8 @@ async def genStr(bot, msg):
         number = await bot.ask(chat.id, PHONE_NUMBER_TEXT)
         if not number.text:
             continue
-        if await is_cancel(msg, number.text):
-            return
         phone = number.text
         confirm = await bot.ask(chat.id, f'`Is "{phone}" correct? (y/n):` \n\nSend: `y` (If Yes)\nSend: `n` (If No)')
-        if await is_cancel(msg, confirm.text):
-            return
         if "y" in confirm.text:
             break
     try:
@@ -84,8 +76,6 @@ async def genStr(bot, msg):
     except TimeoutError:
         await msg.reply("Time limit reached of 5 min.\nPress /start to Start again.")
         return
-    if await is_cancel(msg, otp.text):
-        return
     otp_code = otp.text
     try:
         await client.sign_in(phone, code.phone_code_hash, phone_code=' '.join(str(otp_code)))
@@ -104,8 +94,6 @@ async def genStr(bot, msg):
             )
         except TimeoutError:
             await msg.reply("`Time limit reached of 5 min.\n\nPress /string to Start again.`")
-            return
-        if await is_cancel(msg, two_step_code.text):
             return
         new_code = two_step_code.text
         try:
