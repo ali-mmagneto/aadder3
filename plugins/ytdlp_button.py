@@ -121,13 +121,16 @@ async def yt_dlp_call_back(bot, update):
     #
     response_json = response_json[0]
     # TODO: temporary limitations
-    # LOGGER.info(response_json)
+    LOGGER.info(response_json)
     ynt = message.reply_to_message 
     yt_dlp_url = ynt.reply_to_message.text
     LOGGER.info(yt_dlp_url)
     name = str(response_json.get("title")[:100]) + \
            "." + yt_dlp_ext
-
+    if "youtube" in yt_dlp_url:
+        thumb = response_json.get("thumbnail")
+        LOGGER.info(thumb)
+        await update.reply_text(thumb)
     custom_file_name = remove_emoji(remove_urls(name))
     LOGGER.info(name)
     #
