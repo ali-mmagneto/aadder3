@@ -127,10 +127,6 @@ async def yt_dlp_call_back(bot, update):
     LOGGER.info(yt_dlp_url)
     name = str(response_json.get("title")[:100]) + \
            "." + yt_dlp_ext
-    if "youtube" in yt_dlp_url:
-        thumb = response_json.get("thumbnail")
-        LOGGER.info(thumb)
-        await bot.send_message(chat_id, thumb)
     custom_file_name = remove_emoji(remove_urls(name))
     LOGGER.info(name)
     #
@@ -377,6 +373,8 @@ async def yt_dlp_call_back(bot, update):
                                                chat_id + ".jpg")
                         if os.path.exists(thumb_image_path):
                             thumb = thumb_image_path
+                        elif "youtube" in yt_dlp_url:
+                            thumb = response_json.get("thumbnail")
                         else:
                             thumb = None
                         copy = await userbot.send_audio(
@@ -462,6 +460,8 @@ async def yt_dlp_call_back(bot, update):
                                                chat_id + ".jpg")
                         if os.path.exists(thumb_image_path):
                             thumb = thumb_image_path
+                        elif "youtube" in yt_dlp_url:
+                            thumb = response_json.get("thumbnail")
                         else:
                             thumb = get_thumbnail(path, './' + Config.DOWNLOAD_DIR, duration / 4)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_VIDEO)
@@ -631,6 +631,8 @@ async def yt_dlp_call_back(bot, update):
                                                chat_id + ".jpg")
                         if os.path.exists(thumb_image_path):
                             thumb = thumb_image_path
+                        elif "youtube" in yt_dlp_url:
+                            thumb = response_json.get("thumbnail")
                         else:
                             thumb = get_thumbnail(path, './' + Config.DOWNLOAD_DIR, duration / 4)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_VIDEO)
