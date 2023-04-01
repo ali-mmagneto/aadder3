@@ -374,7 +374,11 @@ async def yt_dlp_call_back(bot, update):
                         if os.path.exists(thumb_image_path):
                             thumb = thumb_image_path
                         elif "youtube" in yt_dlp_url:
-                            thumb = response_json.get("thumbnail")
+                            url = response_json.get("thumbnail")
+                            r = requests.get(url)
+                            thumb = "ytthumbfoto.jpg"
+                            with open(thumb, "wb") as dosya:
+                                dosya.write(r.content)  
                         else:
                             thumb = None
                         copy = await userbot.send_audio(
@@ -461,7 +465,11 @@ async def yt_dlp_call_back(bot, update):
                         if os.path.exists(thumb_image_path):
                             thumb = thumb_image_path
                         elif "youtube" in yt_dlp_url:
-                            thumb = response_json.get("thumbnail")
+                            url = response_json.get("thumbnail")
+                            r = requests.get(url)
+                            thumb = "ytthumbfoto.jpg"
+                            with open(thumb, "wb") as dosya:
+                                dosya.write(r.content)  
                         else:
                             thumb = get_thumbnail(path, './' + Config.DOWNLOAD_DIR, duration / 4)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_VIDEO)
@@ -632,7 +640,11 @@ async def yt_dlp_call_back(bot, update):
                         if os.path.exists(thumb_image_path):
                             thumb = thumb_image_path
                         elif "youtube" in yt_dlp_url:
-                            thumb = response_json.get("thumbnail")
+                            url = response_json.get("thumbnail")
+                            r = requests.get(url)
+                            thumb = "ytthumbfoto.jpg"
+                            with open(thumb, "wb") as dosya:
+                                dosya.write(r.content)  
                         else:
                             thumb = get_thumbnail(path, './' + Config.DOWNLOAD_DIR, duration / 4)
                         await message.reply_to_message.reply_chat_action(ChatAction.UPLOAD_VIDEO)
