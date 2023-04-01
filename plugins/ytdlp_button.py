@@ -121,7 +121,7 @@ async def yt_dlp_call_back(bot, update):
     #
     response_json = response_json[0]
     # TODO: temporary limitations
-    LOGGER.info(response_json)
+    # LOGGER.info(response_json)
     ynt = message.reply_to_message 
     yt_dlp_url = ynt.reply_to_message.text
     LOGGER.info(yt_dlp_url)
