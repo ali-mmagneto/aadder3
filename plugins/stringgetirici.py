@@ -6,16 +6,17 @@ from pyrogram.errors import (
     PhoneNumberInvalid, ApiIdInvalid,
     PhoneCodeInvalid, PhoneCodeExpired
 )
+from asyncio.exceptions import TimeoutError
 
-API_TEXT = """Hi, {}.
-This is Pyrogram's String Session Generator Bot. I will generate String Session of your Telegram Account.
-By @Discovery_Updates
-Now send your `API_ID` same as `APP_ID` to Start Generating Session."""
-HASH_TEXT = "Now send your `API_HASH`.\n\nPress /cancel to Cancel Task."
+from pyrogram import filters, Client
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+
+API_TEXT = """Merhaba, {}.
+API_ID'ni gönder ve başlayalım..."""
+HASH_TEXT = "`API_HASH` gönder bakalım.."
 PHONE_NUMBER_TEXT = (
-    "Now send your Telegram account's Phone number in International Format. \n"
-    "Including Country code. Example: **+14154566376**\n\n"
-    "Press /cancel to Cancel Task."
+    "Telefon Numaranı Gönder. \n"
+    "Örnek : **+14154566376**\n\n"
 )
 
 
