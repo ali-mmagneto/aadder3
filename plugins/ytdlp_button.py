@@ -130,7 +130,7 @@ async def yt_dlp_call_back(bot, update):
     if "youtube" in yt_dlp_url:
         thumb = response_json.get("thumbnail")
         LOGGER.info(thumb)
-        await update.reply_text(thumb)
+        await bot.send_message(chat_id, thumb)
     custom_file_name = remove_emoji(remove_urls(name))
     LOGGER.info(name)
     #
