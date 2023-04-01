@@ -374,7 +374,7 @@ async def yt_dlp_call_back(bot, update):
                                                chat_id + ".jpg")
                         if os.path.exists(thumb_image_path):
                             thumb = thumb_image_path
-                        elif "youtube" in yt_dlp_url:
+                        elif "youtu" in yt_dlp_url:
                             url = response_json.get("thumbnail")
                             thumb = "ytthumbfoto.jpg"
                             img = Image.open(requests.get(url, stream = True).raw)
@@ -464,7 +464,7 @@ async def yt_dlp_call_back(bot, update):
                                                chat_id + ".jpg")
                         if os.path.exists(thumb_image_path):
                             thumb = thumb_image_path
-                        elif "youtube" in yt_dlp_url:
+                        elif "youtu" in yt_dlp_url:
                             url = response_json.get("thumbnail")
                             thumb = "ytthumbfoto.jpg"
                             img = Image.open(requests.get(url, stream = True).raw)
@@ -638,7 +638,7 @@ async def yt_dlp_call_back(bot, update):
                                                chat_id + ".jpg")
                         if os.path.exists(thumb_image_path):
                             thumb = thumb_image_path
-                        elif "youtube" in yt_dlp_url:
+                        elif "youtu" in yt_dlp_url:
                             url = response_json.get("thumbnail")
                             thumb = "ytthumbfoto.jpg"
                             img = Image.open(requests.get(url, stream = True).raw)
