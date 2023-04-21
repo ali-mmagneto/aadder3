@@ -48,7 +48,7 @@ async def dosyasil(dosyaYolu, message, silinecekler):
 async def deldirecttory(bot, message):
     try:
         silinecekler = []
-        text = "DOWNLOADS"
+        text = "downloads"
         msg = await message.reply_text("`Siliyorum..`") 
         for dosya in os.listdir(text):
             dosyaYolu = os.path.join(text, dosya)
