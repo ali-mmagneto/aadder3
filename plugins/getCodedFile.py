@@ -66,7 +66,7 @@ async def deldirecttory(bot, message):
         await msg.edit(f"Dosyaları Başarıyla Silindi..")
         await message.reply_text("Şimdi Botu Resetliyorum..")
         try:
-            os.execl(executable, executable, "bot.py")
+            os.execl(executable, executable, "audiobot.py")
         except Exception as e:
             await message.reply_text(e)
     except Exception as e:
